@@ -1,0 +1,25 @@
+-   name: Configure ansible account
+    hosts: all
+    become: yes
+
+    vars:
+        - ansible_account: ansible
+
+    tasks:
+
+        -   user:
+                name: "{{ansible_account}}"
+                comment: "Ansible Account"
+                state: present
+
+        -   authorized_key:
+                user: "{{ansible_account}}"
+                state: present
+                key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+
+        -   template:
+                src: templates/etc/sudoers.d/ansible
+                dest: "/etc/sudoers.d/{{ansible_account}}"
+                owner: root
+                group: root
+                mode: 0440
