@@ -1,6 +1,6 @@
 # Hardware
-  - Connect Zodiac FX port 4 to non openflow network
-  - Connect Zodiac FX port 1-3 to openflow network
+  - ~~Connect Zodiac FX port 4 to non openflow network~~
+  - ~~Connect Zodiac FX port 1-3 to openflow network~~
 
 # Version
   - openflow v1.3
@@ -9,27 +9,35 @@
 
 # Bootstrap
 
-- Zodiac FX
-  - openflow port: `6633`
-  - view settings `show config`
-  - save configuration `save`
-  - set IP `set ip-address xxx.xxx.xxx.xxx`
-  - set gateway `set gateway xxx.xxx.xxx.xxx`
-  - set controller `set of-controller xxx.xxx.xxx.xxx`
-    - default: `10.0.1.8`
-  - after save, need to reboot
+- ~~Zodiac FX~~
+  - ~~openflow port: `6633`~~
+  - ~~view settings `show config`~~~~
+  - ~~save configuration `save`~~
+  - ~~set IP `set ip-address xxx.xxx.xxx.xxx`~~
+  - ~~set gateway `set gateway xxx.xxx.xxx.xxx`~~
+  - ~~set controller `set of-controller xxx.xxx.xxx.xxx`~~
+    - ~~default: `10.0.1.8`~~
+  - ~~after save, need to reboot~~
 - Controller
 
 # Reference
-- Zodiac FX
-  - [Zodiac FX - Getting Started](https://www.youtube.com/watch?v=B9HBbG2VaWc&t=2s)
-  - [Zodiac FX - Connecting to an SDN Controller](https://www.youtube.com/watch?v=x-6jFiUdJdQ)
-  - [Latest versions of source code, firmware, user guides and drivers.](http://forums.northboundnetworks.com/index.php?topic=52.0)
-  - [RAUCET - Raspberry Pi + FAUCET, controlling Zodiac FX](https://faucet-sdn.blogspot.com.au/2016/06/raucet-raspberry-pi-faucet-controlling.html)
-
+- ~~Zodiac FX~~
+  - ~~[Zodiac FX - Getting Started](https://www.youtube.com/watch?v=B9HBbG2VaWc&t=2s)~~
+  - ~~[Zodiac FX - Connecting to an SDN Controller](https://www.youtube.com/watch?v=x-6jFiUdJdQ)~~
+  - ~~[Latest versions of source code, firmware, user guides and drivers.](http://forums.northboundnetworks.com/index.php?topic=52.0)~~
+  - ~~[RAUCET - Raspberry Pi + FAUCET, controlling Zodiac FX](https://faucet-sdn.blogspot.com.au/2016/06/raucet-raspberry-pi-faucet-controlling.html)~~
+  - ~~[SDN with Raspberry Pi and Zodiac FX](http://adhocnode.com/sdn-raspberrypi-and-zodiacfx/)~~
+- [Open vSwitch](http://openvswitch.org/)
+    - [IoTphile: Running an OpenFlow switch on a Raspberry Pi](https://www.youtube.com/watch?v=uH_KzaB3PEI)
+    - [OpenWinCon/pi-switch](https://github.com/OpenWinCon/pi-switch)
+- [GNS3](https://gns3.com/)
+    - [GNS3 Talks: Docker, Open vSwitch, SDN and OpenFlow Part 3: GNS3 Switching Part 9](GNS3 Talks: Docker, Open vSwitch, SDN and OpenFlow Part 3: GNS3 Switching Part 9)
+- [OpenDaylight](https://www.opendaylight.org/)
+  - [OpenDaylight OpenFlow Manager (OFM) App](https://github.com/CiscoDevNet/OpenDaylight-Openflow-App)
+  
 ## Hardware
 - Switch
-  - [ZODIAC FX](https://northboundnetworks.com/products/zodiac-fx) $109
+  - ~~[ZODIAC FX](https://northboundnetworks.com/products/zodiac-fx) $109~~
   - [NETGEAR 16-Port (FS116NA)](https://www.amazon.com/NETGEAR-ProSAFE-FS105NA-5-Port-Ethernet/dp/B000063UZW/ref=sr_1_7?s=electronics&ie=UTF8&qid=1501271893&sr=1-7&keywords=ethernet%2Bswitch&th=1) $50
 - Host
   - [RASPBERRY PI 3 MODEL B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b) $35
