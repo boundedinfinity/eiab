@@ -44,7 +44,7 @@ This infrastructure should fulfill the following constraints:
 
 ## Definitions
 
-- Bootstrap node: The machine from which to drive the whole process. This
+- Control node: The machine from which to drive the whole process. This
   is likely a workstation or local VM environment like vagrant or Docker.
 - Database nodes: All nodes that have stateful data.  These are likely machines
   that house databases (PostgreSQL, ElasticSearch) or queueing systems (Redis).
@@ -54,7 +54,7 @@ This infrastructure should fulfill the following constraints:
 ## Assumptions
 
   - The user has a generated ssh key pair
-  - Connectivity to all nodes
+  - Connectivity to all nodes from the control node
   - The nodes have ssh enabled
   - The cloud (or default) account has sudo privileges
 

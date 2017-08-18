@@ -1,0 +1,7 @@
+-   name: consul_systemctl_daemon_reload
+    command: /bin/systemctl daemon-reload
+
+-   name: consul_restart
+    systemd:
+        name: "{{consul_service}}"
+        state: restarted

@@ -1,0 +1,36 @@
+---
+
+-   user:
+        name: "{{vault_user}}"
+        comment: "Vault Account"
+        state: present
+    notify:
+        - vault_restart
+
+-   template:
+        src: templates/etc/systemd/system/vault.service
+        dest: "/etc/systemd/system/{{vault_service}}.service"
+        owner: root
+        group: root
+        mode: 0640
+    notify:
+        - vault_systemctl_daemon_reload
+        - vault_restart
+
+-   file:
+        path: "/etc/{{vault_service}}.d"
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+    notify:
+        - vault_restart
+
+-   file:
+        path: "/var/{{vault_service}}"
+        owner: "{{vault_user}}"
+        group: "{{vault_user}}"
+        mode: 0755
+        state: directory
+    notify:
+        - vault_restart

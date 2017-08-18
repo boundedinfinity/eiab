@@ -1,0 +1,16 @@
+---
+
+-   yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - tar
+        - unzip
+
+-   unarchive:
+        src: "{{vault_download}}"
+        dest: /usr/bin
+        remote_src: True
+        creates: "/usr/bin/{{vault_filename}}"
+    notify:
+        - vault_restart

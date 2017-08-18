@@ -1,0 +1,8 @@
+---
+
+-   template:
+        src: templates/etc/sudoers.d/user
+        dest: "/etc/sudoers.d/{{account}}"
+        owner: root
+        group: root
+        mode: 0440

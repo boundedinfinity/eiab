@@ -1,0 +1,31 @@
+-   name: Install common utilities
+    hosts: all
+    become: yes
+
+    tasks:
+
+        -   name: utility_packages
+            yum:
+                name: "{{ item }}"
+                state: present
+            with_items:
+                - coreutils
+                - grep
+                - sed
+                - gawk
+                - bash
+                - fish
+                - htop
+                - jq
+                - traceroute
+                - telnet
+                - expect
+                - tar
+                - unzip
+                - tree
+                - tcping
+                - yum-utils
+                - git
+                - iputils
+                - net-tools
+                - fish

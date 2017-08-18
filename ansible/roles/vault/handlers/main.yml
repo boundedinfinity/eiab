@@ -1,0 +1,7 @@
+-   name: vault_systemctl_daemon_reload
+    command: /bin/systemctl daemon-reload
+
+-   name: vault_restart
+    systemd:
+        name: "{{vault_service}}"
+        state: restarted

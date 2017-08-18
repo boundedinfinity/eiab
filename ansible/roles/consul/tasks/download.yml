@@ -1,0 +1,16 @@
+---
+
+-   yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - tar
+        - unzip
+
+-   unarchive:
+        src: "{{consul_download}}"
+        dest: /usr/bin
+        remote_src: True
+        creates: "/usr/bin/{{consul_filename}}"
+    notify:
+        - consul_restart

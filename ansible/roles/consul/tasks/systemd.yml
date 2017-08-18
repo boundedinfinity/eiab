@@ -1,0 +1,36 @@
+---
+
+-   user:
+        name: "{{consul_user}}"
+        comment: "Consul Account"
+        state: present
+    notify:
+        - consul_restart
+
+-   template:
+        src: templates/etc/systemd/system/consul.service
+        dest: "/etc/systemd/system/{{consul_service}}.service"
+        owner: root
+        group: root
+        mode: 0640
+    notify:
+        - consul_systemctl_daemon_reload
+        - consul_restart
+
+-   file:
+        path: "/etc/{{consul_service}}.d"
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+    notify:
+        - consul_restart
+
+-   file:
+        path: "/var/{{consul_service}}"
+        owner: "{{consul_user}}"
+        group: "{{consul_user}}"
+        mode: 0755
+        state: directory
+    notify:
+        - consul_restart

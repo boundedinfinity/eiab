@@ -1,0 +1,38 @@
+---
+
+-   include: download.yml
+
+-   include: systemd.yml
+
+-   name: Server Configuration
+    set_fact:
+        consul_config:
+            advertise_addr: "{{ansible_default_ipv4.address}}"
+            bind_addr: "{{ansible_default_ipv4.address}}"
+            data_dir: "/var/{{consul_service}}"
+            server: True
+            # TODO: Figure out how to convert to in
+            # bootstrap_expect: "{{groups['consul_server']|length}}"
+            bootstrap_expect: 3
+            retry_join: "{{groups['consul_server'] | difference(ansible_default_ipv4.address)}}"
+            disable_update_check: true
+        when: consul_server == True
+
+-   name: Client Configuration
+    set_fact:
+        consul_config:
+            advertise_addr: "{{ansible_default_ipv4.address}}"
+            bind_addr: "{{ansible_default_ipv4.address}}"
+            data_dir: "/var/{{consul_service}}"
+            retry_join: "{{groups['consul_server']}}"
+            disable_update_check: true
+        when: consul_server == False
+
+-   copy:
+        content: "{{consul_config | to_nice_json}}"
+        dest: "/etc/{{consul_service}}.d/consul.json"
+        owner: root
+        group: root
+        mode: 0755
+    notify:
+        - consul_restart

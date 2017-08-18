@@ -17,9 +17,7 @@
                 state: present
                 key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
 
-        -   template:
-                src: templates/etc/sudoers.d/ansible
-                dest: "/etc/sudoers.d/{{ansible_account}}"
-                owner: root
-                group: root
-                mode: 0440
+        -   include_role:
+                name: sudoer
+            vars:
+                account: "{{ansible_account}}"
