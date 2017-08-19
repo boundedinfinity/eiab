@@ -36,5 +36,11 @@ list:
 010-vault:
 	$(playbook_ansible)/010-vault.yml
 
-x01-vagrant-purge:
+wks-vagrant-purge:
 	vagrant halt && vagrant destroy -f
+
+wks-vagrant-rebuild:
+	vagrant halt && vagrant destroy -f && vagrant up
+
+wks-vagrant-provision:
+	vagrant provision
