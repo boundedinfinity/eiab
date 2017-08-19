@@ -1,17 +1,13 @@
 [Unit]
 Description=Vault
-Requires=network-online.target
 After=network-online.target
 
 [Service]
 User={{vault_user}}
 User={{vault_group}}
-Group=consul
-Environment=GOMAXPROCS=2
-Restart=on-failure
-ExecStart=/usr/bin/{{vault_filename}} agent -config-dir=/etc/{{vault_service}}.d
-ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/bin/{{vault_filename}} server -config=/etc/vault.d
 KillSignal=SIGINT
+Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target

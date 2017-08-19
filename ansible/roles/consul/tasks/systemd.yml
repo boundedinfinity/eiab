@@ -34,3 +34,15 @@
         state: directory
     notify:
         - consul_restart
+
+-   systemd:
+        name: "{{consul_service}}"
+        state: started
+        enabled: yes
+
+-   template:
+        src: templates/etc/profile.d/consul.sh
+        dest: "/etc/profile.d/{{consul_service}}.sh"
+        owner: root
+        group: root
+        mode: 0644

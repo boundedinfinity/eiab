@@ -1,5 +1,5 @@
 -   name: Configure Consul server
-    hosts: consul_server
+    hosts: consul_servers
     become: yes
     serial: 1
 

@@ -4,6 +4,9 @@
 
 -   include: systemd.yml
 
+# -   debug:
+#         msg: "consul_server: {{consul_server}}"
+
 -   name: Server Configuration
     set_fact:
         consul_config:
@@ -11,12 +14,15 @@
             bind_addr: "{{ansible_default_ipv4.address}}"
             data_dir: "/var/{{consul_service}}"
             server: True
-            # TODO: Figure out how to convert to in
-            # bootstrap_expect: "{{groups['consul_server']|length}}"
+            # TODO: Figure out how to convert to int
+            # bootstrap_expect: "{{groups['consul_servers']|length|int}}"
             bootstrap_expect: 3
-            retry_join: "{{groups['consul_server'] | difference(ansible_default_ipv4.address)}}"
-            disable_update_check: true
-        when: consul_server == True
+            retry_join: "{{groups['consul_servers'] | difference(ansible_default_ipv4.address)}}"
+            disable_update_check: True
+    when: consul_server == True
+
+# -   debug:
+#         msg: "consul_config: {{consul_config | to_json}}"
 
 -   name: Client Configuration
     set_fact:
@@ -24,9 +30,12 @@
             advertise_addr: "{{ansible_default_ipv4.address}}"
             bind_addr: "{{ansible_default_ipv4.address}}"
             data_dir: "/var/{{consul_service}}"
-            retry_join: "{{groups['consul_server']}}"
-            disable_update_check: true
-        when: consul_server == False
+            retry_join: "{{groups['consul_servers']}}"
+            disable_update_check: True
+    when: consul_server == False
+
+# -   debug:
+#         msg: "consul_config: {{consul_config | to_json}}"
 
 -   copy:
         content: "{{consul_config | to_nice_json}}"
