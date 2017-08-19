@@ -9,43 +9,54 @@ SCRIPT
 Vagrant.configure("2") do |config|
   config.vm.box = "boxcutter/centos73"
 
-  config.vm.define "control", primary: true do |control|
-      control.vm.network "private_network", ip: "10.0.0.2"
+  config.vm.define "control", primary: true do |m|
+      m.vm.provision "shell", inline: $script
+      m.vm.hostname = "control"
+      m.vm.network "private_network", ip: "10.0.0.2"
   end
 
-  config.vm.define "ops01" do |ops01|
-      ops01.vm.network "private_network", ip: "10.0.0.10"
+  config.vm.define "ops01" do |m|
+      m.vm.hostname = "ops01"
+      m.vm.network "private_network", ip: "10.0.0.10"
   end
 
-  config.vm.define "ops02" do |ops02|
-      ops02.vm.network "private_network", ip: "10.0.0.11"
+  config.vm.define "ops02" do |m|
+      m.vm.hostname = "ops02"
+      m.vm.network "private_network", ip: "10.0.0.11"
   end
 
-  config.vm.define "ops03" do |ops03|
-      ops03.vm.network "private_network", ip: "10.0.0.12"
+  config.vm.define "ops03" do |m|
+      m.vm.hostname = "ops03"
+      m.vm.network "private_network", ip: "10.0.0.12"
   end
 
-  config.vm.define "app01" do |app01|
-      app01.vm.network "private_network", ip: "10.0.0.20"
+  config.vm.define "app01" do |m|
+      m.vm.hostname = "app01"
+      m.vm.network "private_network", ip: "10.0.0.20"
   end
 
-  config.vm.define "app02" do |app02|
-      app02.vm.network "private_network", ip: "10.0.0.21"
+  config.vm.define "app02" do |m|
+      m.vm.hostname = "app02"
+      m.vm.network "private_network", ip: "10.0.0.21"
   end
 
-  config.vm.define "app03" do |app03|
-      app03.vm.network "private_network", ip: "10.0.0.22"
+  config.vm.define "app03" do |m|
+      m.vm.hostname = "app03"
+      m.vm.network "private_network", ip: "10.0.0.22"
   end
 
-  config.vm.define "ds01" do |ds01|
-      ds01.vm.network "private_network", ip: "10.0.0.30"
+  config.vm.define "ds01" do |m|
+      m.vm.hostname = "ds01"
+      m.vm.network "private_network", ip: "10.0.0.30"
   end
 
-  config.vm.define "ds02" do |ds02|
-      ds02.vm.network "private_network", ip: "10.0.0.31"
+  config.vm.define "ds02" do |m|
+      m.vm.hostname = "ds02"
+      m.vm.network "private_network", ip: "10.0.0.31"
   end
 
-  config.vm.define "ds03" do |ds03|
-      ds03.vm.network "private_network", ip: "10.0.0.32"
+  config.vm.define "ds03" do |m|
+      m.vm.hostname = "ds03"
+      m.vm.network "private_network", ip: "10.0.0.32"
   end
 end
