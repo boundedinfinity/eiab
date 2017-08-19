@@ -8,13 +8,13 @@
         
     tasks:
 
-        -   name: For each host, scan for its ssh public key
+        -   name: ssh-keyscan all inventory hosts
             shell: "ssh-keyscan {{ item }}"
             with_items: "{{ groups['all'] }}"
             register: ssh_known_host_results
             ignore_errors: yes
         
-        -   name: Add/update the public key in the '{{ ssh_known_hosts_file }}'
+        -   name: Update the '{{ ssh_known_hosts_file }}' file with inventory hosts
             known_hosts:
                 name: "{{ item.item }}"
                 key: "{{ item.stdout }}"

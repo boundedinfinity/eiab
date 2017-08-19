@@ -1,6 +1,6 @@
 makefile_dir		:= $(abspath $(shell pwd))
 
-default_account		:= centos
+default_account		:= vagrant
 ansible_account		:= ansible
 
 playbook_default	:= cd ansible && ansible-playbook --user=$(default_account) playbooks
@@ -9,8 +9,11 @@ playbook_ansible	:= cd ansible && ansible-playbook --user=$(ansible_account) pla
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
-000-ssh-add-hosts:
-	$(playbook_default)/ssh-add-hosts.yml
+01-ssh-add-hosts:
+	$(playbook_default)/01-ssh-add-hosts.yml
+
+01-utilities:
+	$(playbook_default)/01-utilities.yml
 
 002-ansible-account:
 	$(playbook_default)/002-ansible-account.yml
