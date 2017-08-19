@@ -27,7 +27,7 @@
         - vault_restart
 
 -   systemd:
-        name: "{{consul_service}}"
+        name: "{{vault_service}}"
         state: started
         enabled: yes
 
