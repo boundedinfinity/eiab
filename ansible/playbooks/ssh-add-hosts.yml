@@ -1,0 +1,22 @@
+-   name: Control node ssh configuration
+    hosts: localhost
+    connection: local
+    become: yes
+
+    vars:
+        ssh_known_hosts_file: "{{ lookup('env','HOME') + '/.ssh/known_hosts' }}"
+        
+    tasks:
+
+        -   name: For each host, scan for its ssh public key
+            shell: "ssh-keyscan {{ item }}"
+            with_items: "{{ groups['all'] }}"
+            register: ssh_known_host_results
+            ignore_errors: yes
+        
+        -   name: Add/update the public key in the '{{ ssh_known_hosts_file }}'
+            known_hosts:
+                name: "{{ item.item }}"
+                key: "{{ item.stdout }}"
+                path: "{{ ssh_known_hosts_file }}"
+            with_items: "{{ ssh_known_host_results.results }}"

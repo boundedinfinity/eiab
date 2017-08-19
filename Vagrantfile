@@ -1,6 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+Vagrant.require_version ">= 1.9.7"
+
+node_count = 2
+node_mem = 768
+
 $script = <<SCRIPT
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum install -y ansible
@@ -15,48 +20,27 @@ Vagrant.configure("2") do |config|
       m.vm.network "private_network", ip: "10.0.0.2"
   end
 
-  config.vm.define "ops01" do |m|
-      m.vm.hostname = "ops01"
-      m.vm.network "private_network", ip: "10.0.0.10"
+  (0..node_count).each do |i|
+      config.vm.define "ops0#{i}" do |m|
+          m.vm.hostname = "ops0#{i}"
+          m.vm.network "private_network", ip: "10.0.0.1#{i}"
+          m.vm.provider "virtualbox" do |v|
+              v.memory = node_mem
+          end
+      end
   end
 
-  config.vm.define "ops02" do |m|
-      m.vm.hostname = "ops02"
-      m.vm.network "private_network", ip: "10.0.0.11"
+  (0..node_count).each do |i|
+      config.vm.define "app0#{i}" do |m|
+          m.vm.hostname = "app0#{i}"
+          m.vm.network "private_network", ip: "10.0.0.2#{i}"
+      end
   end
 
-  config.vm.define "ops03" do |m|
-      m.vm.hostname = "ops03"
-      m.vm.network "private_network", ip: "10.0.0.12"
-  end
-
-  config.vm.define "app01" do |m|
-      m.vm.hostname = "app01"
-      m.vm.network "private_network", ip: "10.0.0.20"
-  end
-
-  config.vm.define "app02" do |m|
-      m.vm.hostname = "app02"
-      m.vm.network "private_network", ip: "10.0.0.21"
-  end
-
-  config.vm.define "app03" do |m|
-      m.vm.hostname = "app03"
-      m.vm.network "private_network", ip: "10.0.0.22"
-  end
-
-  config.vm.define "ds01" do |m|
-      m.vm.hostname = "ds01"
-      m.vm.network "private_network", ip: "10.0.0.30"
-  end
-
-  config.vm.define "ds02" do |m|
-      m.vm.hostname = "ds02"
-      m.vm.network "private_network", ip: "10.0.0.31"
-  end
-
-  config.vm.define "ds03" do |m|
-      m.vm.hostname = "ds03"
-      m.vm.network "private_network", ip: "10.0.0.32"
+  (0..node_count).each do |i|
+      config.vm.define "ds0#{i}" do |m|
+          m.vm.hostname = "ds0#{i}"
+          m.vm.network "private_network", ip: "10.0.0.3#{i}"
+      end
   end
 end
