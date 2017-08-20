@@ -85,3 +85,11 @@ The output should contain an `ANSWER SECTION` with output similar to the followi
 ;; ANSWER SECTION:
 ops00.node.consul.	0	IN	A	10.0.0.10
 ```
+
+## Step 7
+
+Configure the local DNS resolver to query consul first in the DNS query chain.
+
+```
+make 003-dns
+```
