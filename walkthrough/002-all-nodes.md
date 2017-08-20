@@ -2,6 +2,9 @@
 
 Configuration for all nodes
 
+**TODO:**
+- Internal NTP master
+
 ## Step 1
 
 Log into the control machine and change to the directory with the

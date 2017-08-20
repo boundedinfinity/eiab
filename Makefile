@@ -2,7 +2,7 @@ makefile_dir		:= $(abspath $(shell pwd))
 
 ansible_account		:= ansible
 
-ansible_exec		:= cd ansible && ansible --user=$(ansible_account)
+ansible_exec		:= cd ansible && ansible --user=$(ansible_account) --ssh-common-args="-o StrictHostKeyChecking=no"
 playbook_exec		:= cd ansible && ansible-playbook --user=$(ansible_account) playbooks
 
 list:
@@ -29,20 +29,29 @@ list:
 002-admins:
 	$(playbook_exec)/002-admins.yml
 
-003-consul-server:
-	$(playbook_exec)/003-consul-server.yml
+003-fileserver:
+	$(playbook_exec)/003-fileserver.yml
 
-003-consul-client:
-	$(playbook_exec)/003-consul-client.yml
+004-consul-cache:
+	$(playbook_exec)/004-consul-cache.yml
+		
+004-consul-server:
+	$(playbook_exec)/004-consul-server.yml
 
-003-dns:
-	$(playbook_exec)/003-dns.yml
+004-consul-client:
+	$(playbook_exec)/004-consul-client.yml
 
-004-vault-server:
-	$(playbook_exec)/004-vault-server.yml
+004-dns:
+	$(playbook_exec)/004-dns.yml
 
-004-vault-client:
-	$(playbook_exec)/004-vault-client.yml
+005-vault-cache:
+	$(playbook_exec)/005-vault-cache.yml
+		
+005-vault-server:
+	$(playbook_exec)/005-vault-server.yml
+
+005-vault-client:
+	$(playbook_exec)/005-vault-client.yml
 
 999-everything:
 	make 001-clock
@@ -52,11 +61,17 @@ list:
 	make 002-clock
 	make 002-utilities
 	# make 002-admins
-	make 003-consul-server
-	make 003-consul-client
-	make 003-dns
-	make 004-vault-server
-	make 004-vault-client
+	make 003-fileserver
+	make 004-consul-cache
+	make 004-consul-server
+	make 004-consul-client
+	make 004-dns
+	make 005-vault-server
+	make 005-vault-client
+
+
+wks-vagrant-bootstrap:
+	vagrant plugin install vagrant-hostmanager
 
 wks-vagrant-purge:
 	vagrant halt && vagrant destroy -f
@@ -68,4 +83,6 @@ wks-vagrant-provision:
 	vagrant provision
 
 ansible-facts:
-	$(ansible_exec) --ask-pass -m setup 10.0.0.10
+	$(ansible_exec) -m setup ops00
+	# $(ansible_exec) --ask-pass -m setup 10.0.0.11
+	

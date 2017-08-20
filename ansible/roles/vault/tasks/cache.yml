@@ -1,0 +1,15 @@
+---
+
+-   include_role:
+        name: fileserver
+        tasks_from: cache
+    vars:
+        cache_file: "{{item.file}}"
+        cache_url: "{{item.url}}"
+    with_items:
+        -   file: vault/vault_0.8.1_linux_amd64.zip
+            url: https://releases.hashicorp.com/vault/0.8.1/vault_0.8.1_linux_amd64.zip
+        -   file: vault/vault_0.8.1_SHA256SUMS
+            url: https://releases.hashicorp.com/vault/0.8.1/vault_0.8.1_SHA256SUMS
+        -   file: vault/vault_0.8.1_SHA256SUMS.sig
+            url: https://releases.hashicorp.com/vault/0.8.1/vault_0.8.1_SHA256SUMS.sig

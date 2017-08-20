@@ -1,10 +1,8 @@
 ---
-
+vault_zip: http://10.0.0.11/files/vault/vault_0.8.1_linux_amd64.zip
 vault_user: vault
 vault_group: vault
 vault_service: vault
 vault_filename: vault
-vault_download: https://releases.hashicorp.com/vault/0.8.1/vault_0.8.1_linux_amd64.zip
-vault_checksum: https://releases.hashicorp.com/vault/0.8.1/vault_0.8.1_SHA256SUMS
 vault_port: 8200
 vault_host: 127.0.0.1

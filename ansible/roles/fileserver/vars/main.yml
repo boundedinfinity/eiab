@@ -1,0 +1,4 @@
+---
+
+# fileserver_dir: /var/fileserver
+fileserver_dir: /usr/share/nginx/html/files
