@@ -2,6 +2,10 @@
 
 Configure a [Consul](https://www.consul.io) cluster.
 
+### TODO
+- Configure web UI
+- Configure SSL
+
 ## Step 1
 
 Log into the control machine and change to the directory with the

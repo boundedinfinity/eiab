@@ -2,6 +2,10 @@
 
 Configure a [Vault](https://www.vaultproject.io) cluster.
 
+### TODO
+- Configure HA
+- Configure SSL
+
 ## Step 1
 
 Log into the control machine and change to the directory with the

@@ -8,7 +8,7 @@ node_mem = 768
 
 $script = <<SCRIPT
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo yum install -y ansible
+sudo yum install -y ansible fish
 SCRIPT
 
 Vagrant.configure("2") do |config|
