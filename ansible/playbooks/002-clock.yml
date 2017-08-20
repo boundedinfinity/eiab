@@ -1,0 +1,8 @@
+-   name: Install common utilities
+    hosts: all
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: ntp

@@ -12,12 +12,3 @@
         dest: /usr/bin
         remote_src: True
         creates: "/usr/bin/{{vault_filename}}"
-    notify:
-        - vault_restart
-
--   capabilities:
-        path: "/usr/bin/{{vault_filename}}"
-        capability: CAP_IPC_LOCK+ep
-        state: present
-    notify:
-        - vault_restart

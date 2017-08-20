@@ -1,0 +1,9 @@
+-   name: Configure Vaut server
+    hosts: 10.0.0.10
+    # hosts: consul_all
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: vault

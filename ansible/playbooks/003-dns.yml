@@ -1,0 +1,9 @@
+-   name: Configure local DNS resolver to use Consul
+    hosts: consul_all
+    become: yes
+    
+    tasks:
+    
+        -   include_role:
+                name: consul
+                tasks_from: dns

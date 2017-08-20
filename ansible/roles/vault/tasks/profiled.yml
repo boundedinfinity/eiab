@@ -1,0 +1,8 @@
+---
+
+-   template:
+        src: templates/etc/profile.d/vault.sh
+        dest: "/etc/profile.d/{{vault_service}}.sh"
+        owner: root
+        group: root
+        mode: 0644

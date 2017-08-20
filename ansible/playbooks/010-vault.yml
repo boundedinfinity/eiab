@@ -1,6 +1,0 @@
--   name: Configure Consul client
-    hosts: consul_all
-    become: yes
-
-    roles:
-        -   { role: vault }

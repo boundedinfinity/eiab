@@ -5,3 +5,8 @@
     systemd:
         name: "{{consul_service}}"
         state: restarted
+
+-   name: dnsmasq_restart
+    systemd:
+        name: dnsmasq
+        state: restarted

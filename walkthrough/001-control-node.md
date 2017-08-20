@@ -14,13 +14,21 @@ cd /vagrant
 
 ## Step 2
 
+Provision the Network Time Daemon
+
+```
+make 001-clock
+```
+
+## Step 3
+
 Install utility packages.
 
 ```
 make 001-utilities
 ```
 
-## Step 3
+## Step 4
 
 Generate the public key for the control node user, and import the
 public ssh host	keys for all nodes in inventory.

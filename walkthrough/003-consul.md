@@ -1,4 +1,4 @@
-# All nodes
+# Consul provisioning
 
 Configure a [Consul](https://www.consul.io) cluster.
 

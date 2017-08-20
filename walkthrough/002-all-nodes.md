@@ -14,6 +14,14 @@ cd /vagrant
 
 ## Step 2
 
+Provision the Network Time Daemon
+
+```
+make 002-clock
+```
+
+## Step 3
+
 Create an automation accout on all nodes.  This accounts is create specifically for automation purposes.
 
 This will perform the following:
@@ -31,7 +39,7 @@ make 002-ansible-account
 
 **NOTE:** This playbook to perform this uses the `bootstrap` inventory group.  This group is configured to use ssh via username/password (in the `group_vars/bootstrap.yml` configuration file) to configure the ssh passwordless log in.
 
-## Step 3
+## Step 4
 
 Install utility packages.
 

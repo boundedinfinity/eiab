@@ -1,0 +1,11 @@
+---
+
+-   name: Install Network Time Daemon
+    yum:
+        name: ntp
+        state: present
+
+-   systemd:
+        name: ntpd
+        state: started
+        enabled: yes

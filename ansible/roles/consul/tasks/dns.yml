@@ -1,0 +1,25 @@
+---
+
+-   yum:
+        name: dnsmasq
+        state: present
+
+-   systemd:
+        name: dnsmasq
+        state: started
+        enabled: yes
+
+-   template:
+        src: templates/etc/dnsmasq.d/consul
+        dest: "/etc/dnsmasq.d/{{consul_service}}"
+        owner: root
+        group: root
+        mode: 0644
+    notify:
+        - dnsmasq_restart
+
+-   lineinfile:
+        path: /etc/resolv.conf
+        state: present
+        line: 'nameserver 127.0.0.1'
+        insertbefore: BOF

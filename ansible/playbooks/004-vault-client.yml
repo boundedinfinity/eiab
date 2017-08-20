@@ -1,0 +1,9 @@
+-   name: Configure Consul client
+    hosts: all
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: vault
+                tasks_from: client

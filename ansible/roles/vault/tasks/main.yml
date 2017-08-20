@@ -1,8 +1,19 @@
 ---
 
 -   include: download.yml
+    notify:
+        - vault_restart
+
+-   capabilities:
+        path: "/usr/bin/{{vault_filename}}"
+        capability: CAP_IPC_LOCK+ep
+        state: present
+    notify:
+        - vault_restart
 
 -   include: systemd.yml
+
+-   include: profiled.yml
 
 -   name: Server Configuration
     set_fact:
@@ -13,7 +24,7 @@
                     path: vault
             listener:
                 tcp:
-                    address: "127.0.0.1:{{vault_port}}"
+                    address: "0.0.0.0:{{vault_port}}"
                     tls_disable: 1
 
 -   copy:
@@ -24,22 +35,3 @@
         mode: 0755
     notify:
         - vault_restart
-
-# -   set_fact:
-#         consul_acl:
-#             key:
-#                 "vault/":
-#                     policy: write
-#             service:
-#                 vault:
-#                     policy: write
-#             service:
-#                 vault:
-#                     policy: read
-#
-# -   include_role:
-#         name: consul
-#         tasks_from: config
-#     vars:
-#         config_file: vault
-#         config_content: "{{consul_acl}}"
