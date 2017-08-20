@@ -1,7 +1,0 @@
--   name: Configure Consul server
-    hosts: consul_servers
-    become: yes
-    serial: 1
-
-    roles:
-        -   { role: consul, consul_server: True }

@@ -1,0 +1,27 @@
+-   name: Generate ssh keypair
+    hosts: localhost
+    connection: local
+    become: yes
+
+    vars:
+        -   ssh_dir: "{{ lookup('env','HOME') }}/.ssh"
+        
+    tasks:
+
+        -   name: Generate SSH keys
+            shell: 'ssh-keygen -b 2048 -t rsa -f {{ssh_dir}}/id_rsa -q -N ""'
+            args:
+                creates: "{{ssh_dir}}/id_rsa"
+    
+        -   name: Import nodes keys
+            shell: "ssh-keyscan {{ item }}"
+            with_items: "{{ groups['all'] }}"
+            register: known_host_results
+            ignore_errors: yes
+        
+        -   name: "Update the {{ssh_dir}}/known_hosts file with nodes"
+            known_hosts:
+                name: "{{ item.item }}"
+                key: "{{ item.stdout }}"
+                path: "{{ssh_dir}}/known_hosts"
+            with_items: "{{ known_host_results.results }}"

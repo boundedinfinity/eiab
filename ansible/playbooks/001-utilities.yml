@@ -1,0 +1,7 @@
+-   name: Install common utilities
+    hosts: localhost
+    connection: local
+    become: yes
+
+    roles:
+        -   { role: utilities }

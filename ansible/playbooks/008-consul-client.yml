@@ -1,6 +1,0 @@
--   name: Configure Consul client
-    hosts: consul_client
-    become: yes
-
-    roles:
-        -   { role: consul, consul_server: False }

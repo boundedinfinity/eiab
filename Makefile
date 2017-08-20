@@ -1,43 +1,36 @@
 makefile_dir		:= $(abspath $(shell pwd))
 
-default_account		:= vagrant
 ansible_account		:= ansible
 
-playbook_default	:= cd ansible && ansible-playbook --user=$(default_account) playbooks
-playbook_ansible	:= cd ansible && ansible-playbook --user=$(ansible_account) playbooks
+ansible_exec		:= cd ansible && ansible --user=$(ansible_account)
+playbook_exec		:= cd ansible && ansible-playbook --user=$(ansible_account) playbooks
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
-01-ssh-add-hosts:
-	$(playbook_default)/01-ssh-add-hosts.yml
+001-utilities:
+	$(playbook_exec)/001-utilities.yml
 
-01-utilities:
-	$(playbook_default)/01-utilities.yml
+001-configure-ssh:
+	$(playbook_exec)/001-configure-ssh.yml
 
 002-ansible-account:
-	$(playbook_default)/002-ansible-account.yml
+	$(playbook_exec)/002-ansible-account.yml
 
-002-ansible-account-normal:
-	$(playbook_ansible)/002-ansible-account.yml
+002-utilities:
+	$(playbook_exec)/002-utilities.yml
 
-003-default-account:
-	$(playbook_ansible)/003-default-account.yml
+002-admins:
+	$(playbook_exec)/002-admins.yml
 
-005-admins:
-	$(playbook_ansible)/005-admins.yml
+003-consul-server:
+	$(playbook_exec)/003-consul-server.yml
 
-006-utilities:
-	$(playbook_ansible)/006-utilities.yml
-
-007-consul-server:
-	$(playbook_ansible)/007-consul-server.yml
-
-008-consul-client:
-	$(playbook_ansible)/008-consul-client.yml
+003-consul-client:
+	$(playbook_exec)/003-consul-client.yml
 
 010-vault:
-	$(playbook_ansible)/010-vault.yml
+	$(playbook_exec)/010-vault.yml
 
 wks-vagrant-purge:
 	vagrant halt && vagrant destroy -f
@@ -47,3 +40,6 @@ wks-vagrant-rebuild:
 
 wks-vagrant-provision:
 	vagrant provision
+
+ansible-facts:
+	$(ansible_exec) --ask-pass -m setup 10.0.0.10

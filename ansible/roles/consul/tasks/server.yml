@@ -1,0 +1,34 @@
+---
+
+-   include: download.yml
+
+-   include: systemd.yml
+
+# -   debug:
+#         msg: "consul_server: {{consul_server}}"
+        
+# -   debug:
+#         msg: "inventory_hostname: {{inventory_hostname}}"        
+        
+
+-   name: Server Configuration
+    set_fact:
+        consul_config:
+            advertise_addr: "{{inventory_hostname}}"
+            bind_addr: "{{inventory_hostname}}"
+            data_dir: "/var/{{consul_service}}"
+            server: True
+            # TODO: Figure out how to convert to int
+            # bootstrap_expect: "{{groups['consul_servers']|length|int}}"
+            bootstrap_expect: 3
+            retry_join: "{{groups['consul_servers'] | difference(inventory_hostname)}}"
+            disable_update_check: True
+
+-   copy:
+        content: "{{consul_config | to_nice_json}}"
+        dest: "/etc/{{consul_service}}.d/consul.json"
+        owner: root
+        group: root
+        mode: 0755
+    notify:
+        - consul_restart

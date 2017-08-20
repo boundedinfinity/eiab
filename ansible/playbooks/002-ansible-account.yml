@@ -1,9 +1,11 @@
 -   name: Configure ansible account
-    hosts: all
+    hosts: bootstrap
     become: yes
 
     vars:
-        - ansible_account: ansible
+        -   ansible_account: ansible
+        -   ssh_dir: "{{ lookup('env','HOME') }}/.ssh"
+        -   ssh_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
 
     tasks:
 
@@ -11,13 +13,13 @@
                 name: "{{ansible_account}}"
                 comment: "Ansible Account"
                 state: present
-
-        -   authorized_key:
-                user: "{{ansible_account}}"
-                state: present
-                key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
-
+        
         -   include_role:
                 name: sudoer
             vars:
                 account: "{{ansible_account}}"
+
+        -   authorized_key:
+                user: "{{ansible_account}}"
+                state: present
+                key: "{{ssh_key}}"

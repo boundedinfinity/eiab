@@ -1,0 +1,6 @@
+-   name: Install common utilities
+    hosts: all
+    become: yes
+
+    roles:
+        -   { role: utilities }

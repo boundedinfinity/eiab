@@ -1,0 +1,9 @@
+-   name: Configure Consul server
+    hosts: consul_servers
+    become: yes
+    
+    tasks:
+    
+        -   include_role:
+                name: consul
+                tasks_from: server
