@@ -32,3 +32,4 @@
         - fish
         - openssh-clients
         - bind-utils
+        - vim

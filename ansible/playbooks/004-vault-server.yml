@@ -1,6 +1,5 @@
 -   name: Configure Vaut server
-    hosts: 10.0.0.10
-    # hosts: consul_all
+    hosts: vault_servers
     become: yes
 
     tasks:

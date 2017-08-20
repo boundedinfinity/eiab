@@ -1,5 +1,5 @@
 -   name: Configure Consul client
-    hosts: all
+    hosts: vault_clients
     become: yes
 
     tasks:
