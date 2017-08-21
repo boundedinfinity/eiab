@@ -1,13 +1,14 @@
 ---
 
--   file:
+-   name: "Creating {{fileserver_dir}}/{{cache_file | dirname}}"
+    file:
         path: "{{fileserver_dir}}/{{cache_file | dirname}}"
         owner: root
         group: root
         mode: 0755
         state: directory
 
--   name: download foo.conf
+-   name: "Caching {{cache_url}}"
     get_url:
         url: "{{cache_url}}"
         dest: "{{fileserver_dir}}/{{cache_file}}"
