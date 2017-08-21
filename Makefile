@@ -66,6 +66,7 @@ list:
 	make 004-consul-server
 	make 004-consul-client
 	make 004-dns
+	make 005-vault-cache
 	# make 005-vault-server
 	# make 005-vault-client
 
@@ -82,7 +83,5 @@ wks-vagrant-rebuild:
 wks-vagrant-provision:
 	vagrant provision
 
-ansible-facts:
-	$(ansible_exec) -m setup ops00
-	# $(ansible_exec) --ask-pass -m setup 10.0.0.11
-	
+# ansible-facts:
+# 	$(ansible_exec) -m setup ops00

@@ -1,8 +1,8 @@
 ---
 
-# -   include: download.yml
-# 
-# -   include: systemd.yml
+-   include: download.yml
+
+-   include: systemd.yml
 
 -   name: Construct consul_servers IP info
     setup:
@@ -19,7 +19,7 @@
 -   name: Construct retry_join
     set_fact:
         retry_join: "{{groups['consul_servers']|map('extract', hostvars, ['ansible_eth1', 'ipv4', 'address'])|list}}"
--   debug: var=retry_join
+# -   debug: var=retry_join
 
 -   name: Client Configuration
     set_fact:

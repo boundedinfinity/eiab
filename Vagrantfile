@@ -15,15 +15,6 @@ Vagrant.configure("2") do |config|
   config.vm.box = "boxcutter/centos73"
   config.hostmanager.enabled = false
 
-  config.vm.define "control", primary: true do |m|
-      m.vm.provision "shell", inline: $script
-      m.vm.provision :hostmanager
-      m.vm.hostname = "control"
-      m.vm.network "private_network", ip: "10.0.0.2"
-      m.hostmanager.enabled = true
-      m.hostmanager.include_offline = true
-  end
-
   (0..node_count).each do |i|
       config.vm.define "ops0#{i}" do |m|
           m.vm.hostname = "ops0#{i}"
@@ -46,5 +37,14 @@ Vagrant.configure("2") do |config|
           m.vm.hostname = "ds0#{i}"
           m.vm.network "private_network", ip: "10.0.0.3#{i}"
       end
+  end
+  
+  config.vm.define "control", primary: true do |m|
+      m.vm.provision "shell", inline: $script
+      m.vm.provision :hostmanager
+      m.vm.hostname = "control"
+      m.vm.network "private_network", ip: "10.0.0.2"
+      m.hostmanager.enabled = true
+      m.hostmanager.include_offline = true
   end
 end
