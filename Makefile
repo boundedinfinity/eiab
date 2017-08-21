@@ -44,13 +44,16 @@ list:
 004-dns:
 	$(playbook_exec)/004-dns.yml
 
-005-vault-cache:
+005-consul-fileserver:
+	$(playbook_exec)/005-consul-fileserver.yml
+
+006-vault-cache:
 	$(playbook_exec)/005-vault-cache.yml
 		
-005-vault-server:
+006-vault-server:
 	$(playbook_exec)/005-vault-server.yml
 
-005-vault-client:
+006-vault-client:
 	$(playbook_exec)/005-vault-client.yml
 
 999-everything:
@@ -66,9 +69,10 @@ list:
 	make 004-consul-server
 	make 004-consul-client
 	make 004-dns
-	make 005-vault-cache
-	# make 005-vault-server
-	# make 005-vault-client
+	make 005-consul-fileserver
+	make 006-vault-cache
+	# make 006-vault-server
+	# make 006-vault-client
 
 
 wks-vagrant-bootstrap:

@@ -32,7 +32,7 @@
 # -   debug: var=consul_config
 
 -   copy:
-        content: "{{consul_config | to_nice_json}}"
+        content: "{{consul_config|to_nice_json}}"
         dest: "/etc/{{consul_service}}.d/consul.json"
         owner: root
         group: root

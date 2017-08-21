@@ -1,0 +1,8 @@
+---
+
+-   include_role:
+        name: consul
+        tasks_from: service
+    vars:
+        name: fileserver
+        port: 80

@@ -14,9 +14,9 @@
         retry_join: "{{groups['consul_servers']|map('extract', hostvars, ['ansible_eth1', 'ipv4', 'address'])|list|difference(advertise_addr)}}"
 # -   debug: var=retry_join
 
-# -   name: Construct bootstrap_expect
-#     set_fact:
-#         bootstrap_expect: "{{groups['consul_servers']|length|int}}"
+-   name: Construct bootstrap_expect
+    set_fact:
+        bootstrap_expect: "{{groups['consul_servers']|length|int}}"
 # -   debug: var=bootstrap_expect
 
 -   name: Server Configuration
@@ -26,14 +26,14 @@
             bind_addr: "{{advertise_addr}}"
             data_dir: "/var/{{consul_service}}"
             server: True
-            # bootstrap_expect: "{{bootstrap_expect|int}}"
-            bootstrap_expect: 3
+            bootstrap_expect: "{{bootstrap_expect}}"
+            # bootstrap_expect: 3
             retry_join: "{{retry_join}}"
             disable_update_check: True
 # -   debug: var=consul_config
 
 -   copy:
-        content: "{{consul_config | to_nice_json}}"
+        content: "{{consul_config|to_nice_json|regex_replace('\"([0-9]+)\"','\\1')}}"
         dest: "/etc/{{consul_service}}.d/consul.json"
         owner: root
         group: root
