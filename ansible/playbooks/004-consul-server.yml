@@ -3,7 +3,6 @@
     become: yes
     
     tasks:
-    
         -   include_role:
                 name: consul
                 tasks_from: server

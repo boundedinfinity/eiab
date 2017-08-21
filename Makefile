@@ -66,8 +66,8 @@ list:
 	make 004-consul-server
 	make 004-consul-client
 	make 004-dns
-	make 005-vault-server
-	make 005-vault-client
+	# make 005-vault-server
+	# make 005-vault-client
 
 
 wks-vagrant-bootstrap:
