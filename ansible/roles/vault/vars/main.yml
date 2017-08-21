@@ -1,5 +1,5 @@
 ---
-vault_zip: http://10.0.0.11/files/vault/vault_0.8.1_linux_amd64.zip
+vault_zip: files/vault/vault_0.8.1_linux_amd64.zip
 vault_user: vault
 vault_group: vault
 vault_service: vault

@@ -1,0 +1,11 @@
+---
+
+-   include_role:
+        name: fileserver
+        tasks_from: cache
+    vars:
+        cache_file: "{{item.file}}"
+        cache_url: "{{item.url}}"
+    with_items:
+        -   file: prometheus/prometheus-1.7.1.linux-amd64.tar.gz
+            url: https://github.com/prometheus/prometheus/releases/download/v1.7.1/prometheus-1.7.1.linux-amd64.tar.gz

@@ -1,0 +1,37 @@
+---
+
+-   include: download.yml
+    notify:
+        - vault_restart
+
+-   capabilities:
+        path: "/usr/bin/{{vault_filename}}"
+        capability: CAP_IPC_LOCK+ep
+        state: present
+    notify:
+        - vault_restart
+
+-   include: systemd.yml
+
+-   include: profiled.yml
+
+-   name: Server Configuration
+    set_fact:
+        vault_config:
+            storage:
+                consul:
+                    address: 127.0.0.1:8500
+                    path: vault
+            listener:
+                tcp:
+                    address: "0.0.0.0:{{vault_port}}"
+                    tls_disable: 1
+
+-   copy:
+        content: "{{vault_config | to_nice_json}}"
+        dest: "/etc/{{vault_service}}.d/vault.json"
+        owner: root
+        group: root
+        mode: 0755
+    notify:
+        - vault_restart

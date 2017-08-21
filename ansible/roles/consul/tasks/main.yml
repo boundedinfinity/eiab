@@ -1,11 +1,10 @@
 ---
 
-# -   include: download.yml
-# 
-# -   include: systemd.yml
+# -   debug var=consul_host
+# -   debug var=consul_port
 
-# -   debug:
-#         msg: "consul_server: {{consul_server}}"
-        
-# -   debug:
-#         msg: "inventory_hostname: {{inventory_hostname}}"
+-   set_fact:
+        consul_url: "http://{{consul_host}}:{{consul_port}}"
+
+-   set_fact:
+        consul_service_url: "{{consul_url}}/v1/catalog/service"

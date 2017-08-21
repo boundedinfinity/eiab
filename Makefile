@@ -48,13 +48,13 @@ list:
 	$(playbook_exec)/005-consul-fileserver.yml
 
 006-vault-cache:
-	$(playbook_exec)/005-vault-cache.yml
+	$(playbook_exec)/006-vault-cache.yml
 		
 006-vault-server:
-	$(playbook_exec)/005-vault-server.yml
+	$(playbook_exec)/006-vault-server.yml
 
 006-vault-client:
-	$(playbook_exec)/005-vault-client.yml
+	$(playbook_exec)/006-vault-client.yml
 
 999-everything:
 	make 001-clock
@@ -73,7 +73,6 @@ list:
 	make 006-vault-cache
 	# make 006-vault-server
 	# make 006-vault-client
-
 
 wks-vagrant-bootstrap:
 	vagrant plugin install vagrant-hostmanager

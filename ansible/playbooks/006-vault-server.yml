@@ -6,3 +6,4 @@
     
         -   include_role:
                 name: vault
+                tasks_from: server

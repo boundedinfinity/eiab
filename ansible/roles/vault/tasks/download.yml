@@ -1,11 +1,28 @@
 ---
 
--   yum:
+-   name: "Download vault dependencies"
+    yum:
         name: "{{ item }}"
         state: present
     with_items:
         - tar
         - unzip
+
+-   include_role:
+        name: consul
+# -   debug: var=consul_url
+
+-   name: "Lookup fileserver service information"
+    uri:
+        url: "{{consul_service_url}}/fileserver"
+        return_content: yes
+    register: fs_lookup
+# -   debug: var=fs_lookup.json
+
+-   name: "Construct download URL"
+    set_fact:
+        vault_download: "http://fileserver.service.consul:{{fs_lookup.json[0]['ServicePort']}}/{{vault_zip}}"
+-   debug: var=vault_download
 
 -   unarchive:
         src: "{{vault_download}}"

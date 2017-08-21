@@ -5,3 +5,4 @@ consul_group: consul
 consul_service: consul
 consul_filename: consul
 consul_port: 8500
+consul_host: localhost

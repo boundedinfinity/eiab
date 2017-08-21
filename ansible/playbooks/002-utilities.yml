@@ -2,5 +2,7 @@
     hosts: all
     become: yes
 
-    roles:
-        -   { role: utilities }
+    tasks:
+    
+        -   include_role:
+                name: utilities
