@@ -1,0 +1,17 @@
+---
+
+-   include_role:
+        name: fileserver
+        tasks_from: cache
+    vars:
+        cache_file: "{{item.file}}"
+        cache_url: "{{item.url}}"
+    with_items:
+        -   file: nexus/nexus-3.5.0-02-unix.tar.gz
+            url: http://download.sonatype.com/nexus/3/nexus-3.5.0-02-unix.tar.gz
+        -   file: nexus/nexus-3.5.0-02-unix.tar.gz.asc
+            url: http://download.sonatype.com/nexus/3/nexus-3.5.0-02-unix.tar.gz.asc
+        -   file: nexus/nexus-3.5.0-02-unix.tar.gz.md5
+            url: http://download.sonatype.com/nexus/3/nexus-3.5.0-02-unix.tar.gz.md5
+        -   file: nexus/nexus-3.5.0-02-unix.tar.gz.sha1
+            url: http://download.sonatype.com/nexus/3/nexus-3.5.0-02-unix.tar.gz.sha1

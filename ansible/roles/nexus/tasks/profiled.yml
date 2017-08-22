@@ -1,0 +1,8 @@
+---
+
+-   template:
+        src: templates/etc/profile.d/nexus.sh
+        dest: "/etc/profile.d/{{nexus_service}}.sh"
+        owner: root
+        group: root
+        mode: 0644

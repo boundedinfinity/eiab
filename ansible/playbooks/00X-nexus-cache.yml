@@ -1,9 +1,9 @@
--   name: Cache vault binaries and keys
+-   name: Cache nexus binaries and keys
     hosts: file_servers
     become: yes
 
     tasks:
     
         -   include_role:
-                name: vault
+                name: nexus
                 tasks_from: cache

@@ -1,0 +1,7 @@
+-   name: nexus_systemctl_daemon_reload
+    command: /bin/systemctl daemon-reload
+
+-   name: nexus_restart
+    systemd:
+        name: "{{nexus_service}}"
+        state: restarted

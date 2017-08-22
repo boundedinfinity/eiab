@@ -5,6 +5,7 @@ Vagrant.require_version ">= 1.9.7"
 
 node_count = 2
 node_mem = 768
+ops_mem = 1536
 
 $script = <<SCRIPT
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -20,7 +21,7 @@ Vagrant.configure("2") do |config|
           m.vm.hostname = "ops0#{i}"
           m.vm.network "private_network", ip: "10.0.0.1#{i}"
           m.vm.provider "virtualbox" do |v|
-              v.memory = node_mem
+              v.memory = ops_mem
           end
       end
   end

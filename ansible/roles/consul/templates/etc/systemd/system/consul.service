@@ -5,8 +5,7 @@ After=network-online.target
 
 [Service]
 User={{consul_user}}
-User={{consul_group}}
-Group=consul
+Group={{consul_group}}
 Environment=GOMAXPROCS=2
 Restart=on-failure
 ExecStart=/usr/bin/{{consul_filename}} agent -config-dir=/etc/{{consul_service}}.d

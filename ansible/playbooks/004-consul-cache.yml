@@ -1,4 +1,4 @@
--   name: Configure Consul client
+-   name: Cache consul binaries and keys
     hosts: file_servers
     become: yes
 

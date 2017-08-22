@@ -21,8 +21,8 @@
 
 -   name: "Construct download URL"
     set_fact:
-        vault_download: "http://fileserver.service.consul:{{fs_lookup.json[0]['ServicePort']}}/{{vault_zip}}"
--   debug: var=vault_download
+        vault_download: "http://{{fs_lookup.json[0]['ServiceAddress']}}:{{fs_lookup.json[0]['ServicePort']}}/{{vault_zip}}"
+# -   debug: var=vault_download
 
 -   unarchive:
         src: "{{vault_download}}"

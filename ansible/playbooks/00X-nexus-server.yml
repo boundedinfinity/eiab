@@ -1,0 +1,9 @@
+-   name: Provision nexus server
+    hosts: ops02
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: nexus
+                tasks_from: server

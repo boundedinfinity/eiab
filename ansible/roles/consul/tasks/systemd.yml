@@ -7,6 +7,12 @@
     notify:
         - consul_restart
 
+-   group:
+        name: "{{consul_group}}"
+        state: present
+    notify:
+        - consul_restart
+                
 -   template:
         src: templates/etc/systemd/system/consul.service
         dest: "/etc/systemd/system/{{consul_service}}.service"

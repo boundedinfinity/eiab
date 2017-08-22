@@ -1,0 +1,24 @@
+---
+
+-   user:
+        name: "{{nexus_user}}"
+        comment: "Nexus Account"
+        state: present
+    notify:
+        - nexus_restart
+
+-   group:
+        name: "{{nexus_group}}"
+        state: present
+    notify:
+        - nexus_restart
+                
+-   template:
+        src: templates/etc/systemd/system/nexus.service
+        dest: "/etc/systemd/system/{{nexus_service}}.service"
+        owner: root
+        group: root
+        mode: 0640
+    notify:
+        - nexus_systemctl_daemon_reload
+        - nexus_restart

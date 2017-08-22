@@ -5,7 +5,7 @@
         name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         state: present
 
--   name: Install utility packages
+-   name: Install RPM packages
     yum:
         name: "{{ item }}"
         state: present

@@ -1,0 +1,39 @@
+---
+
+# -   include: dependencies.yml
+
+-   set_fact:
+        nexus_home: "/usr/lib/nexus/nexus-{{nexus_version}}"
+
+-   include_role:
+        name: fileserver
+        tasks_from: cache_unarchive
+    vars:
+        cache_file: "{{nexus_zip}}"
+        cache_dest: /usr/lib/nexus
+        cache_creates: "{{nexus_home}}"
+
+-   template:
+        src: templates/usr/lib/nexus/nexus/bin/nexus.rc
+        dest: "{{nexus_home}}/bin/nexus.rc"
+        owner: root
+        group: root
+        mode: 0644
+
+-   file:
+        path: "/usr/lib/nexus/sonatype-work"
+        owner: {{nexus_user}}
+        group: {{nexus_group}}
+        mode: 0755
+        state: directory
+        recurse: yes
+    notify:
+        - vault_restart
+
+-   include: profiled.yml
+-   include: systemd.yml
+
+-   systemd:
+        name: "{{nexus_service}}"
+        state: started
+        enabled: yes

@@ -1,0 +1,31 @@
+---
+
+-   include_role:
+        name: consul
+# -   debug: var=consul_url
+
+-   name: "Lookup fileserver service information"
+    uri:
+        url: "{{consul_service_url}}/fileserver"
+        return_content: yes
+    register: fs_lookup
+# -   debug: var=fs_lookup.json
+
+-   name: "Construct {{cache_file}} download URL"
+    set_fact:
+        cache_download: "http://{{fs_lookup.json[0]['ServiceAddress']}}:{{fs_lookup.json[0]['ServicePort']}}/{{cache_file}}"
+# -   debug: var=cache_download
+
+-   name: "Creating {{cache_dest}} directory"
+    file:
+        path: "{{cache_dest}}"
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+
+-   unarchive:
+        src: "{{cache_download}}"
+        dest: "{{cache_dest}}"
+        remote_src: True
+        creates: "{{cache_creates}}"

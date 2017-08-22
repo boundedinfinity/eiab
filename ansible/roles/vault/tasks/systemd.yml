@@ -7,6 +7,12 @@
     notify:
         - vault_restart
 
+-   group:
+        name: "{{vault_group}}"
+        state: present
+    notify:
+        - vault_restart
+
 -   template:
         src: templates/etc/systemd/system/vault.service
         dest: "/etc/systemd/system/{{vault_service}}.service"

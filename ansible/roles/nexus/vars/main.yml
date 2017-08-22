@@ -1,0 +1,9 @@
+---
+nexus_zip: files/nexus/nexus-3.5.0-02-unix.tar.gz
+nexus_version: 3.5.0-02
+nexus_user: nexus
+nexus_group: nexus
+nexus_service: nexus
+nexus_filename: nexus
+nexus_port: 80
+nexus_host: 127.0.0.1

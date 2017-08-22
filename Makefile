@@ -56,6 +56,15 @@ list:
 006-vault-client:
 	$(playbook_exec)/006-vault-client.yml
 
+00X-nexus-cache:
+	$(playbook_exec)/00X-nexus-cache.yml
+
+00X-nexus-server:
+	$(playbook_exec)/00X-nexus-server.yml
+
+00X-prometheus-cache:
+	$(playbook_exec)/00X-prometheus-cache.yml
+
 999-everything:
 	make 001-clock
 	make 001-utilities
@@ -73,6 +82,9 @@ list:
 	make 006-vault-cache
 	# make 006-vault-server
 	# make 006-vault-client
+
+999-debug:
+	$(playbook_exec)/999-debug.yml
 
 wks-vagrant-bootstrap:
 	vagrant plugin install vagrant-hostmanager

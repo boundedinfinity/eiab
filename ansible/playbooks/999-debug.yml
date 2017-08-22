@@ -1,0 +1,32 @@
+-   name: Install common utilities
+    hosts: app00
+    become: yes
+
+    vars:
+        service_name: fileserver
+
+    tasks:
+        # -   include_role:
+        #         name: consul
+        #         
+        # -   name: "Lookup {{service_name}} service information"
+        #     uri:
+        #         url: "{{consul_service_url}}/{{service_name}}"
+        #         return_content: yes
+        #     register: api_info
+        # # -   debug: var=api_info.json
+        # 
+        # -   name: "Construct {{service_name}} URL"
+        #     set_fact:
+        #         service_url: "http://{{api_info.json[0]['ServiceAddress']}}:{{api_info.json[0]['ServicePort']}}"
+        # -   debug: var=service_url
+        # 
+        # # echo fileserver.service.consul:$(dig fileserver.service.consul SRV +short | awk '{print $3}')
+        # -   shell: "echo {{service_name}}.service.consul:$(dig {{service_name}}.service.consul SRV +short | awk '{print $3}')"
+        #     register: dig_info
+        # -   debug: var=dig_info.stdout
+        
+        # # curl -s $CONSUL_ADDR/v1/catalog/service/fileserver | jq -r '"\(.[0].ServiceAddress):\(.[0].ServicePort)"'
+        # -   shell: "curl -s {{consul_service_url}}/{{service_name}} | jq -r '\"\\(.[0].ServiceAddress):\\(.[0].ServicePort)\"'"
+        #     register: curl_info
+        # -   debug: var=curl_info.stdout

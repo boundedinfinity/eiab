@@ -35,3 +35,8 @@
         mode: 0755
     notify:
         - vault_restart
+
+-   systemd:
+        name: "{{vault_service}}"
+        state: started
+        enabled: yes

@@ -4,6 +4,6 @@
         name: consul
         tasks_from: service
     vars:
-        name: fileserver
+        name: nexus
         address: "{{ansible_eth1.ipv4.address}}"
         port: 80

@@ -9,3 +9,27 @@
     with_items:
         -   file: prometheus/prometheus-1.7.1.linux-amd64.tar.gz
             url: https://github.com/prometheus/prometheus/releases/download/v1.7.1/prometheus-1.7.1.linux-amd64.tar.gz
+        -   file: prometheus/alertmanager-0.8.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/alertmanager/releases/download/v0.8.0/alertmanager-0.8.0.linux-amd64.tar.gz
+        -   file: prometheus/alertmanager-0.8.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/alertmanager/releases/download/v0.8.0/alertmanager-0.8.0.linux-amd64.tar.gz
+        -   file: prometheus/alertmanager-0.8.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/alertmanager/releases/download/v0.8.0/alertmanager-0.8.0.linux-amd64.tar.gz
+        -   file: prometheus/blackbox_exporter-0.8.1.linux-amd64.tar.gz
+            url: https://github.com/prometheus/blackbox_exporter/releases/download/v0.8.1/blackbox_exporter-0.8.1.linux-amd64.tar.gz
+        -   file: prometheus/consul_exporter-0.3.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/consul_exporter/releases/download/v0.3.0/consul_exporter-0.3.0.linux-amd64.tar.gz
+        -   file: prometheus/graphite_exporter-0.2.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/graphite_exporter/releases/download/v0.2.0/graphite_exporter-0.2.0.linux-amd64.tar.gz
+        -   file: prometheus/haproxy_exporter-0.7.1.linux-amd64.tar.gz
+            url: https://github.com/prometheus/haproxy_exporter/releases/download/v0.7.1/haproxy_exporter-0.7.1.linux-amd64.tar.gz
+        -   file: prometheus/memcached_exporter-0.3.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/memcached_exporter/releases/download/v0.3.0/memcached_exporter-0.3.0.linux-amd64.tar.gz
+        -   file: prometheus/mysqld_exporter-0.10.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/mysqld_exporter/releases/download/v0.10.0/mysqld_exporter-0.10.0.linux-amd64.tar.gz
+        -   file: prometheus/node_exporter-0.14.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/node_exporter/releases/download/v0.14.0/node_exporter-0.14.0.linux-amd64.tar.gz
+        -   file: prometheus/pushgateway-0.4.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/pushgateway/releases/download/v0.4.0/pushgateway-0.4.0.linux-amd64.tar.gz
+        -   file: prometheus/statsd_exporter-0.4.0.linux-amd64.tar.gz
+            url: https://github.com/prometheus/statsd_exporter/releases/download/v0.4.0/statsd_exporter-0.4.0.linux-amd64.tar.gz
