@@ -1,6 +1,19 @@
 ---
 
-# -   include: dependencies.yml
+-   include: dependencies.yml
+
+-   user:
+        name: "{{nexus_user}}"
+        comment: "Nexus Account"
+        state: present
+    notify:
+        - nexus_restart
+
+-   group:
+        name: "{{nexus_group}}"
+        state: present
+    notify:
+        - nexus_restart
 
 -   set_fact:
         nexus_home: "/usr/lib/nexus/nexus-{{nexus_version}}"
@@ -22,13 +35,13 @@
 
 -   file:
         path: "/usr/lib/nexus/sonatype-work"
-        owner: {{nexus_user}}
-        group: {{nexus_group}}
+        owner: "{{nexus_user}}"
+        group: "{{nexus_group}}"
         mode: 0755
         state: directory
         recurse: yes
     notify:
-        - vault_restart
+        - nexus_restart
 
 -   include: profiled.yml
 -   include: systemd.yml

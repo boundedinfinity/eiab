@@ -1,0 +1,25 @@
+---
+
+-   name: Raw input
+    set_fact:
+        api_body:
+            name: releases.hashicorp.com2
+            remoteUrl: https://releases.hashicorp.com
+        script_name: raw_proxy
+-   debug: var=api_body
+
+-   set_fact:
+        api_url: "http://{{ansible_eth1.ipv4.address}}:{{nexus_port}}/service/siesta/rest/v1/script/{{script_name}}/run/"
+-   debug: var=api_url
+
+# curl -v -X POST -u admin:admin123 --header "Content-Type: text/plain" "http://localhost:8081/service/siesta/rest/v1/script/$1/run"
+-   name: Install raw proxy repository
+    uri:
+        url: "{{api_url}}"
+        body: "{{api_body|to_json}}"
+        method: POST
+        user: "{{nexus_api_username}}"
+        password: "{{nexus_api_password}}"
+        force_basic_auth: yes
+        headers:
+            Content-Type: "text/plain"

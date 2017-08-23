@@ -1,0 +1,10 @@
+---
+
+-   include: common.yml
+
+-   name: Install RPM packages
+    yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - ruby

@@ -1,9 +1,9 @@
 -   name: Install common utilities
-    hosts: all
+    hosts: ops02
     become: yes
 
     tasks:
     
         -   include_role:
-                name: utilities
-                task_from: common
+                name: nexus
+                tasks_from: api-manage

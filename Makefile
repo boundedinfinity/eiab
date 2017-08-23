@@ -32,6 +32,18 @@ list:
 003-fileserver:
 	$(playbook_exec)/003-fileserver.yml
 
+003-nexus-cache:
+	$(playbook_exec)/003-nexus-cache.yml
+
+003-nexus-server:
+	$(playbook_exec)/003-nexus-server.yml
+		
+003-nexus-repo:
+	$(playbook_exec)/003-nexus-repo.yml
+
+003-nexus-manage:
+	$(playbook_exec)/003-nexus-manage.yml
+
 004-consul-cache:
 	$(playbook_exec)/004-consul-cache.yml
 		
@@ -56,12 +68,6 @@ list:
 006-vault-client:
 	$(playbook_exec)/006-vault-client.yml
 
-00X-nexus-cache:
-	$(playbook_exec)/00X-nexus-cache.yml
-
-00X-nexus-server:
-	$(playbook_exec)/00X-nexus-server.yml
-
 00X-prometheus-cache:
 	$(playbook_exec)/00X-prometheus-cache.yml
 
@@ -72,8 +78,9 @@ list:
 	make 002-ansible-account
 	make 002-clock
 	make 002-utilities
-	# make 002-admins
 	make 003-fileserver
+	make 003-nexus-cache
+	make 003-nexus-server
 	make 004-consul-cache
 	make 004-consul-server
 	make 004-consul-client
@@ -82,6 +89,7 @@ list:
 	make 006-vault-cache
 	# make 006-vault-server
 	# make 006-vault-client
+	make 00X-prometheus-cache
 
 999-debug:
 	$(playbook_exec)/999-debug.yml
