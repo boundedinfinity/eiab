@@ -6,4 +6,5 @@
     
         -   include_role:
                 name: nexus
-                tasks_from: api-repo
+                # tasks_from: api-repo
+                tasks_from: repo

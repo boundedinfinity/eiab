@@ -3,11 +3,17 @@ makefile_dir		:= $(abspath $(shell pwd))
 ansible_account		:= ansible
 
 ansible_exec		:= cd ansible && ansible --user=$(ansible_account) --ssh-common-args="-o StrictHostKeyChecking=no"
+ansible_exec		:= cd ansible && ansible --user=$(ansible_account) --ssh-common-args="-o StrictHostKeyChecking=no"
 playbook_exec		:= cd ansible && ansible-playbook --user=$(ansible_account) playbooks
+playbook_v_exec		:= cd ansible && ansible-playbook -vvv --user=$(ansible_account) playbooks
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
+001-ansible:
+	mkidr -p ansible/galaxy_roles
+	cd ansible && ansible-galaxy install --role-file=ansible-galaxy.yml
+	
 001-clock:
 	$(playbook_exec)/001-clock.yml
 
@@ -26,6 +32,9 @@ list:
 002-utilities:
 	$(playbook_exec)/002-utilities.yml
 
+002-ulimit:
+	$(playbook_exec)/002-ulimit.yml
+
 002-admins:
 	$(playbook_exec)/002-admins.yml
 
@@ -40,6 +49,7 @@ list:
 		
 003-nexus-repo:
 	$(playbook_exec)/003-nexus-repo.yml
+	# $(playbook_v_exec)/003-nexus-repo.yml
 
 003-nexus-manage:
 	$(playbook_exec)/003-nexus-manage.yml
@@ -78,6 +88,7 @@ list:
 	make 002-ansible-account
 	make 002-clock
 	make 002-utilities
+	make 002-ulimit
 	make 003-fileserver
 	make 003-nexus-cache
 	make 003-nexus-server

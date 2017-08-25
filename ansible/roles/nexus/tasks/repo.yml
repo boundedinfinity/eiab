@@ -1,10 +1,31 @@
 ---
 
 -   nexus_repo:
+        type: raw_proxy
         username: "{{nexus_api_username}}"
         password: "{{nexus_api_password}}"
         host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
-        name: releases.hashicorp.com3
+        name: releases.hashicorp.com
         remote_url: https://releases.hashicorp.com
-    register: result
--   debug: var=result
+    register: raw_proxy_result
+-   debug: var=raw_proxy_result
+
+-   nexus_repo:
+        type: yum_proxy
+        username: "{{nexus_api_username}}"
+        password: "{{nexus_api_password}}"
+        host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
+        name: centos-base-7-x86_64
+        remote_url: http://mirror.centos.org/centos/7/os/x86_64/
+    register: yum_proxy_1_result
+-   debug: var=yum_proxy_1_result
+
+-   nexus_repo:
+        type: yum_proxy
+        username: "{{nexus_api_username}}"
+        password: "{{nexus_api_password}}"
+        host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
+        name: epel-7-x86_64
+        remote_url: http://download.fedoraproject.org/pub/epel/7/x86_64/
+    register: yum_proxy_2_result
+-   debug: var=yum_proxy_2_result
