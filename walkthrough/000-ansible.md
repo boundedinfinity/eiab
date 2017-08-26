@@ -12,3 +12,5 @@
 - Descibe ansible
 - Describe playbooks
 - Describe galaxy
+- Rename utilities role to misc
+    - move tasks for clock, utilities, and yum to nexus config into misc

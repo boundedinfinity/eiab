@@ -1,9 +1,0 @@
--   name: Configure fileserver consul service and check
-    hosts: file_servers
-    become: yes
-    
-    tasks:
-    
-        -   include_role:
-                name: fileserver
-                tasks_from: consul

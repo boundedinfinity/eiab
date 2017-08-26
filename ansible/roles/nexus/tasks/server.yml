@@ -1,6 +1,12 @@
 ---
 
--   include: dependencies.yml
+-   name: "Install nexus dependencies"
+    yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - java-1.8.0-openjdk
+        - tar
 
 -   user:
         name: "{{nexus_user}}"
@@ -18,13 +24,18 @@
 -   set_fact:
         nexus_home: "/usr/lib/nexus/nexus-{{nexus_version}}"
 
--   include_role:
-        name: fileserver
-        tasks_from: cache_unarchive
-    vars:
-        cache_file: "{{nexus_zip}}"
-        cache_dest: /usr/lib/nexus
-        cache_creates: "{{nexus_home}}"
+-   file:
+        path: /usr/lib/nexus
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+        
+-   unarchive:
+        src: http://download.sonatype.com/nexus/3/nexus-3.5.0-02-unix.tar.gz
+        dest: /usr/lib/nexus
+        remote_src: True
+        creates: "{{nexus_home}}"
 
 -   template:
         src: templates/usr/lib/nexus/nexus/bin/nexus.rc

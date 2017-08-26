@@ -1,14 +1,25 @@
 ---
 
+-   set_fact:
+        nexus_host: "10.0.0.12:8081"
+# -   debug: var=nexus_host
+
+-   set_fact:
+        nexus_root: "http://{{nexus_host}}/repository/releases.hashicorp.com"
+# -   debug: var=nexus_root
+
 -   yum:
         name: "{{ item }}"
         state: present
     with_items:
-        - tar
         - unzip
 
+# https://releases.hashicorp.com/consul/0.9.2/consul_0.9.2_linux_amd64.zip
+# https://releases.hashicorp.com/consul/0.9.2/consul_0.9.2_SHA256SUMS
+# https://releases.hashicorp.com/consul/0.9.2/consul_0.9.2_SHA256SUMS.sig
+
 -   unarchive:
-        src: "{{consul_download}}"
+        src: "{{nexus_root}}/consul/0.9.2/consul_0.9.2_linux_amd64.zip"
         dest: /usr/bin
         remote_src: True
         creates: "/usr/bin/{{consul_filename}}"

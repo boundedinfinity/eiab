@@ -26,6 +26,9 @@ list:
 002-ansible-account:
 	$(playbook_exec)/002-ansible-account.yml
 
+002-yum:
+	$(playbook_exec)/002-yum.yml
+		
 002-clock:
 	$(playbook_exec)/002-clock.yml
 
@@ -38,21 +41,12 @@ list:
 002-admins:
 	$(playbook_exec)/002-admins.yml
 
-003-fileserver:
-	$(playbook_exec)/003-fileserver.yml
-
-003-nexus-cache:
-	$(playbook_exec)/003-nexus-cache.yml
-
 003-nexus-server:
 	$(playbook_exec)/003-nexus-server.yml
 		
 003-nexus-repo:
 	$(playbook_exec)/003-nexus-repo.yml
 	# $(playbook_v_exec)/003-nexus-repo.yml
-
-003-nexus-manage:
-	$(playbook_exec)/003-nexus-manage.yml
 
 004-consul-cache:
 	$(playbook_exec)/004-consul-cache.yml
@@ -82,21 +76,23 @@ list:
 	$(playbook_exec)/00X-prometheus-cache.yml
 
 999-everything:
-	make 001-clock
-	make 001-utilities
 	make 001-configure-ssh
 	make 002-ansible-account
+	
+	make 002-ulimit  # This needs to be merged intot he nexux-server
+	make 003-nexus-server
+	make 003-nexus-repo
+	make 002-yum
+		
+	make 001-clock
+	make 001-utilities
 	make 002-clock
 	make 002-utilities
-	make 002-ulimit
-	make 003-fileserver
-	make 003-nexus-cache
-	make 003-nexus-server
-	make 004-consul-cache
+	
 	make 004-consul-server
 	make 004-consul-client
 	make 004-dns
-	make 005-consul-fileserver
+	
 	make 006-vault-cache
 	# make 006-vault-server
 	# make 006-vault-client

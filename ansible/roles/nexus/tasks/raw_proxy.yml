@@ -1,0 +1,11 @@
+---
+
+-   nexus_repo:
+        type: raw_proxy
+        username: "{{nexus_api_username}}"
+        password: "{{nexus_api_password}}"
+        host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
+        name: {{repo_name}}
+        remote_url: {{repo_url}}
+    register: raw_proxy_result
+-   debug: var=raw_proxy_result

@@ -1,0 +1,31 @@
+-   name: Install RPM packages
+    yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - coreutils
+        - grep
+        - sed
+        - gawk
+        - bash
+        - fish
+        - htop
+        - jq
+        - traceroute
+        - telnet
+        - expect
+        - tar
+        - unzip
+        - tree
+        - tcping
+        - yum-utils
+        - git
+        - iputils
+        - net-tools
+        - fish
+        - openssh-clients
+        - bind-utils
+        - vim
+        - python2-httpie
+        - pwgen
+        - gnupg2

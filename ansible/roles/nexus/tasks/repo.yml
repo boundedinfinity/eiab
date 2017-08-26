@@ -5,8 +5,11 @@
         username: "{{nexus_api_username}}"
         password: "{{nexus_api_password}}"
         host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
-        name: releases.hashicorp.com
-        remote_url: https://releases.hashicorp.com
+        name: "{{item.name}}"
+        remote_url: "{{item.url}}"
+    with_items:
+        - {name: 'releases.hashicorp.com', url: 'https://releases.hashicorp.com'}
+        - {name: 'download.sonatype.com', url: 'https://download.sonatype.com'}
     register: raw_proxy_result
 -   debug: var=raw_proxy_result
 
@@ -15,17 +18,10 @@
         username: "{{nexus_api_username}}"
         password: "{{nexus_api_password}}"
         host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
-        name: centos-base-7-x86_64
-        remote_url: http://mirror.centos.org/centos/7/os/x86_64/
-    register: yum_proxy_1_result
--   debug: var=yum_proxy_1_result
-
--   nexus_repo:
-        type: yum_proxy
-        username: "{{nexus_api_username}}"
-        password: "{{nexus_api_password}}"
-        host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
-        name: epel-7-x86_64
-        remote_url: http://download.fedoraproject.org/pub/epel/7/x86_64/
-    register: yum_proxy_2_result
--   debug: var=yum_proxy_2_result
+        name: "{{item.name}}"
+        remote_url: "{{item.url}}"
+    with_items:
+        - {name: 'centos-base-7-x86_64', url: 'http://mirror.centos.org/centos/7/os/x86_64/'}
+        - {name: 'epel-7-x86_64', url: 'http://download.fedoraproject.org/pub/epel/7/x86_64/'}
+    register: yum_proxy_result
+-   debug: var=yum_proxy_result

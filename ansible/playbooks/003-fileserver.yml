@@ -1,8 +1,0 @@
--   name: Install common utilities
-    hosts: file_servers
-    become: yes
-
-    tasks:
-    
-        -   include_role:
-                name: fileserver

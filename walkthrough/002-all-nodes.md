@@ -2,6 +2,17 @@
 
 Configuration for all nodes
 
+## Step 0
+
+make 001-clock
+
+TODO:
+- combine the cloack and utilities
+
+## Step 0
+
+make 001-utilities
+
 **TODO:**
 - Internal NTP master
 

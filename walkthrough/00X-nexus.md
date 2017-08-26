@@ -1,11 +1,58 @@
-Credentials:
-- admin
-- admin123
+# Nexus
+
+Install binary repo
+
+### Step 1
+
+make 003-nexus-server
+
+### Step 2
+
+Browse to http://10.0.0.12:8081/
+- username: admin
+- password: admin123
 
 Repo types:
     - proxy: pull from cache, if not found pull from remote
     - hosted: authoritative repo
     - order search through a group of proxy and/or hosted repos
+
+### Step 3
+
+Demo setting up raw repo
+
+### Step 3
+
+Demo setting up yum repo
+
+### Step 4
+
+make 003-nexus-repo
+
+Installs proxies for the following:
+
+- Raw proxies
+    - https://releases.hashicorp.com
+    - https://download.sonatype.com
+- Yum proxies
+    - centos-base-7-x86_64
+    - epel-7-x86_64
+    
+
+Check repos in UI
+
+
+### Step 5
+
+Configure YUM to point to nexus
+
+make 002-yum
+
+### Step 6
+
+TODO:
+    - re-download java and nexus archive to force into cache
+
 
 List
 http -a admin:admin123 http://10.0.0.12:8081/service/siesta/rest/v1/script

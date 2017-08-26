@@ -1,5 +1,13 @@
 ---
 
+-   name: "Creating {{cache_dest}} directory"
+    file:
+        path: "{{cache_dest}}"
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+
 -   include_role:
         name: fileserver
         tasks_from: cache

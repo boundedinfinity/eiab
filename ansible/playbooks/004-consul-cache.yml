@@ -1,9 +1,0 @@
--   name: Cache consul binaries and keys
-    hosts: file_servers
-    become: yes
-
-    tasks:
-    
-        -   include_role:
-                name: consul
-                tasks_from: cache

@@ -1,9 +1,20 @@
--   name: Install common utilities
+-   name: Install common utilities on control node
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: misc
+                tasks_from: control
+
+-   name: Install common utilities on all nodes
     hosts: all
     become: yes
 
     tasks:
     
         -   include_role:
-                name: utilities
+                name: misc
                 tasks_from: common

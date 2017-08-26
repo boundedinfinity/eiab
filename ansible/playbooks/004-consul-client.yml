@@ -1,4 +1,15 @@
 -   name: Configure Consul client
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: consul
+                tasks_from: client
+
+-   name: Configure Consul client
     hosts: consul_clients
     become: yes
 
