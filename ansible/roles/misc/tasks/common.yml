@@ -27,5 +27,6 @@
         - bind-utils
         - vim
         - python2-httpie
+        - python2-pip
         - pwgen
         - gnupg2

@@ -1,9 +1,0 @@
--   name: Cache nexus binaries and keys
-    hosts: file_servers
-    become: yes
-
-    tasks:
-    
-        -   include_role:
-                name: prometheus
-                tasks_from: cache

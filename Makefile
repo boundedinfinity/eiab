@@ -14,12 +14,6 @@ list:
 	mkidr -p ansible/galaxy_roles
 	cd ansible && ansible-galaxy install --role-file=ansible-galaxy.yml
 	
-001-clock:
-	$(playbook_exec)/001-clock.yml
-
-001-utilities:
-	$(playbook_exec)/001-utilities.yml
-
 001-configure-ssh:
 	$(playbook_exec)/001-configure-ssh.yml
 
@@ -48,9 +42,6 @@ list:
 	$(playbook_exec)/003-nexus-repo.yml
 	# $(playbook_v_exec)/003-nexus-repo.yml
 
-004-consul-cache:
-	$(playbook_exec)/004-consul-cache.yml
-		
 004-consul-server:
 	$(playbook_exec)/004-consul-server.yml
 
@@ -60,12 +51,6 @@ list:
 004-dns:
 	$(playbook_exec)/004-dns.yml
 
-005-consul-fileserver:
-	$(playbook_exec)/005-consul-fileserver.yml
-
-006-vault-cache:
-	$(playbook_exec)/006-vault-cache.yml
-		
 006-vault-server:
 	$(playbook_exec)/006-vault-server.yml
 
@@ -84,10 +69,9 @@ list:
 	make 003-nexus-repo
 	make 002-yum
 		
-	make 001-clock
-	make 001-utilities
 	make 002-clock
 	make 002-utilities
+	make 002-ulimit
 	
 	make 004-consul-server
 	make 004-consul-client
@@ -113,5 +97,8 @@ wks-vagrant-rebuild:
 wks-vagrant-provision:
 	vagrant provision
 
+docs-open:
+	open walkthrough2/_build/html/index.html
+	
 # ansible-facts:
 # 	$(ansible_exec) -m setup ops00

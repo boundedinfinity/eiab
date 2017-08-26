@@ -8,3 +8,10 @@
         state: present
     with_items:
         - ruby
+
+-   name: Install Python packages
+    pip:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - sphinx
