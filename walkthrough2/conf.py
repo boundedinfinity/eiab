@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'eiab'
+project = u'Enterprise in a Box'
 copyright = u'2017, Brad Babb'
 author = u'Brad Babb'
 
@@ -166,6 +166,3 @@ texinfo_documents = [
      author, 'eiab', 'One line description of project.',
      'Miscellaneous'),
 ]
-
-
-

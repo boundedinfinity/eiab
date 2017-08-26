@@ -99,6 +99,9 @@ wks-vagrant-provision:
 
 docs-open:
 	open walkthrough2/_build/html/index.html
+
+docs-generate:
+	cd walkthrough2 && make html
 	
 # ansible-facts:
 # 	$(ansible_exec) -m setup ops00
