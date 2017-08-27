@@ -1,0 +1,7 @@
+-   name: Ansible Facts
+    hosts: all
+    become: yes
+
+    tasks:
+        -   setup:
+        -   debug: var=ansible_local

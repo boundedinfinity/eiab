@@ -10,6 +10,7 @@
     with_items:
         - {name: 'releases.hashicorp.com', url: 'https://releases.hashicorp.com'}
         - {name: 'download.sonatype.com', url: 'https://download.sonatype.com'}
+        - {name: 'github.com-prometheus', url: 'https://github.com/prometheus'}
     register: raw_proxy_result
 # -   debug: var=raw_proxy_result
 

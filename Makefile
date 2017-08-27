@@ -2,8 +2,7 @@ makefile_dir		:= $(abspath $(shell pwd))
 
 ansible_account		:= ansible
 
-ansible_exec		:= cd ansible && ansible --user=$(ansible_account) --ssh-common-args="-o StrictHostKeyChecking=no"
-ansible_exec		:= cd ansible && ansible --user=$(ansible_account) --ssh-common-args="-o StrictHostKeyChecking=no"
+ansible_exec		:= cd ansible && ansible --user=$(ansible_account)
 playbook_exec		:= cd ansible && ansible-playbook --user=$(ansible_account) playbooks
 playbook_v_exec		:= cd ansible && ansible-playbook -vvv --user=$(ansible_account) playbooks
 
@@ -17,8 +16,15 @@ list:
 001-configure-ssh:
 	$(playbook_exec)/001-configure-ssh.yml
 
-002-ansible-account:
-	$(playbook_exec)/002-ansible-account.yml
+001-ansible-account:
+	$(playbook_exec)/001-ansible-account.yml
+
+002-nexus-server:
+	$(playbook_exec)/002-nexus-server.yml
+		
+002-nexus-repo:
+	$(playbook_exec)/002-nexus-repo.yml
+	# $(playbook_v_exec)/002-nexus-repo.yml
 
 002-yum:
 	$(playbook_exec)/002-yum.yml
@@ -26,24 +32,11 @@ list:
 002-pip:
 	$(playbook_exec)/002-pip.yml
 			
-002-clock:
-	$(playbook_exec)/002-clock.yml
+003-clock:
+	$(playbook_exec)/003-clock.yml
 
-002-utilities:
-	$(playbook_exec)/002-utilities.yml
-
-002-ulimit:
-	$(playbook_exec)/002-ulimit.yml
-
-002-admins:
-	$(playbook_exec)/002-admins.yml
-
-003-nexus-server:
-	$(playbook_exec)/003-nexus-server.yml
-		
-003-nexus-repo:
-	$(playbook_exec)/003-nexus-repo.yml
-	# $(playbook_v_exec)/003-nexus-repo.yml
+003-utilities:
+	$(playbook_exec)/003-utilities.yml
 
 004-consul-server:
 	$(playbook_exec)/004-consul-server.yml
@@ -69,14 +62,15 @@ list:
 999-everything:
 	make 001-ansible
 	make 001-configure-ssh
-	make 002-ansible-account
+	make 001-ansible-account
 	
-	make 003-nexus-server
-	make 003-nexus-repo
+	make 002-nexus-server
+	make 002-nexus-repo
 	make 002-yum
-		
-	make 002-clock
-	make 002-utilities
+	make 002-pip
+	
+	make 003-clock
+	make 003-utilities
 		
 	make 004-consul-server
 	make 004-consul-client
@@ -84,9 +78,9 @@ list:
 	
 	make 005-nexus-consul
 	
-	make 006-vault-cache
-	# make 006-vault-server
-	# make 006-vault-client
+	make 006-vault-server
+	make 006-vault-client
+	
 	make 00X-prometheus-cache
 
 999-debug:
@@ -94,6 +88,12 @@ list:
 
 999-yum-clean:
 	$(playbook_exec)/999-yum-clean.yml
+
+999-facts-local:
+	$(playbook_exec)/999-facts-local.yml
+
+999-purge:
+	rm -rf ansible/galaxy_roles
 
 wks-vagrant-bootstrap:
 	vagrant plugin install vagrant-hostmanager
@@ -112,6 +112,3 @@ docs-open:
 
 docs-generate:
 	cd walkthrough2 && make html
-	
-# ansible-facts:
-# 	$(ansible_exec) -m setup ops00
