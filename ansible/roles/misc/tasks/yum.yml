@@ -22,9 +22,15 @@
         description: centos
         baseurl: "http://{{nexus_host}}/repository/centos-base-7-x86_64/"
         gpgcheck: no
+    notify:
+        - yum_clean_all
 
 -   yum_repository:
         name: epel
         description: centos
         baseurl: "http://{{nexus_host}}/repository/epel-7-x86_64/"
         gpgcheck: no
+    notify:
+        - yum_clean_all
+
+-   meta: flush_handlers

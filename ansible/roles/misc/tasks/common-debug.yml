@@ -34,3 +34,4 @@
         - python2-httpie
         - pwgen
         - gnupg2
+        - mlocate

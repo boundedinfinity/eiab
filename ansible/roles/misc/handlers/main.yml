@@ -1,0 +1,4 @@
+---
+
+-   name: yum_clean_all
+    command: /usr/bin/yum clean all

@@ -9,6 +9,7 @@ Type=forking
 ExecStart=/usr/lib/nexus/nexus-{{nexus_version}}/bin/nexus start
 ExecStop=/usr/lib/nexus/nexus-{{nexus_version}}/bin/nexus stop
 Restart=on-abort
+LimitNOFILE=65536
   
 [Install]
 WantedBy=multi-user.target

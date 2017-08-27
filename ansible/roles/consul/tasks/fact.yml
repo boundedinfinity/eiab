@@ -1,0 +1,27 @@
+---
+
+-   name: Install RPM packages
+    yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - jq
+        - python2-httpie
+
+-   file:
+        path: /etc/ansible/facts.d
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+
+-   template:
+        src: "templates/etc/ansible/facts.d/service.fact"
+        dest: "/etc/ansible/facts.d/{{service_name}}.fact"
+        owner: root
+        group: root
+        mode: 0755
+    notify:
+        - setup_reload
+
+-   meta: flush_handlers

@@ -1,0 +1,11 @@
+---
+
+-   set_fact:
+        nexus_host: "10.0.0.12:8081"
+        
+-   template:
+        src: templates/etc/pip.conf
+        dest: /etc/pip.conf
+        owner: root
+        group: root
+        mode: 0644

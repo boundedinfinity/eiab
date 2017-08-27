@@ -9,3 +9,4 @@
     notify:
         - nexus_systemctl_daemon_reload
         - nexus_restart
+        - nexus_wait

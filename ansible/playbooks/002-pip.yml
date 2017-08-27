@@ -1,0 +1,19 @@
+-   name: Nexus Yum repos on control node
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+        -   include_role:
+                name: misc
+                tasks_from: pip
+
+-   name: Nexus Yum repos on all nodes
+    hosts: all
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: misc
+                tasks_from: pip

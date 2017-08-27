@@ -144,6 +144,22 @@ def ensure_yum_proxy(module):
         }
     )
 
+def ensure_pypi_proxy(module):
+    return ensure_repo(module, 'create_pypi_proxy',
+        """
+            import groovy.json.JsonSlurper
+            def input = new JsonSlurper().parseText(args)
+            def name = input.name
+            def remote_url = input.remote_url
+            repository.createPyPiProxy(name, remote_url)
+            groovy.json.JsonOutput.toJson(['status': "success", "msg":"", "name": name, "remote_url": remote_url])
+        """,
+        {
+            'name': module.params.get('name'),
+            'remote_url': module.params.get('remote_url'),
+        }
+    )
+
 def validate(module):
     valid = True
     params = module.params
@@ -184,6 +200,8 @@ def main():
         result = ensure_raw_proxy(module)
     elif module.params.get('type') == 'yum_proxy':
         result = ensure_yum_proxy(module)
+    elif module.params.get('type') == 'pypi_proxy':
+        result = ensure_pypi_proxy(module)
     else:
         module.fail_json(msg="type '%s' not implemented" % (module.params.get('type')))
     

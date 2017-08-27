@@ -33,7 +33,7 @@ Check the service endpoint.
 
 ```
 vagrant ssh <any node>
-curl -s $CONSUL_ADDR/v1/catalog/service/fileserver | jq
+http $CONSUL_ADDR/v1/catalog/service/nexus | jq
 ```
 
 The output should be something similar to the following:
@@ -41,24 +41,24 @@ The output should be something similar to the following:
 ```json
 [
     {
-        "ID": "9635634d-2aaa-2c3f-7996-e0a93b232efd",
-        "Node": "ops01",
-        "Address": "10.0.0.11",
+        "ID": "dafebce0-40d3-3dd4-0e48-4c853a9e72a9",
+        "Node": "ops02",
+        "Address": "10.0.0.12",
         "Datacenter": "dc1",
         "TaggedAddresses": {
-            "lan": "10.0.0.11",
-            "wan": "10.0.0.11"
+            "lan": "10.0.0.12",
+            "wan": "10.0.0.12"
         },
         "NodeMeta": {},
-        "ServiceID": "fileserver",
-        "ServiceName": "fileserver",
+        "ServiceID": "nexus",
+        "ServiceName": "nexus",
         "ServiceTags": [],
-        "ServiceAddress": "",
-        "ServicePort": 80,
+        "ServiceAddress": "10.0.0.12",
+        "ServicePort": 8081,
         "ServiceEnableTagOverride": false,
-        "CreateIndex": 525,
-        "ModifyIndex": 525
-    }
+        "CreateIndex": 313,
+        "ModifyIndex": 315
+  }
 ]
 ```
 
@@ -73,6 +73,6 @@ The output should be something similar to the following:
 ```
 ...
 ;; ANSWER SECTION:
-fileserver.service.consul. 0	IN	SRV	1 1 80 ops01.node.dc1.consul.
+nexus.service.consul. 0	IN	SRV	1 1 8081 ops01.node.dc1.consul.
 ...
 ```

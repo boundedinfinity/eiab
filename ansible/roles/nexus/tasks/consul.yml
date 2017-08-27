@@ -1,9 +1,8 @@
 ---
 
--   include_role:
-        name: consul
-        tasks_from: service
-    vars:
-        name: nexus
-        address: "{{ansible_eth1.ipv4.address}}"
-        port: 80
+-   name: register nexus service with the local consul agent
+    consul:
+        service_name: nexus
+        service_address: "{{ansible_eth1.ipv4.address}}"
+        service_port: "{{nexus_port}}"
+        state: present

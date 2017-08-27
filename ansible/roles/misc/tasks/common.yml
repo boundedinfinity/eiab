@@ -30,3 +30,4 @@
         - python2-pip
         - pwgen
         - gnupg2
+        - mlocate

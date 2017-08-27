@@ -1,10 +1,8 @@
-.. Enterprise in a Box documentation master file, created by
-   sphinx-quickstart on Sat Aug 26 17:04:37 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Enterprise in a Box documentation master file
+   
 
-Welcome to eiab's documentation!
-================================
+Welcome to Enterprise in a Box documentation!
+=============================================
 
 .. toctree::
    :maxdepth: 2
@@ -12,6 +10,9 @@ Welcome to eiab's documentation!
    
    all-about-me
 
+   * :ref:`genindex`
+   * :ref:`modindex`
+   * :ref:`search`
 
 Indices and tables
 ==================

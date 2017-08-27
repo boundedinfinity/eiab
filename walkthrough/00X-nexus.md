@@ -53,6 +53,8 @@ make 002-yum
 TODO:
     - re-download java and nexus archive to force into cache
 
+https://pip.pypa.io/en/stable/user_guide/#config-file
+https://help.sonatype.com/display/NXRM3/PyPI+Repositories
 
 List
 http -a admin:admin123 http://10.0.0.12:8081/service/siesta/rest/v1/script

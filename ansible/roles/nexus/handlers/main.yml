@@ -5,3 +5,10 @@
     systemd:
         name: "{{nexus_service}}"
         state: restarted
+
+-   name: nexus_wait
+    wait_for:
+        host: "{{ansible_eth1.ipv4.address}}"
+        port: "{{nexus_port}}"
+        delay: 10
+        state: present

@@ -14,12 +14,14 @@
         state: present
     notify:
         - nexus_restart
+        - nexus_wait
 
 -   group:
         name: "{{nexus_group}}"
         state: present
     notify:
         - nexus_restart
+        - nexus_wait
 
 -   set_fact:
         nexus_home: "/usr/lib/nexus/nexus-{{nexus_version}}"
@@ -51,10 +53,24 @@
         mode: 0755
         state: directory
         recurse: yes
-    notify:
-        - nexus_restart
+    # notify:
+    #     - nexus_restart
+    #     - nexus_wait
 
 -   include: profiled.yml
+
+-   include_role:
+        name: sysctl
+        tasks_from: ulimit
+    vars:
+        username: "{{nexus_user}}"
+        type: "-"
+        item: nofile
+        value: 65536
+    notify:
+        - nexus_restart
+        - nexus_wait 
+
 -   include: systemd.yml
 
 -   systemd:

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+name={{service_name}}
+result=$(http $CONSUL_ADDR/v1/catalog/service/$name)
+host=$(echo $result | jq -r '.[0].ServiceAddress')
+port=$(echo $result | jq -r '.[0].ServicePort')
+cat <<EOF
+{
+    "nexus_url" : "$host:$port"
+}
+EOF

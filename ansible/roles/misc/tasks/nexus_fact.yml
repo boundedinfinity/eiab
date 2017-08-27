@@ -1,0 +1,7 @@
+---
+
+-   include_role:
+        name: consul
+        tasks_from: fact
+    vars:
+        service_name: nexus

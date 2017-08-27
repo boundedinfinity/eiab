@@ -1,5 +1,8 @@
 ---
 
+-   set_fact:
+        nexus_host: "10.0.0.12"
+
 -   include: common.yml
 
 -   name: Install RPM packages
@@ -13,5 +16,8 @@
     pip:
         name: "{{ item }}"
         state: present
+        extra_args: "--trusted-host {{nexus_host}}"
     with_items:
         - sphinx
+        - sphinx_rtd_theme
+        - python-consul

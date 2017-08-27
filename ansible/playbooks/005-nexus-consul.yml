@@ -1,0 +1,31 @@
+-   name: Configure nexus service in consul
+    hosts: ops02
+    become: yes
+    
+    tasks:
+        -   include_role:
+                name: nexus
+                tasks_from: consul
+
+-   name: Configure ansible fact for nexus service lookup in consul on control host
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+        -   include_role:
+                name: misc
+                tasks_from: nexus_fact
+        
+        -   debug: var="{{ansible_local}}"
+                
+-   name: Configure ansible fact for nexus service lookup in consul on all nodes
+    hosts: all
+    become: yes
+    
+    tasks:
+        -   include_role:
+                name: misc
+                tasks_from: nexus_fact
+
+        -   debug: var="{{ansible_local}}"

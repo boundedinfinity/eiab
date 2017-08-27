@@ -1,0 +1,6 @@
+-   name: Install common utilities
+    hosts: all
+    become: yes
+
+    tasks:
+        -   command: /usr/bin/yum clean all

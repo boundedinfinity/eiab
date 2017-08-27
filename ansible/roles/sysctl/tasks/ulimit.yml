@@ -1,0 +1,8 @@
+---
+
+-   template:
+        src: templates/etc/security/limits.d/ulimit.conf
+        dest: "/etc/security/limits.d/{{username}}.conf"
+        owner: root
+        group: root
+        mode: 0644

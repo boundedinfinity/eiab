@@ -10,3 +10,7 @@
     systemd:
         name: dnsmasq
         state: restarted
+
+-   name: setup_reload
+    setup:
+        filter: ansible_local

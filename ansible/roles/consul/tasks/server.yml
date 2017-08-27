@@ -40,3 +40,14 @@
         mode: 0755
     notify:
         - consul_restart
+
+-   set_fact:
+        nexus_host: "10.0.0.12:8081"
+                
+-   name: Install Python packages
+    pip:
+        name: "{{ item }}"
+        state: present
+        extra_args: "--trusted-host {{nexus_host}}"
+    with_items:
+        - python-consul

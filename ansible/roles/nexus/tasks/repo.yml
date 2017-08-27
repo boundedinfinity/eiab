@@ -11,7 +11,7 @@
         - {name: 'releases.hashicorp.com', url: 'https://releases.hashicorp.com'}
         - {name: 'download.sonatype.com', url: 'https://download.sonatype.com'}
     register: raw_proxy_result
--   debug: var=raw_proxy_result
+# -   debug: var=raw_proxy_result
 
 -   nexus_repo:
         type: yum_proxy
@@ -24,4 +24,16 @@
         - {name: 'centos-base-7-x86_64', url: 'http://mirror.centos.org/centos/7/os/x86_64/'}
         - {name: 'epel-7-x86_64', url: 'http://download.fedoraproject.org/pub/epel/7/x86_64/'}
     register: yum_proxy_result
--   debug: var=yum_proxy_result
+# -   debug: var=yum_proxy_result
+
+-   nexus_repo:
+        type: pypi_proxy
+        username: "{{nexus_api_username}}"
+        password: "{{nexus_api_password}}"
+        host: "{{ansible_eth1.ipv4.address}}:{{nexus_port}}"
+        name: "{{item.name}}"
+        remote_url: "{{item.url}}"
+    with_items:
+        - {name: 'pypi.python.org', url: 'https://pypi.python.org/'}
+    register: pypi_proxy_result
+# -   debug: var=pypi_proxy_result
