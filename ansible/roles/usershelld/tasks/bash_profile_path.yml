@@ -1,0 +1,10 @@
+---
+
+# -   debug: var=role_path
+# -   debug: msg="{{role_path}}/templates/home/user/config/bash_profile.d/path.bash"
+
+-   include: bash_profile.yml
+    vars:
+        # username: "{{username}}"
+        script_name: "path"
+        script_src: "{{role_path}}/templates/home/user/.config/bash_profile.d/path.bash"

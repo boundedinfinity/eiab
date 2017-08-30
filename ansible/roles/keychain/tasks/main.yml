@@ -1,0 +1,22 @@
+---
+
+-   yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - bzip2
+
+-   unarchive:
+        src: http://www.funtoo.org/distfiles/keychain/keychain-2.8.2.tar.bz2
+        dest: /tmp
+        remote_src: True
+        creates: /tmp/keychain-2.8.2
+
+-   unarchive:
+        src: http://www.funtoo.org/distfiles/keychain/keychain-2.8.2.tar.bz2
+        dest: /tmp
+        remote_src: True
+
+-   command: mv /tmp/keychain-2.8.2/keychain /usr/bin/keychain
+    args:
+        creates: /usr/bin/keychain

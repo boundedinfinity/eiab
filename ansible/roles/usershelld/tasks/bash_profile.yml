@@ -1,0 +1,13 @@
+---
+
+# -   debug: var=username
+# -   debug: var=script_src
+# -   debug: var=script_name
+
+-   name: "Creating /home/{{username}}/.config/bash_profile.d/{{script_name}}.bash"
+    template:
+        src: "{{script_src}}"
+        dest: "/home/{{username}}/.config/bash_profile.d/{{script_name}}.bash"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755

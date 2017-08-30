@@ -1,0 +1,12 @@
+---
+
+-   set_fact:
+        module_script_src: "{{role_path}}/templates/home/user/.config/bash_profile.d/keychain.bash"
+
+-   include_role:
+        name: usershelld
+        tasks_from: bash_profile
+    vars:
+        # username: "{{username}}"
+        script_name: "keychain"
+        script_src: "{{module_script_src}}"

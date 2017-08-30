@@ -22,5 +22,5 @@ help:
 build:
 	sphinx-build -b html "$(SOURCEDIR)" "$(BUILDDIR)"
 
-build-rerun:
+build-watch:
 	rerun --ignore="$(BUILDDIR)" "make build"

@@ -1,0 +1,45 @@
+---
+
+-   file:
+        path: "/home/{{username}}/{{item}}"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755
+        state: directory
+    with_items:
+        - ".config/bash_profile.d"
+        - ".config/bashrc.d"
+        - ".config/bash_logout.d"
+        - ".config/profile.d"
+
+-   name: "Creating /home/{{username}}/.bash_profile"
+    template:
+        src: templates/home/user/bash_profile
+        dest: "/home/{{username}}/.bash_profile"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755
+
+-   name: "Creating /home/{{username}}/.bashrc"
+    template:
+        src: templates/home/user/bashrc
+        dest: "/home/{{username}}/.bashrc"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755
+
+-   name: "Creating /home/{{username}}/.bash_logout"
+    template:
+        src: templates/home/user/bash_logout
+        dest: "/home/{{username}}/.bash_logout"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755
+
+-   name: "Creating /home/{{username}}/.profile"
+    template:
+        src: templates/home/user/profile
+        dest: "/home/{{username}}/.profile"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755

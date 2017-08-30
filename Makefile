@@ -19,6 +19,12 @@ list:
 001-ansible-account:
 	$(playbook_exec)/001-ansible-account.yml
 
+001-usershelld:
+	$(playbook_exec)/001-usershelld.yml
+
+001-gpg:
+	$(playbook_exec)/001-gpg.yml
+
 002-nexus-server:
 	$(playbook_exec)/002-nexus-server.yml
 		
@@ -61,6 +67,7 @@ list:
 
 999-everything:
 	make 001-ansible
+	make 001-usershelld
 	make 001-configure-ssh
 	make 001-ansible-account
 	
@@ -108,7 +115,10 @@ wks-vagrant-provision:
 	vagrant provision
 
 docs-open:
-	open walkthrough2/_build/html/index.html
+	open docs/_build/html/index.html
 
-docs-generate:
-	cd walkthrough2 && make html
+docs-build:
+	cd doc && make build
+
+docs-build-watch:
+	cd doc && make build-watch
