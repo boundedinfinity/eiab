@@ -1,4 +1,0 @@
-Vagrant
-############################################################
-
-Virtualization management tool.

@@ -1,0 +1,2 @@
+- http://www.mkdocs.org/
+- https://mkdocs.readthedocs.io

@@ -8,10 +8,17 @@
 #   {{email}}
 #   {{expire_date}}
 
+-   file:
+        path: "/home/{{username}}/.gnupg"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755
+        state: directory
+
 -   name: Create gen key batch script
     template:
-        src: templates/home/user/.gnupg/gen-key-script
-        dest: "/home/{{username}}/.gnupg/gen-key-script"
+        src: templates/home/user/.gnupg/batch.script
+        dest: "/home/{{username}}/.gnupg/batch.script"
         owner: "{{username}}"
         group: "{{username}}"
         mode: 0600

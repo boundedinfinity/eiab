@@ -1,1 +1,1 @@
-eval `keychain --eval --agents ssh id_rsa`
+eval $(keychain --agents gpg --eval)

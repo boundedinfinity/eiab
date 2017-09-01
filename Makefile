@@ -9,6 +9,9 @@ playbook_v_exec		:= cd ansible && ansible-playbook -vvv --user=$(ansible_account
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
+001-bootstrap:
+	vagrant plugin install vagrant-hostmanager
+
 001-ansible:
 	mkdir -p ansible/galaxy_roles
 	cd ansible && ansible-galaxy install --role-file=ansible-galaxy.yml
@@ -66,8 +69,10 @@ list:
 	$(playbook_exec)/00X-prometheus-cache.yml
 
 999-everything:
-	make 001-ansible
 	make 001-usershelld
+	make 001-gpg
+	
+	make 001-ansible
 	make 001-configure-ssh
 	make 001-ansible-account
 	
@@ -90,6 +95,9 @@ list:
 	
 	make 00X-prometheus-cache
 
+999-doc:
+	$(playbook_exec)/999-doc.yml
+
 999-debug:
 	$(playbook_exec)/999-debug.yml
 
@@ -102,8 +110,7 @@ list:
 999-purge:
 	rm -rf ansible/galaxy_roles
 
-wks-vagrant-bootstrap:
-	vagrant plugin install vagrant-hostmanager
+
 
 wks-vagrant-purge:
 	vagrant halt && vagrant destroy -f
@@ -115,10 +122,13 @@ wks-vagrant-provision:
 	vagrant provision
 
 docs-open:
-	open docs/_build/html/index.html
+	open $(makefile_dir)/doc/_build/index.html
 
 docs-build:
 	cd doc && make build
 
 docs-build-watch:
 	cd doc && make build-watch
+
+docs-purge:
+	cd doc && make purge

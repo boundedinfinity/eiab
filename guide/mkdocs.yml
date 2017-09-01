@@ -1,0 +1,13 @@
+site_name: Enterprise in a Box
+theme: readthedocs
+repo_url: https://github.com/boundedinfinity/eiab
+site_description: Enterprise in a Box
+pages:
+    - Home: index.md
+    - Guide:
+        - 'Introduction': 'guide/intro.md'
+        - 'Bootstrapping the enviornment': 'guide/bootstrap.md'
+        - 'Control node': 'guide/control.md'
+    - Tools:
+        - 'Vagrant': 'tools/vagrant.md'
+    - About: about.md

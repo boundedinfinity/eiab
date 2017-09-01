@@ -4,25 +4,25 @@
     become: yes
 
     tasks:
-        # -   include_role:
-        #         name: gpg
-        # 
-        # -   include_role:
-        #         name: gpg
-        #         tasks_from: gen_key_auto
-        #     vars:
-        #         username: vagrant
-        #         real_name: Some User
-        #         email: someone@somewhere.com
-        # 
-        # -   include_role:
-        #         name: gpg
-        #         tasks_from: gpg_agent_conf
-        #     vars:
-        #         username: vagrant
-        # 
-        # -   include_role:
-        #         name: keychain
+        -   include_role:
+                name: gpg
+        
+        -   include_role:
+                name: gpg
+                tasks_from: gen_key_auto
+            vars:
+                username: vagrant
+                real_name: "Some User"
+                email: someone@somewhere.com
+        
+        -   include_role:
+                name: gpg
+                tasks_from: gpg_agent_conf
+            vars:
+                username: vagrant
+        
+        -   include_role:
+                name: keychain
         
         -   include_role:
                 name: keychain

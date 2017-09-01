@@ -3,6 +3,13 @@
 # Inputs
 #   {{username}}
 
+-   file:
+        path: "/home/{{username}}/.gnupg"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755
+        state: directory
+
 -   name: Create gen key batch script
     template:
         src: templates/home/user/.gnupg/gpg-agent.conf

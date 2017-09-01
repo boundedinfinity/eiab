@@ -1,0 +1,9 @@
+-   name: Nexus Yum repos on control node
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+        -   include_role:
+                name: misc
+                tasks_from: docs
