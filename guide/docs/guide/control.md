@@ -44,6 +44,20 @@ This will:
 - Install the [Gnu Privacy Guard](https://gnupg.org) (GPG) encryption software
 - Install the Random number generator utilities
 
+After installation you can open a terminal and type:
+
+```bash
+gpg --version
+```
+
+You should see something similar to the following:
+
+```bash
+gpg (GnuPG) 2.0.22
+libgcrypt 1.5.3
+...
+```
+
 
 Help generate some random entropy to key generation:
 
