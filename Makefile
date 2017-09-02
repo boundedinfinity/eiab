@@ -28,6 +28,9 @@ list:
 001-gpg:
 	$(playbook_exec)/001-gpg.yml
 
+001-keychain:
+	$(playbook_exec)/001-keychain.yml
+
 002-nexus-server:
 	$(playbook_exec)/002-nexus-server.yml
 		
@@ -71,6 +74,7 @@ list:
 999-everything:
 	make 001-usershelld
 	make 001-gpg
+	make 001-keychain
 	
 	make 001-ansible
 	make 001-configure-ssh
@@ -109,8 +113,6 @@ list:
 
 999-purge:
 	rm -rf ansible/galaxy_roles
-
-
 
 wks-vagrant-purge:
 	vagrant halt && vagrant destroy -f
