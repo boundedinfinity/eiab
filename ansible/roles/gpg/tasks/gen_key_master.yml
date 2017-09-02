@@ -1,0 +1,17 @@
+---
+
+# Inputs
+#   {{username}}
+#   {{key_type}}
+#   {{key_length}}
+#   {{real_name}}
+#   {{email}}
+#   {{expire_date}}
+
+-   name: Create gen key master key pair script
+    template:
+        src: templates/home/user/gpg-master.expect
+        dest: "/home/{{username}}/gpg-master.expect"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755

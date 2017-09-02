@@ -10,6 +10,9 @@ https://wiki.archlinux.org/index.php/Rng-tools
 http://www.dewinter.com/gnupg_howto/english/GPGMiniHowto-3.html#ss3.5
 https://gnupg.org/documentation/manuals/gnupg/#toc-Invoking-GPG_002dAGENT-1
 https://www.gnupg.org/documentation/manuals/gnupg/Unattended-GPG-key-generation.html
+http://www.issihosts.com/haveged/faq.html
+https://www.2uo.de/myths-about-urandom/
+https://alexcabal.com/creating-the-perfect-gpg-keypair/
 
 List public keys
 

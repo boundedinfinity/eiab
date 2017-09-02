@@ -65,9 +65,24 @@ Help generate some random entropy to key generation:
 sudo rngd -r /dev/urandom
 ```
 
-Create your public and private keys:
+Create your master public and private keys:
 
 ```bash
-cd ~
-gpg --gen-key --batch ~/.gnupg/batch.script
+~/gpg-master.expect
+```
+
+This will create a key with the following parameters:
+
+- Key type: `default`
+- Key lenght: `4096`
+- Real name: `Vagrant Baggins`
+- Email: `vagrant@eiab.net`
+- Expire Date: `0`
+
+When prompted for your pass phrase, enter: `aaaa1234`.
+
+Create a subkey for use as the ssh authentication key pair.
+
+```bash
+~/gpg-sub.expect
 ```

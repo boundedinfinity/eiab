@@ -1,0 +1,56 @@
+#!/usr/bin/env expect
+
+set timeout 1
+set email "{{email}}"
+set real_name "{{real_name}}"
+set passphrase "{{passphrase}}"
+set keysize "{{key_length}}"
+set expire "{{expire_date}}"
+set wait 1
+
+proc waitAndEnter {} { sleep 2; send "\r" }
+
+spawn gpg --expert --gen-key
+
+expect "Your selection?"
+send "8"; waitAndEnter
+
+expect "Your selection?"
+send "S"; waitAndEnter
+
+expect "Your selection?"
+send "E"; waitAndEnter
+
+expect "Your selection?"
+send "Q"; waitAndEnter
+
+expect "What keysize do you want?"
+send "$keysize"; waitAndEnter
+
+expect "Key is valid for?"
+send "$expire"; waitAndEnter
+
+expect "Is this correct?"
+send "y"; waitAndEnter
+
+expect "Real name:"
+send "$real_name"; waitAndEnter
+
+expect "Email address:"
+send "$email"; waitAndEnter
+
+expect "Comment:"
+waitAndEnter
+
+expect "Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?"
+send "O"; waitAndEnter
+
+interact
+
+#expect "Passphrase"
+#send "$passphrase\r"
+#sleep $wait
+
+#expect "Passphrase"
+#send "$passphrase\r"
+#sleep $wait

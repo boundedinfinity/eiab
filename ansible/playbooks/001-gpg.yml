@@ -3,17 +3,32 @@
     connection: local
     become: yes
 
+    vars:
+        -   p_username: vagrant
+        -   p_real_name: "Vagrant Baggins"
+        -   p_email: vagrant@eiab.net
+        -   p_passphrase: aaaa1234
+
     tasks:
         -   include_role:
                 name: gpg
         
         -   include_role:
                 name: gpg
-                tasks_from: gen_key_auto
+                tasks_from: gen_key_master
             vars:
-                username: vagrant
-                real_name: "Some User"
-                email: someone@somewhere.com
+                username: "{{p_username}}"
+                real_name: "{{p_real_name}}"
+                email: "{{p_email}}"
+                passphrase: "{{p_passphrase}}"
+
+        -   include_role:
+                name: gpg
+                tasks_from: gen_key_sub
+            vars:
+                username: "{{p_username}}"
+                email: "{{p_email}}"
+                passphrase: "{{p_passphrase}}"
         
         -   include_role:
                 name: gpg
@@ -21,11 +36,3 @@
             vars:
                 username: vagrant
         
-        -   include_role:
-                name: keychain
-        
-        -   include_role:
-                name: keychain
-                tasks_from: profiled
-            vars:
-                username: vagrant
