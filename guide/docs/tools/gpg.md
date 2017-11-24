@@ -13,6 +13,7 @@ https://www.gnupg.org/documentation/manuals/gnupg/Unattended-GPG-key-generation.
 http://www.issihosts.com/haveged/faq.html
 https://www.2uo.de/myths-about-urandom/
 https://alexcabal.com/creating-the-perfect-gpg-keypair/
+https://spin.atomicobject.com/2013/11/24/secure-gpg-keys-guide/
 
 List public keys
 
@@ -29,3 +30,11 @@ gpg -K
 # or 
 gpg --list-secret-keys
 ```
+
+
+gpg --list-keys -a "vagrant@eiab.net"
+
+gpg --export vagrant@eiab.net | base64
+gpg --export 1356A221 | base64
+
+gpg --edit-key vagrant@eiab.net

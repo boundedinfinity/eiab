@@ -5,9 +5,27 @@ site_description: Enterprise in a Box
 pages:
     - Home: index.md
     - Guide:
-        - 'Introduction': 'guide/intro.md'
-        - 'Bootstrapping the enviornment': 'guide/bootstrap.md'
-        - 'Control node': 'guide/control.md'
+        -   'Introduction': 'guide/intro.md'
+        -   'Bootstrapping the enviornment': 'guide/bootstrap.md'
+        -   'Control node': 'guide/control.md'
     - Tools:
-        - 'Vagrant': 'tools/vagrant.md'
+        -   'Ansible': 'tools/ansible.md'
+        -   'Atom': 'tools/atom.md'
+        -   'Consul': 'tools/consul.md'
+        -   'Docker': 'tools/docker.md'
+        -   'Git': 'tools/git.md'
+        -   'GPG': 'tools/gpg.md'
+        -   'HTTPie': 'tools/httpie.md'
+        -   'jq': 'tools/jq.md'
+        -   'Keychain': 'tools/keychain.md'
+        -   'Kong': 'tools/kong.md'
+        -   'Make': 'tools/make.md'
+        -   'MkDocs': 'tools/mkdocs.md'
+        -   'Nexus': 'tools/nexus.md'
+        -   'Packer': 'tools/packer.md'
+        -   'Prometheus': 'tools/prometheus.md'
+        -   'SSH': 'tools/ssh.md'
+        -   'Vagrant': 'tools/vagrant.md'
+        -   'Vault': 'tools/vault.md'
+        -   'YUM': 'tools/yum.md'
     - About: about.md

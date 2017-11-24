@@ -50,7 +50,7 @@ After installation you can open a terminal and type:
 gpg --version
 ```
 
-You should see something similar to the following:
+You should see something similar to the following.
 
 ```bash
 gpg (GnuPG) 2.0.22
@@ -58,14 +58,15 @@ libgcrypt 1.5.3
 ...
 ```
 
-
-Help generate some random entropy to key generation:
+Help generate some random entropy to key generation.  This step is mainly 
+required because of running inside the VM.  This shouldn't be necessary
+when running on a physical computer.
 
 ```bash
 sudo rngd -r /dev/urandom
 ```
 
-Create your master public and private keys:
+Create your master public and private keys.
 
 ```bash
 ~/gpg-master.expect
@@ -78,11 +79,30 @@ This will create a key with the following parameters:
 - Real name: `Vagrant Baggins`
 - Email: `vagrant@eiab.net`
 - Expire Date: `0`
+- Capabilities: Certify
 
-When prompted for your pass phrase, enter: `aaaa1234`.
+When prompted for your pass phrase, enter: `aaaa1234`.  In a real environmnet
+you'll want to create a very hard to guess password.
+
+Verify your public and private key:
+
+```bash
+gpg --export vagrant@eiab.net | base64
+```
 
 Create a subkey for use as the ssh authentication key pair.
 
 ```bash
-~/gpg-sub.expect
+gpg --expert --edit-key vagrant@eiab.net
+addkey
+8
+S
+E
+A
+Q
+4096
+0
+y
+y
+save
 ```
