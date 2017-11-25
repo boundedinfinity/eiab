@@ -1,13 +1,13 @@
 #!/usr/bin/env expect
 
-set timeout 1
+set timeout 60
 set email "{{email}}"
 set passphrase "{{passphrase}}"
 set keysize "{{key_length}}"
 set expire "{{expire_date}}"
 set wait 1
 
-proc waitAndEnter {} { sleep 2; send "\r" }
+proc waitAndEnter {} { sleep 1; send "\r" }
 
 spawn gpg --expert --edit-key $email
 
@@ -44,5 +44,11 @@ send "y"; waitAndEnter
 expect "Really create?"
 send "y"; waitAndEnter
 
+expect "chance to gain enough entropy."
+sleep 1
+expect "usage: A"
 expect "gpg>"
+
+send "save"; waitAndEnter
+send "save"; waitAndEnter
 send "save"; waitAndEnter

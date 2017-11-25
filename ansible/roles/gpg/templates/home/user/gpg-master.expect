@@ -8,7 +8,7 @@ set keysize "{{key_length}}"
 set expire "{{expire_date}}"
 set wait 1
 
-proc waitAndEnter {} { sleep 2; send "\r" }
+proc waitAndEnter {} { sleep 1; send "\r" }
 
 spawn gpg --expert --gen-key
 

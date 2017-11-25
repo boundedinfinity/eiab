@@ -1,0 +1,8 @@
+---
+
+-   template:
+        src: "{{ script_source }}"
+        dest: "/etc/profile.d/{{ script_name }}.sh"
+        owner: root
+        group: root
+        mode: 0644
