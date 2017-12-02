@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version ">= 1.9.7"
+Vagrant.require_version ">= 2.0.1"
 
 node_count = 2
 node_mem = 768
@@ -13,7 +13,7 @@ sudo yum install -y ansible fish
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "boxcutter/centos73"
+  config.vm.box = "bi/eiab"
   config.hostmanager.enabled = false
 
   (0..node_count).each do |i|

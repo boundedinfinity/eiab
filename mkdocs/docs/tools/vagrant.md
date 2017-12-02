@@ -11,6 +11,22 @@ vagrant version
 vagrant --version
 ```
 
+### Import a box
+
+```bash
+vagrant box add --name <name> <path/to/box>
+```
+
+Example name:
+
+- `bi/eiab`
+
+### List locally cached boxes
+
+```bash
+vagrant box list
+```
+
 # Reference
 
 - [Project Page](https://www.vagrantup.com)

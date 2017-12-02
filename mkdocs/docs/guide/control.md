@@ -1,34 +1,63 @@
-# Configure the control node
+The following series of command must be ran from the `$EIAB_DIR`:
 
-Log into the control node.  Open a terminal, change to the `eiab` directory
-and type:
+```bash
+cd $EIAB_DIR
+```
+
+Now it's time to start up the **control** node:
+
+```bash
+vagrant up control
+```
+
+Log into the **control** node.
 
 ```bash
 vagrant ssh control
 ```
 
-This will log you into the `control` virtual node.
+Once inside the VM, the following series of command must be ran from the `/vagrant`:
 
 Then type:
 
 ```bash
 cd /vagrant
-ls -l
 ```
 
-You should see something similar to the following:
+Once inside the **/vagrant** directory perform a directory listing. You should see something similar 
+to the following:
 
 ```bash
-total 28
-drwxr-xr-x. 1 vagrant vagrant  408 Aug 29 23:02 ansible/
-drwxr-xr-x. 1 vagrant vagrant  442 Aug 31 23:30 doc/
--rw-r--r--. 1 vagrant vagrant 2554 Sep  1 04:42 Makefile
--rw-r--r--. 1 vagrant vagrant 2505 Jul 28 23:44 readme.md
--rw-r--r--. 1 vagrant vagrant 1334 Aug 22 05:56 Vagrantfile
+ls -l 
+drwxr-xr-x.  1 vagrant vagrant  544 Dec  2 05:33 .
+dr-xr-xr-x. 18 root    root     239 Dec  2 05:27 ..
+drwxr-xr-x.  1 vagrant vagrant  408 Aug 29 23:02 ansible
+-rw-r--r--.  1 vagrant vagrant  175 Dec  2 05:29 Brewfile
+-rw-r--r--.  1 vagrant vagrant  133 Aug 19 07:25 .editorconfig
+drwxr-xr-x.  1 vagrant vagrant  510 Dec  2 01:07 .git
+-rw-r--r--.  1 vagrant vagrant   29 Aug 25 19:11 .gitignore
+-rw-r--r--.  1 vagrant vagrant 2621 Sep  2 06:29 Makefile
+drwxr-xr-x.  1 vagrant vagrant  238 Nov 25 00:20 mkdocs
+drwxr-xr-x.  1 vagrant vagrant  204 Dec  2 01:12 packer
+-rw-r--r--.  1 vagrant vagrant 2505 Jul 28 23:44 readme.md
+-rw-r--r--.  1 vagrant vagrant  346 Aug 19 05:53 research.md
+-rw-r--r--.  1 vagrant vagrant 2440 Aug 19 05:53 services.md
+-rw-r--r--.  1 vagrant vagrant  352 Aug 20 10:58 temp.md
+drwxr-xr-x.  1 vagrant vagrant  102 Aug 19 06:17 .vagrant
+-rw-r--r--.  1 vagrant vagrant 1323 Dec  2 05:26 Vagrantfile
 ```
 
-You are now logged into the `control` node, and can see the files synced from your
-workstation into the `control` node.
+The content may not exactly match the example above, but the important thing is that
+you should see the project files.
+
+
+The following series of command must be ran from the `/vagrant/ansible` directory:
+
+Then type:
+
+```bash
+cd /vagrant/ansible
+```
 
 # Credentials
 

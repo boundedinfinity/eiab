@@ -17,7 +17,8 @@ eiab
 └── Vagrantfile
 ```
 
-
+For the rest of the guide the **eiab** directory will be denoted as something like `$EIAB_DIR` for
+the purposes of scripts and examples.
 
 ## Bootstrap
 
@@ -35,7 +36,7 @@ tutorial.
 ## Create the environment
 
 The preperation is now complete.  To build the tutorial environment, open a 
-terminal, change to the root `eiab` directory and type:
+terminal, change to the root `EIAB_DIR` directory and type:
 
 ```bash
 vagrant up
