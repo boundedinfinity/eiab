@@ -1,20 +1,25 @@
 site_name: Enterprise in a Box
 theme: readthedocs
 repo_url: https://github.com/boundedinfinity/eiab
-site_description: Enterprise in a Box
+markdown_extensions:
+    -   admonition
 pages:
     - Home: index.md
     - Guide:
         -   'Introduction': 'guide/intro.md'
-        -   'Bootstrapping the enviornment': 'guide/bootstrap.md'
+        -   'macOS': 'guide/macos.md'
+        -   'Project Source': 'guide/source.md'
+        -   'Machine Image': 'guide/machine-image.md'
         -   'Control node': 'guide/control.md'
     - Tools:
         -   'Ansible': 'tools/ansible.md'
         -   'Atom': 'tools/atom.md'
         -   'Consul': 'tools/consul.md'
+        -   'curl': 'tools/curl.md'
         -   'Docker': 'tools/docker.md'
         -   'Git': 'tools/git.md'
         -   'GPG': 'tools/gpg.md'
+        -   'Homebrew': 'tools/homebrew.md'
         -   'HTTPie': 'tools/httpie.md'
         -   'jq': 'tools/jq.md'
         -   'Keychain': 'tools/keychain.md'
@@ -24,6 +29,7 @@ pages:
         -   'Nexus': 'tools/nexus.md'
         -   'Packer': 'tools/packer.md'
         -   'Prometheus': 'tools/prometheus.md'
+        -   'Ruby': 'tools/ruby.md'
         -   'SSH': 'tools/ssh.md'
         -   'Vagrant': 'tools/vagrant.md'
         -   'Vault': 'tools/vault.md'

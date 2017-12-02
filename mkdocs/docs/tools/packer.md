@@ -1,8 +1,13 @@
-Packer
-############################################################
+[Packer](https://www.packer.io) is a build automation tool that manages machine images.
 
-Machine image automation tool.
+!!! note
+    Guide version: **1.1.2**
 
+### Get the version
+
+```bash
+packer version
+```
 
 ```bash
 packer build -only=virtualbox-iso -var-file=centos7.json centos.json
@@ -11,7 +16,7 @@ packer build -only=virtualbox-iso -var-file=centos7.json centos.json
 --> virtualbox-iso: 'virtualbox' provider box: box/virtualbox/centos7-0.0.99.box
 ```
 
-Reference
+# Reference
 
-- [Packer homepage](https://www.packer.io)
+- [Project page](https://www.packer.io)
 - [boxcutter/centos](https://github.com/boxcutter/centos)
