@@ -1,6 +1,6 @@
 ---
 
--   name: Install GPG
+-   name: Install GPG and dependencies
     yum:
         name: "{{ item }}"
         state: present
