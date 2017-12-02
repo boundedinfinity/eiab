@@ -1,2 +1,6 @@
 ---
-# vars file for keychain
+# keychain_url: http://www.funtoo.org/distfiles/keychain/keychain-2.8.2.tar.bz2
+# keychain_version: 2.8.2
+
+keychain_url: https://github.com/funtoo/keychain/archive/2.8.4.zip
+keychain_version: 2.8.4
