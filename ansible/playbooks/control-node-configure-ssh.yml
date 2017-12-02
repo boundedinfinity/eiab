@@ -12,4 +12,4 @@
                 name: ssh
                 tasks_from: import_known_hosts
             vars:
-                ssh_hosts: "{{groups['all']}}"
+                ssh_hosts: "{{ groups['all'] }}"

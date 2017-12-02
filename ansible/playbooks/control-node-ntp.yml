@@ -1,0 +1,9 @@
+-   name: Set clock on control node
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: ntp

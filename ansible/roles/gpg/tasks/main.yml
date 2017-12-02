@@ -9,10 +9,10 @@
         - rng-tools
         - expect
         
--   name: Configure gpg-agent startup script
-    template:
-        src: templates/etc/profile.d/gpg.sh
-        dest: "/etc/profile.d/gpg.sh"
-        owner: root
-        group: root
-        mode: 0644
+# -   name: Configure gpg-agent startup script
+#     template:
+#         src: templates/etc/profile.d/gpg.sh
+#         dest: "/etc/profile.d/gpg.sh"
+#         owner: root
+#         group: root
+#         mode: 0644

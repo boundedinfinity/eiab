@@ -53,19 +53,26 @@ you should see the project files.
 
 The following series of command must be ran from the `/vagrant/ansible` directory:
 
-Then type:
-
 ```bash
 cd /vagrant/ansible
 ```
 
-# Credentials
-
-To help manage credentials:
+### Clock
 
 ```bash
-cd /vagrant
-make 001-gpg
+make control-node-ntp
+```
+
+### Ansible roles
+
+```bash
+make control-node-roles
+```
+
+### GPG
+
+```bash
+make control-node-gpg
 ```
 
 This will:
@@ -85,6 +92,8 @@ You should see something similar to the following.
 gpg (GnuPG) 2.0.22
 libgcrypt 1.5.3
 ...
+...
+...
 ```
 
 Help generate some random entropy to key generation.  This step is mainly 
@@ -95,79 +104,36 @@ when running on a physical computer.
 sudo rngd -r /dev/urandom
 ```
 
-Create your master public and private keys.
+Then generate a key:
 
 ```bash
-~/gpg-master.expect
+gpg --gen-key
 ```
 
-This will create a key with the following parameters:
+Using the following parameters:
 
-- Key type: `default`
+- Key type: `RSA and RSA (default)`
 - Key lenght: `4096`
-- Real name: `Vagrant Baggins`
-- Email: `vagrant@eiab.net`
 - Expire Date: `0`
-- Capabilities: Certify
+- Real name: `Frodo Baggins`
+- Email: `frodo@shire.village`
+- Comment: hit enter to leave blank
+- Passphrase: `aaaa1234`
 
-When prompted for your pass phrase, enter: `aaaa1234`.  In a real environmnet
-you'll want to create a very hard to guess password.
-
-Verify your public and private key:
+After the key generation is complete, view the key:
 
 ```bash
-gpg --export vagrant@eiab.net | base64
+gpg --list-keys
 ```
 
-Create a subkey for use as the ssh authentication key pair.
+which should display something similar to the following:
 
 ```bash
-gpg --expert --edit-key vagrant@eiab.net
-addkey
-8
-S
-E
-A
-Q
-4096
-0
-y
-y
-save
+/home/vagrant/.gnupg/pubring.gpg
+--------------------------------
+pub   4096R/C00B50B8 2017-12-02
+uid                  Frodo Baggins <frodo@shire.village>
+sub   4096R/45FB4738 2017-12-02
 ```
 
 
-
-## Bootstrap
-
-Now it's time to perform the first step in the tutorial.  Open a terminal,
-change to the root `eiab` directory and type:
-
-```bash
-make 001-bootstrap
-```
-
-This will install the Vagrant `vagrant-hostmanager` plugin which helps to manage
-an easy hostname mapping for the Vagrant created guest host used in this 
-tutorial.
-
-## Create the environment
-
-The preperation is now complete.  To build the tutorial environment, open a 
-terminal, change to the root `EIAB_DIR` directory and type:
-
-```bash
-vagrant up
-```
-
-This will download, cache, provision and start an entprise cluster using the 
-Centos 7.3 operating system.  The cluster will consist of the following:
-
-- control tier - 1 node used to provision and control the other tiers.
-- operations tier - 3 nodes that contain the operations service and tools 
-  required to manage this environment.
-- application tier - 3 nodes that contain the custom built applications.
-- datastore tier -  3 nodes that contain persistant storage services 
-  (such as database) required by the operations and applications tier.
-
-**NOTE:** This step may take some time (possibly > 20 minutes)

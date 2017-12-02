@@ -43,7 +43,22 @@ vagrant ssh
 vagrant ssh <machine name>
 ```
 
+### Install plugin
+
+```bash
+vagrant plugin install <plugin name>
+```
+
+### List available plugins
+
+```bash
+gem list --remote vagrant-
+```
+
+Or browse to the [Vagrant plugins wiki](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins).
+
 # Reference
 
 - [Project Page](https://www.vagrantup.com)
-- [vagrant-hostmanager plugin](https://github.com/devopsgroup-io/vagrant-hostmanager)
+- Plugins
+    - [vagrant-hostmanager plugin](https://github.com/devopsgroup-io/vagrant-hostmanager)

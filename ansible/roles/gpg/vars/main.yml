@@ -1,4 +1,5 @@
 ---
-key_type: default
-key_length: 4096
-expire_date: 0
+
+gpg_key_type: default
+gpg_key_length: 4096
+gpg_expire_date: 0

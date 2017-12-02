@@ -10,7 +10,8 @@ pages:
         -   'macOS': 'guide/macos.md'
         -   'Project Source': 'guide/source.md'
         -   'Machine Image': 'guide/machine-image.md'
-        -   'Control node': 'guide/control.md'
+        -   'Vagrant Configuration': 'guide/vagrant.md'
+        -   'Control node': 'guide/control-node.md'
     - Tools:
         -   'Ansible': 'tools/ansible.md'
         -   'Atom': 'tools/atom.md'
