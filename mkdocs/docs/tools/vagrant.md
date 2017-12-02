@@ -27,6 +27,22 @@ Example name:
 vagrant box list
 ```
 
+### Start a machine
+
+```bash
+vagrant up
+# or
+vagrant up <machine name>
+```
+
+### Log into a machine
+
+```bash
+vagrant ssh
+# or
+vagrant ssh <machine name>
+```
+
 # Reference
 
 - [Project Page](https://www.vagrantup.com)
