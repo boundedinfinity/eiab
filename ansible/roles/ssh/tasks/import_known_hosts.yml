@@ -7,12 +7,13 @@
 -   name: Import nodes keys
     shell: "ssh-keyscan {{ item }}"
     with_items: "{{ ssh_hosts }}"
+    changed_when: false
     register: known_host_results
     ignore_errors: yes
 
--   name: "Update the {{ssh_dir}}/known_hosts file with nodes"
+-   name: "Update the {{ ssh_dir }}/known_hosts file with nodes"
     known_hosts:
         name: "{{ item.item }}"
         key: "{{ item.stdout }}"
-        path: "{{ssh_dir}}/known_hosts"
+        path: "{{ ssh_dir }}/known_hosts"
     with_items: "{{ known_host_results.results }}"

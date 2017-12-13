@@ -55,6 +55,12 @@ vagrant plugin install <plugin name>
 gem list --remote vagrant-
 ```
 
+### Update the host file
+
+```bash
+vagrant hostmanager
+```
+
 Or browse to the [Vagrant plugins wiki](https://github.com/hashicorp/vagrant/wiki/Available-Vagrant-Plugins).
 
 # Reference

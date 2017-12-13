@@ -4,12 +4,6 @@ The following series of command must be ran from the `$EIAB_DIR`:
 cd $EIAB_DIR
 ```
 
-Now it's time to start up the **control** node:
-
-```bash
-vagrant up control
-```
-
 Log into the **control** node.
 
 ```bash
@@ -59,11 +53,16 @@ cd /vagrant/ansible
 
 ### Clock
 
+Configure the clock via the [Network Time Protocol](http://www.ntp.org).  This is needs to stop
+ansible errors related to file timestamps.
+
 ```bash
 make control-node-ntp
 ```
 
 ### Ansible roles
+
+Install any required third party roles from [Ansible Galaxy](https://galaxy.ansible.com).
 
 ```bash
 make control-node-roles
@@ -71,14 +70,12 @@ make control-node-roles
 
 ### GPG
 
+Install the [Gnu Privacy Guard](../tools/gpg) (GPG) utilities, and a few other packages 
+required for this guide.
+
 ```bash
 make control-node-gpg
 ```
-
-This will:
-
-- Install the [Gnu Privacy Guard](https://gnupg.org) (GPG) encryption software
-- Install the Random number generator utilities
 
 After installation you can open a terminal and type:
 
@@ -96,9 +93,12 @@ libgcrypt 1.5.3
 ...
 ```
 
-Help generate some random entropy to key generation.  This step is mainly 
-required because of running inside the VM.  This shouldn't be necessary
-when running on a physical computer.
+Help generate some random entropy for key generation.  
+
+!!! note
+    This step is mainly required to generate entropy while running inside a VM.  This shouldn't 
+    be necessary when running on a physical computer.
+
 
 ```bash
 sudo rngd -r /dev/urandom
@@ -124,6 +124,8 @@ After the key generation is complete, view the key:
 
 ```bash
 gpg --list-keys
+# or
+gpg -k
 ```
 
 which should display something similar to the following:

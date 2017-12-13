@@ -13,21 +13,22 @@ all:
 	make control-node-ntp
 	make control-node-roles
 	make control-node-gpg
-	make control-node-configure-ssh
+	make control-node-ssh
 
+
+control-node-gpg:
+	$(playbook_exec)/control-node-gpg.yml
+
+control-node-ntp:
+	$(playbook_exec)/control-node-ntp.yml
 
 control-node-roles:
 	mkdir -p galaxy_roles
 	ansible-galaxy install --role-file=ansible-galaxy.yml
 
-control-node-gpg:
-	$(playbook_exec)/control-node-gpg.yml
-	
-control-node-configure-ssh:
-	$(playbook_exec)/control-node-configure-ssh.yml
+control-node-ssh:
+	$(playbook_exec)/control-node-ssh.yml
 
-control-node-ntp:
-	$(playbook_exec)/control-node-ntp.yml
 
 001-ansible-account:
 	$(playbook_exec)/001-ansible-account.yml
