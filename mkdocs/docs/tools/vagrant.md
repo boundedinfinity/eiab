@@ -21,6 +21,16 @@ Example name:
 
 - `bi/eiab`
 
+### Remove a box
+
+```bash
+vagrant box remove <name>
+```
+
+Example name:
+
+- `bi/eiab`
+
 ### List locally cached boxes
 
 ```bash

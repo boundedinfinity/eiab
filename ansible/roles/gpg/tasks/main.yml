@@ -8,6 +8,7 @@
         - gnupg2
         - rng-tools
         - expect
+        - pass
         
 # -   name: Configure gpg-agent startup script
 #     template:

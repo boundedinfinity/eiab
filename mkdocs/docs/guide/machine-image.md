@@ -39,7 +39,7 @@ This will perform the following:
 Import the box into the local [Vagrant](https://www.vagrantup.com) cache:
 
 ```bash
-vagrant box add --name bi/eiab boxcutter-centos/box/virtualbox/centos7-0.0.99.box
+vagrant box add --name bi/eiab boxcutter-centos/box/virtualbox/centos-7.4.box
 ```
 
 Next list the boxes.

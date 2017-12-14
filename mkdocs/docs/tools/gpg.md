@@ -46,3 +46,4 @@ gpg --export <email address> | base64
 - Articles
     - [CREATING THE PERFECT GPG KEYPAIR](https://alexcabal.com/creating-the-perfect-gpg-keypair)
     - [Generating More Secure GPG Keys: A Step-by-Step Guide](https://spin.atomicobject.com/2013/11/24/secure-gpg-keys-guide)
+    - [How to use a GPG key for SSH authentication](https://www.linode.com/docs/security/gpg-key-for-ssh-authentication)
