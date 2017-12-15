@@ -21,6 +21,8 @@ gpg --gen-key
 gpg -k
 # or 
 gpg --list-keys
+#
+gpg --list-keys --with-colons
 ```
 
 ### List secret keys

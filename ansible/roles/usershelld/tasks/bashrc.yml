@@ -1,0 +1,9 @@
+---
+
+-   name: "Creating /home/{{username}}/.bash_profile"
+    template:
+        src: templates/home/user/bash_profile
+        dest: "/home/{{username}}/.bash_profile"
+        owner: "{{username}}"
+        group: "{{username}}"
+        mode: 0755

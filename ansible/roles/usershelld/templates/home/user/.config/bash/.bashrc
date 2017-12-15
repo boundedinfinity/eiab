@@ -1,5 +1,3 @@
-# .bashrc
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
@@ -7,7 +5,7 @@ fi
 
 # User specific aliases and functions
 
-for i in ~/.config/bashrc.d/*.bash ; do
+for i in {{ usershelld_home }}/bash/bashrc.d/enabled/*.bash ; do
     if [ -r "$i" ]; then
         if [ "${-#*i}" != "$-" ]; then
             . "$i"

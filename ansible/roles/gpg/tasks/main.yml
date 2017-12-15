@@ -7,13 +7,54 @@
     with_items:
         - gnupg2
         - rng-tools
-        - expect
+        # - expect
         - pass
-        
-# -   name: Configure gpg-agent startup script
+        - monkeysphere
+
+-   name: Ensure bash gpg-agent configuration file
+    file:
+        path: /home/vagrant/.gnupg
+        state: directory
+        owner: vagrant
+        group: vagrant
+        mode: 0700
+
+# -   name: Ensure bash gpg-agent configuration file
 #     template:
-#         src: templates/etc/profile.d/gpg.sh
-#         dest: "/etc/profile.d/gpg.sh"
-#         owner: root
-#         group: root
+#         src: templates/home/user/.gnupg/gpg-agent.conf
+#         dest: /home/vagrant/.gnupg/gpg-agent.conf
+#         owner: vagrant
+#         group: vagrant
 #         mode: 0644
+
+-   name: Ensure bash gpg-agent configuration file
+    template:
+        src: templates/usr/local/bin/gpg2ssh-add.bash
+        dest: /usr/local/bin/gpg2ssh-add.bash
+        owner: vagrant
+        group: vagrant
+        mode: 0755
+
+-   name: Ensure bash gpg-agent configuration file
+    template:
+        src: templates/usr/local/bin/gpg2ssh-delete.bash
+        dest: /usr/local/bin/gpg2ssh-delete.bash
+        owner: vagrant
+        group: vagrant
+        mode: 0755
+
+-   name: Ensure bash gpg-agent startup script
+    template:
+        src: templates/etc/profile.d/gpg-agent.sh
+        dest: /etc/profile.d/gpg-agent.sh
+        owner: root
+        group: root
+        mode: 0644
+
+-   name: Ensure fish gpg-agent startup script
+    template:
+        src: templates/etc/fish/conf.d/gpg-agent.fish
+        dest: /etc/fish/conf.d/gpg-agent.fish
+        owner: root
+        group: root
+        mode: 0644

@@ -1,0 +1,14 @@
+---
+
+-   name: "Ensure fish .d directories"
+    file:
+        path: "{{ usershell_home }}/{{ item }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+        state: directory
+    with_items:
+        - fish/login.d/available
+        - fish/login.d/enabled
+        - fish/logout.d/available
+        - fish/logout.d/enabled

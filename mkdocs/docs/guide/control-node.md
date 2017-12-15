@@ -86,6 +86,10 @@ After installation you can open a terminal and type:
 gpg --version
 ```
 
+!!! note
+    To properly enable the GnuPG agent functionality, log out of the control node
+    and log back in.
+
 You should see something similar to the following.
 
 ```bash

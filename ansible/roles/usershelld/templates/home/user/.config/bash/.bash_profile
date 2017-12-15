@@ -7,7 +7,7 @@ fi
 
 # User specific environment and startup programs
 
-for i in ~/.config/profile.d/*.bash ; do
+for i in {{ usershelld_home }}/bash/bash_profile.d/enabled/*.bash ; do
     if [ -r "$i" ]; then
         if [ "${-#*i}" != "$-" ]; then
             . "$i"

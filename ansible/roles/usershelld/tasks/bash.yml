@@ -1,0 +1,49 @@
+---
+
+# -   name: "Ensure bash .d directories"
+#     file:
+#         path: "{{ usershelld_home }}/{{ item }}"
+#         owner: "{{ username }}"
+#         group: "{{ username }}"
+#         mode: 0755
+#         state: directory
+#     with_items:
+#         - bash/bash_profile.d/available
+#         - bash/bash_profile.d/enabled
+#         - bash/bashrc.d/available
+#         - bash/bashrc.d/enabled
+#         - bash/bash_logout.d/available
+#         - bash/bash_logout.d/enabled
+#         - bash/profile.d/available
+#         - bash/profile.d/enabled
+
+# -   name: "Creating {{ user_home }}/.bashrc"
+#     template:
+#         src: templates/home/user/.config/bash/.bashrc
+#         dest: "{{ user_home }}/.bashrc"
+#         owner: "{{ username }}"
+#         group: "{{ username }}"
+#         mode: 0644
+#         backup: yes
+
+# -   name: "Creating {{ user_home }}/.bash_profile"
+#     template:
+#         src: templates/home/user/.config/bash/.bash_profile
+#         dest: "{{ user_home }}/.bash_profile"
+#         owner: "{{ username }}"
+#         group: "{{ username }}"
+#         mode: 0644
+#         backup: yes
+
+# -   name: "Creating {{ user_home }}/.bash_logout"
+#     template:
+#         src: templates/home/user/.config/bash/.bash_logout
+#         dest: "{{ user_home }}/.bash_logout"
+#         owner: "{{ username }}"
+#         group: "{{ username }}"
+#         mode: 0644
+#         backup: yes
+
+-   include: bash_profile.yml
+    vars:
+        script_src: templates/home/user/.config/usershelld/bash/bash_profile.d/available/home-bin.bash

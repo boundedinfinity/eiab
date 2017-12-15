@@ -2,7 +2,7 @@
 
 # User specific logout procedures
 
-for i in ~/.config/bash_logout.d/*.bash ; do
+for i in {{ usershelld_home }}/bash/bash_logout.d/enabled/*.bash ; do
     if [ -r "$i" ]; then
         if [ "${-#*i}" != "$-" ]; then
             . "$i"

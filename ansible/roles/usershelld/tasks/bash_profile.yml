@@ -1,13 +1,24 @@
 ---
 
-# -   debug: var=username
-# -   debug: var=script_src
-# -   debug: var=script_name
+-   name: "Construct script dest from: '{{ script_src }}'"
+    set_fact:
+        script_available: "{{ usershelld_home }}/bash/bash_profile.d/available/{{ script_src | basename }}"
+        script_enabled: "{{ usershelld_home }}/bash/bash_profile.d/enabled/{{ script_src | basename }}"
+# -   debug: var=script_available
+# -   debug: var=script_enabled
 
--   name: "Creating /home/{{username}}/.config/bash_profile.d/{{script_name}}.bash"
+-   name: "Ensure available script '{{ script_available }}'"
     template:
-        src: "{{script_src}}"
-        dest: "/home/{{username}}/.config/bash_profile.d/{{script_name}}.bash"
-        owner: "{{username}}"
-        group: "{{username}}"
+        src: "{{ script_src }}"
+        dest: "{{ script_available }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
         mode: 0755
+
+-   name: "Ensure enabled script '{{ script_enabled }}'"
+    file:
+        src: "{{ script_available }}"
+        dest: "{{ script_enabled }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        state: link
