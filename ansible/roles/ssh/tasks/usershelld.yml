@@ -1,0 +1,17 @@
+---
+
+-   set_fact:
+        template_dir: "{{ role_path }}/templates"
+
+-   include_role:
+        name: usershelld
+        tasks_from: bash_profile
+    vars:
+        username: vagrant
+        script_src: "{{ template_dir }}/home/user/.config/usershelld/bash/bash_profile.d/available/ssh-agent.bash"
+
+# -   include_role:
+#         name: ssh
+#         tasks_from: bash_logout
+#     vars:
+#         script_src: templates/home/user/.config/usershelld/bash/bash_logout.d/available/ssh-agent.bash

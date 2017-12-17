@@ -1,15 +1,6 @@
 ---
 
--   name: "Lookup ssh dir for username: '{{ username }}'"
-    become_user: "{{ username }}"
-    set_fact:
-        user_home: "{{ lookup('env','HOME') }}"
-# -   debug: var=user_home
-
--   name: "Set usershelld dir for username: '{{ username }}'"
-    set_fact:
-        usershelld_home: "{{ user_home }}/{{ usershelld_rel_path }}"
-# -   debug: var=usershelld_home
+-   include: user_home.yml
 
 -   include: bash.yml
 
