@@ -9,6 +9,9 @@ playbook_v_exec		:= ansible-playbook -vvv --user=$(ansible_account) playbooks
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
+clean:
+	rm -rf galaxy_roles
+
 everything:
 	make control-node-ntp
 	make control-node-roles

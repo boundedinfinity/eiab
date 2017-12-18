@@ -9,7 +9,17 @@ playbook_v_exec		:= cd ansible && ansible-playbook -vvv --user=$(ansible_account
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
-vagrant-bootstrap:
+bootstrap:
 	vagrant plugin install vagrant-hostmanager
+
+clean:
+	vagrant halt
+	vagrant destroy -f
+	cd ansible && make clean
+	vagrant up
+
+startover:
+	make clean
+	vagrant up
 
 
