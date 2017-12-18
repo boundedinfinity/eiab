@@ -1,4 +1,4 @@
--   name: Generate ssh keypair
+-   name: Ensure UserShellD framework
     hosts: localhost
     connection: local
     become: yes
@@ -8,9 +8,3 @@
                 name: usershelld
             vars:
                 username: vagrant
-        
-        # -   include_role:
-        #         name: usershelld
-        #         tasks_from: bash_profile_path
-        #     vars:
-        #         username: vagrant

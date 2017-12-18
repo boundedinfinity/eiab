@@ -39,6 +39,8 @@ fi
 if [ -z $SSH_AGENT_PID ] ; then
     eval "ssh-agent -s > $agent_config"
     echo "Started new SSH agent"
+    source $agent_config > /dev/null
 else
     echo "Using running SSH agent"
+    source $agent_config > /dev/null
 fi

@@ -1,5 +1,11 @@
 ---
 
+-   yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - bash
+
 -   name: "Ensure bash .d directories"
     file:
         path: "{{ usershelld_home }}/{{ item }}"
