@@ -9,22 +9,22 @@
     tasks:
 
         -   user:
-                name: "{{item}}"
-                comment: "{{item}} Account"
+                name: "{{ item }}"
+                comment: "{{ item }} Account"
                 state: present
             with_items:
-                - "{{admins}}"
+                - "{{ admins }}"
 
         -   authorized_key:
-                user: "{{item}}"
+                user: "{{ item }}"
                 state: present
                 key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
             with_items:
-                - "{{admins}}"
+                - "{{ admins }}"
 
         -   include_role:
                 name: sudoer
             vars:
-                account: "{{item}}"
+                account: "{{ item }}"
             with_items:
-                - "{{admins}}"
+                - "{{ admins }}"

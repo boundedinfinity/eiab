@@ -1,5 +1,11 @@
 ---
 
+-   yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - openssh
+
 -   name: "Lookup ssh dir"
     set_fact:
         ssh_dir: "{{ lookup('env','HOME') }}/.ssh"

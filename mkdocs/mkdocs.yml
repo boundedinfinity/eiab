@@ -32,6 +32,7 @@ pages:
         -   'Prometheus': 'tools/prometheus.md'
         -   'Ruby': 'tools/ruby.md'
         -   'SSH': 'tools/ssh.md'
+        -   'UserShellD': 'tools/usershelld.md'
         -   'Vagrant': 'tools/vagrant.md'
         -   'Vault': 'tools/vault.md'
         -   'YUM': 'tools/yum.md'

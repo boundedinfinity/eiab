@@ -53,8 +53,8 @@ cd /vagrant/ansible
 
 ### Clock
 
-Configure the clock via the [Network Time Protocol](http://www.ntp.org).  This is needs to stop
-ansible errors related to file timestamps.
+Configure the clock via the [Network Time Protocol](http://www.ntp.org).  This will fix 
+clock skew errors.
 
 ```bash
 make control-node-ntp
@@ -70,6 +70,31 @@ make control-node-roles
 
 !!! warning
     Forgot what this is for.
+
+### UserShellD
+
+Install the [UserShellD](../tools/usershelld) framework.
+
+```
+make control-node-usershelld
+```
+
+This framework provides a linux style **.d** directories that helps with development work
+and automation tasks.
+
+### SSH
+
+Configure the [SSH](../tools/ssh) utilities.
+
+```
+make control-node-ssh
+```
+
+This will:
+
+- Install a **ssh-agent** lifecycle management scripts.
+- Generate the ssh keypair with the `There and back again!` as the passphrase
+- Import the remote host finger prints from all the nodes in the architecture
 
 ### GPG
 

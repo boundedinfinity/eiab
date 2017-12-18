@@ -10,16 +10,16 @@
     tasks:
 
         -   user:
-                name: "{{ansible_account}}"
+                name: "{{ ansible_account }}"
                 comment: "Ansible Account"
                 state: present
         
         -   include_role:
                 name: sudoer
             vars:
-                account: "{{ansible_account}}"
+                account: "{{ ansible_account }}"
 
         -   authorized_key:
-                user: "{{ansible_account}}"
+                user: "{{ ansible_account }}"
                 state: present
-                key: "{{ssh_key}}"
+                key: "{{ ssh_key }}"

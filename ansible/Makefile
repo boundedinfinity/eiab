@@ -9,12 +9,16 @@ playbook_v_exec		:= ansible-playbook -vvv --user=$(ansible_account) playbooks
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
-all:
+everything:
 	make control-node-ntp
 	make control-node-roles
-	make control-node-gpg
+	make control-node-usershelld
 	make control-node-ssh
+	make control-node-ansible
+	make control-node-gpg
 
+control-node-ansible:
+	$(playbook_exec)/control-node-ansible.yml
 
 control-node-gpg:
 	$(playbook_exec)/control-node-gpg.yml
@@ -31,11 +35,6 @@ control-node-usershelld:
 
 control-node-ssh:
 	$(playbook_exec)/control-node-ssh.yml
-
-
-001-ansible-account:
-	$(playbook_exec)/001-ansible-account.yml
-
 
 002-nexus-server:
 	$(playbook_exec)/002-nexus-server.yml
