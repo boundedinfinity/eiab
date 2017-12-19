@@ -1,0 +1,509 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Enterprise in a Box\n\n\nThis project shows a (somewhate) complete enterprise infrastructure.\n\n\nIt will focus on a best practice system architecture which will provide\nexamples of:\n\n\n\n\nConfiguration driven system configuration management\n\n\nHighly available control plane\n\n\nSecurity from the ground up\n\n\n\n\nThis project is meant to be similar in concept as something like the \n\nJava Pet Store\n\nexample application.\n\n\nGuide\n\n\nThe \nGuide\n is a complete step-by-step walkthrough of building the\nenterprise.\n\n\nTools\n\n\nDescription of the tools involved, links back to their home page, and \nuseful information.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#enterprise-in-a-box", 
+            "text": "This project shows a (somewhate) complete enterprise infrastructure.  It will focus on a best practice system architecture which will provide\nexamples of:   Configuration driven system configuration management  Highly available control plane  Security from the ground up   This project is meant to be similar in concept as something like the  Java Pet Store \nexample application.", 
+            "title": "Enterprise in a Box"
+        }, 
+        {
+            "location": "/#guide", 
+            "text": "The  Guide  is a complete step-by-step walkthrough of building the\nenterprise.", 
+            "title": "Guide"
+        }, 
+        {
+            "location": "/#tools", 
+            "text": "Description of the tools involved, links back to their home page, and \nuseful information.", 
+            "title": "Tools"
+        }, 
+        {
+            "location": "/guide/intro/", 
+            "text": "The first step is to configure your development environment.  This project\nwill strive to keep the dependencies you'll need to install to the bare minimum.\n\n\n\n\nWhere:\n\n\n\n\n\n\n\n\nName\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nHost\n\n\nYour laptop or workstation\n\n\n\n\n\n\nControl node\n\n\nThe bootstrap node. This will be the system from which you'll use to build and configuration the rest of the nodes.\n\n\n\n\n\n\nOps node\n\n\nThe operations nodes.  These will contain the meta-system nesscary to support the enterprise build system.\n\n\n\n\n\n\nDS node\n\n\nThe data store nodes.  These will contain any persistance storage required by the rest of the enterprise environment.\n\n\n\n\n\n\nApp node\n\n\nThe application nodes.  These will contained the applications development in the entprise environment", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/guide/macos/", 
+            "text": "Currently this guide will be focused on a macOS worksation with the following minimum requirements:\n\n\n\n\nmacOS High Sierra\n\n\n= 16 GB of memory\n\n\n\n\nThe following utilities need to be installed on the \nHost\n.\n\n\nHomebrew\n\n\nThis first step is to install the \nHomebrew\n package \nmanagement system.\n\n\n/usr/bin/ruby -e \n$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\n\n\n\n\n\n\n\nNote\n\n\nThis command assume that \nRuby\n programming language, the \ncurl\n \nURL command line client, and the \nMake\n build utilty are installed.\n\n\nThese tools should be installed on the default macOS operating system.\n\n\n\n\nOnce the installation is complete, check the installation.\n\n\nbrew --version\n\n\n\n\nwhich should return something similar to:\n\n\nHomebrew 1.3.8\nHomebrew/homebrew-core (git revision eef61; last commit 2017-12-01)\n\n\n\n\nHomebrew Cask\n\n\nInstall the \nHomebrew Cask\n extention. This enables additional package needed for this guide.\n\n\nbrew tap caskroom/cask\n\n\n\n\nNow that that package management utility is installed, it's time to install the tools necessary to build the rest of the sytem.\n\n\nPacker\n\n\nInstall the \nPacker\n utility. \n\n\nbrew install packer\n\n\n\n\nOnce the installation is complete, check the installation.\n\n\npacker version\n\n\n\n\nwhich should return something similar to:\n\n\nPacker v1.1.2\n\n\n\n\nVirtualBox\n\n\nInstall the \nVirtualBox\n virtualization\nsystem.  This will allow you to provision virtualized guest operating system.\n\n\nAfter installation you can open a terminal and type:\n\n\nbrew cask install virtualbox\n\n\n\n\nOnce the installation is complete, check the installation.\n\n\nvboxmanage --version\n\n\n\n\nwhich should return something similar to:\n\n\n5.2.0r118431\n\n\n\n\nVagrant\n\n\nInstall the \nVagrant\n virtualization managment\nand workflow tools.  This is manage the provisioning of the virtualized guest\nsystems used in this tutorial.\n\n\nAfter installation you can open a terminal and type:\n\n\nbrew cask install vagrant\n\n\n\n\nOnce the installation is complete, check the installation.\n\n\nvagrant version\n\n\n\n\nwhich should return something similar to:\n\n\nInstalled Version: 2.0.1\nLatest Version: 2.0.1\n\n\n\n\nGit\n\n\nInstall the \nGit\n source control utility. \n\n\nbrew install git\n\n\n\n\nOnce the installation is complete, check the installation.\n\n\ngit --version\n\n\n\n\nwhich should return something similar to:\n\n\ngit version 2.15.1", 
+            "title": "macOS"
+        }, 
+        {
+            "location": "/guide/macos/#homebrew", 
+            "text": "This first step is to install the  Homebrew  package \nmanagement system.  /usr/bin/ruby -e  $(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)    Note  This command assume that  Ruby  programming language, the  curl  \nURL command line client, and the  Make  build utilty are installed.  These tools should be installed on the default macOS operating system.   Once the installation is complete, check the installation.  brew --version  which should return something similar to:  Homebrew 1.3.8\nHomebrew/homebrew-core (git revision eef61; last commit 2017-12-01)", 
+            "title": "Homebrew"
+        }, 
+        {
+            "location": "/guide/macos/#homebrew-cask", 
+            "text": "Install the  Homebrew Cask  extention. This enables additional package needed for this guide.  brew tap caskroom/cask  Now that that package management utility is installed, it's time to install the tools necessary to build the rest of the sytem.", 
+            "title": "Homebrew Cask"
+        }, 
+        {
+            "location": "/guide/macos/#packer", 
+            "text": "Install the  Packer  utility.   brew install packer  Once the installation is complete, check the installation.  packer version  which should return something similar to:  Packer v1.1.2", 
+            "title": "Packer"
+        }, 
+        {
+            "location": "/guide/macos/#virtualbox", 
+            "text": "Install the  VirtualBox  virtualization\nsystem.  This will allow you to provision virtualized guest operating system.  After installation you can open a terminal and type:  brew cask install virtualbox  Once the installation is complete, check the installation.  vboxmanage --version  which should return something similar to:  5.2.0r118431", 
+            "title": "VirtualBox"
+        }, 
+        {
+            "location": "/guide/macos/#vagrant", 
+            "text": "Install the  Vagrant  virtualization managment\nand workflow tools.  This is manage the provisioning of the virtualized guest\nsystems used in this tutorial.  After installation you can open a terminal and type:  brew cask install vagrant  Once the installation is complete, check the installation.  vagrant version  which should return something similar to:  Installed Version: 2.0.1\nLatest Version: 2.0.1", 
+            "title": "Vagrant"
+        }, 
+        {
+            "location": "/guide/macos/#git", 
+            "text": "Install the  Git  source control utility.   brew install git  Once the installation is complete, check the installation.  git --version  which should return something similar to:  git version 2.15.1", 
+            "title": "Git"
+        }, 
+        {
+            "location": "/guide/source/", 
+            "text": "Download the source code for this project:\n\n\ngit clone https://github.com/boundedinfinity/eiab.git\n\n\n\n\nThis will create the following directory structure:\n\n\neiab\n\u251c\u2500\u2500 ansible/\n\u251c\u2500\u2500 mkdocs/\n\u251c\u2500\u2500 packer/\n\u251c\u2500\u2500 Brewfile\n\u251c\u2500\u2500 readme.md\n\u251c\u2500\u2500 Makefile \n\u2514\u2500\u2500 Vagrantfile\n\n\n\n\nFor the rest of the guide the \neiab\n directory will be denoted as something like \n$EIAB_DIR\n for\nthe purposes of scripts and examples.", 
+            "title": "Project Source"
+        }, 
+        {
+            "location": "/guide/machine-image/", 
+            "text": "The build process relies on the \nboxcutter centos\n build configuration project.\n\n\nThe following series of command must be ran from the \n$EIAB_DIR/packer\n:\n\n\ncd $EIAB_DIR/packer\n\n\n\n\nDownload the system by:\n\n\ngit clone https://github.com/boxcutter/centos.git boxcutter-centos\n\n\n\n\nBuild the machine image that will be used for this guide.\n\n\npacker build -only=virtualbox-iso -var-file=../eiab-var.json centos.json\n\n\n\n\nThis step may take quite a while to finish.  It should end with something similar to the following:\n\n\nBuild 'virtualbox-iso' finished.\n\n==\n Builds finished. The artifacts of successful builds are:\n--\n virtualbox-iso: 'virtualbox' provider box: box/virtualbox/centos7-0.0.99.box\n\n\n\n\nThis will perform the following:\n\n\n\n\nDownload the and verify the \nCentOS\n ISO and verify the image against the configure checksum\n\n\nCreates a \nVirtualBox\n image using the \nVirtualBox Builder\n\n\nCreate a local \nkickstart\n environment, and perform the OS installation\n\n\nProvision the necessary \nVirtualBox\n configuration\n\n\nConverts the image to a \nVagrant Box\n using the \nVagrant Post-Processor\n \n\n\n\n\nImport the box into the local \nVagrant\n cache:\n\n\nvagrant box add --name bi/eiab boxcutter-centos/box/virtualbox/centos-7.4.box\n\n\n\n\nNext list the boxes.\n\n\nvagrant box list\n\n\n\n\nYou should see a line similar to the following:\n\n\n...\n...\nbi/eiab                                 (virtualbox, 0)\n...\n...", 
+            "title": "Machine Image"
+        }, 
+        {
+            "location": "/guide/vagrant/", 
+            "text": "Install the \nvagrant-hostmanager\n plugin.\n\n\nvagrant plugin install vagrant-hostmanager\n\n\n\n\nThe following series of command must be ran from the \n$EIAB_DIR\n:\n\n\ncd $EIAB_DIR\n\n\n\n\nNow it's time to start up the nodes:\n\n\nvagrant up\n\n\n\n\n\n\nNote\n\n\nThis may take serveral minutes to complete.", 
+            "title": "Virtual Machines"
+        }, 
+        {
+            "location": "/guide/control-node/", 
+            "text": "The following series of command must be ran from the \n$EIAB_DIR\n:\n\n\ncd $EIAB_DIR\n\n\n\n\nLog into the \ncontrol\n node.\n\n\nvagrant ssh control\n\n\n\n\nOnce inside the VM, the following series of command must be ran from the \n/vagrant\n:\n\n\nThen type:\n\n\ncd /vagrant\n\n\n\n\nOnce inside the \n/vagrant\n directory perform a directory listing. You should see something similar \nto the following:\n\n\nls -l \ndrwxr-xr-x.  1 vagrant vagrant  544 Dec  2 05:33 .\ndr-xr-xr-x. 18 root    root     239 Dec  2 05:27 ..\ndrwxr-xr-x.  1 vagrant vagrant  408 Aug 29 23:02 ansible\n-rw-r--r--.  1 vagrant vagrant  175 Dec  2 05:29 Brewfile\n-rw-r--r--.  1 vagrant vagrant  133 Aug 19 07:25 .editorconfig\ndrwxr-xr-x.  1 vagrant vagrant  510 Dec  2 01:07 .git\n-rw-r--r--.  1 vagrant vagrant   29 Aug 25 19:11 .gitignore\n-rw-r--r--.  1 vagrant vagrant 2621 Sep  2 06:29 Makefile\ndrwxr-xr-x.  1 vagrant vagrant  238 Nov 25 00:20 mkdocs\ndrwxr-xr-x.  1 vagrant vagrant  204 Dec  2 01:12 packer\n-rw-r--r--.  1 vagrant vagrant 2505 Jul 28 23:44 readme.md\n-rw-r--r--.  1 vagrant vagrant  346 Aug 19 05:53 research.md\n-rw-r--r--.  1 vagrant vagrant 2440 Aug 19 05:53 services.md\n-rw-r--r--.  1 vagrant vagrant  352 Aug 20 10:58 temp.md\ndrwxr-xr-x.  1 vagrant vagrant  102 Aug 19 06:17 .vagrant\n-rw-r--r--.  1 vagrant vagrant 1323 Dec  2 05:26 Vagrantfile\n\n\n\n\nThe content may not exactly match the example above, but the important thing is that\nyou should see the project files.\n\n\nThe following series of command must be ran from the \n/vagrant/ansible\n directory:\n\n\ncd /vagrant/ansible\n\n\n\n\nClock\n\n\nConfigure the clock via the \nNetwork Time Protocol\n.  This will fix \nclock skew errors.\n\n\nmake control-node-ntp\n\n\n\n\nAnsible roles\n\n\nInstall any required third party roles from \nAnsible Galaxy\n.\n\n\nmake control-node-roles\n\n\n\n\n\n\nWarning\n\n\nForgot what this is for.\n\n\n\n\nUserShellD\n\n\nInstall the \nUserShellD\n framework.\n\n\nmake control-node-usershelld\n\n\n\n\nThis framework provides a linux style \n.d\n directories that helps with development work\nand automation tasks.\n\n\nSSH\n\n\nConfigure the \nSSH\n utilities.\n\n\nmake control-node-ssh\n\n\n\n\nThis will:\n\n\n\n\nInstall a \nssh-agent\n lifecycle management scripts.\n\n\nGenerate the ssh keypair with the \nThere and back again!\n as the passphrase\n\n\nImport the remote host finger prints from all the nodes in the architecture\n\n\n\n\nThen you'll need to add your generated key to the cache:\n\n\nssh-add ~/.ssh/id_rsa\n# Enter the passphrase from above\n\n\n\n\n\n\nNote\n\n\nYou'll need repeat this step if the agent is restarted\n\n\n\n\nYou can check the key by:\n\n\n# for private keys\nssh-add -l\n# for public keys\nssh-add -L\n\n\n\n\nGPG\n\n\nInstall the \nGnu Privacy Guard\n (GPG) utilities, and a few other packages \nrequired for this guide.\n\n\nmake control-node-gpg\n\n\n\n\nAfter installation you can open a terminal and type:\n\n\ngpg --version\n\n\n\n\n\n\nNote\n\n\nTo properly enable the GnuPG agent functionality, log out of the control node\nand log back in.\n\n\n\n\nYou should see something similar to the following.\n\n\ngpg (GnuPG) 2.0.22\nlibgcrypt 1.5.3\n...\n...\n...\n\n\n\n\nHelp generate some random entropy for key generation.  \n\n\n\n\nNote\n\n\nThis step is mainly required to generate entropy while running inside a VM.  This shouldn't \nbe necessary when running on a physical computer.\n\n\n\n\nsudo rngd -r /dev/urandom\n\n\n\n\nThen generate a key:\n\n\ngpg --gen-key\n\n\n\n\nUsing the following parameters:\n\n\n\n\nKey type: \n1\n for the \nRSA and RSA (default)\n option\n\n\nKey length: \n4096\n\n\nExpire Date: \n0\n for the \nkey does not expire\n option\n\n\nIs this correct?: \ny\n\n\nReal name: \nBilbo Baggins\n\n\nEmail: \nbilbo@shire.vil\n\n\nComment: \nenter\n (leave blank)\n\n\nChange (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?: \no\n for the \n(O)kay\n option\n\n\nPassphrase: \nThere and back again!\n\n\n\n\nAfter the key generation is complete, view the key:\n\n\ngpg --list-keys\n# or\ngpg -k\n\n\n\n\nwhich should display something similar to the following:\n\n\n/home/vagrant/.gnupg/pubring.gpg\n--------------------------------\npub   4096R/C00B50B8 2017-12-02\nuid                  Bilbo Baggins \nbilbo@shire.vil\n\nsub   4096R/45FB4738 2017-12-02\n\n\n\n\nConfigure your subkeys:\n\n\ngpg --expert --edit-key bilbo@shire.vil\n\n\n\n\nRemove the autogenerated subkey:\n\n\nlist\n# there should on by one subkey\nkey 1\n# to select the key\nlist\n# the key should be marked with a '*'\ndelkey\n# You may need to enter your passphrase at this point\n\n\n\n\nThe select \ny\n to complete. Now add an authentication subkey:\n\n\naddkey\n# You may need to enter your passphrase at this point\n\n\n\n\n\n\nKey type: \n8\n for the \nRSA (set your own capabilities)\n option\n\n\nConfigure the following options: \n\n\ns\n to disable the sign capability\n\n\ne\n to disable the encrypt capability\n\n\na\n to enable the authenticate capability\n\n\n\n\n\n\nq\n to quit the capabilitiy editor\n\n\nKey length: \n4096\n\n\nExpire Date: \n0\n for the \nkey does not expire\n option\n\n\nIs this correct?: \ny\n\n\nReally create?: \ny\n\n\nquit\n and save changes", 
+            "title": "Control node"
+        }, 
+        {
+            "location": "/guide/control-node/#clock", 
+            "text": "Configure the clock via the  Network Time Protocol .  This will fix \nclock skew errors.  make control-node-ntp", 
+            "title": "Clock"
+        }, 
+        {
+            "location": "/guide/control-node/#ansible-roles", 
+            "text": "Install any required third party roles from  Ansible Galaxy .  make control-node-roles   Warning  Forgot what this is for.", 
+            "title": "Ansible roles"
+        }, 
+        {
+            "location": "/guide/control-node/#usershelld", 
+            "text": "Install the  UserShellD  framework.  make control-node-usershelld  This framework provides a linux style  .d  directories that helps with development work\nand automation tasks.", 
+            "title": "UserShellD"
+        }, 
+        {
+            "location": "/guide/control-node/#ssh", 
+            "text": "Configure the  SSH  utilities.  make control-node-ssh  This will:   Install a  ssh-agent  lifecycle management scripts.  Generate the ssh keypair with the  There and back again!  as the passphrase  Import the remote host finger prints from all the nodes in the architecture   Then you'll need to add your generated key to the cache:  ssh-add ~/.ssh/id_rsa\n# Enter the passphrase from above   Note  You'll need repeat this step if the agent is restarted   You can check the key by:  # for private keys\nssh-add -l\n# for public keys\nssh-add -L", 
+            "title": "SSH"
+        }, 
+        {
+            "location": "/guide/control-node/#gpg", 
+            "text": "Install the  Gnu Privacy Guard  (GPG) utilities, and a few other packages \nrequired for this guide.  make control-node-gpg  After installation you can open a terminal and type:  gpg --version   Note  To properly enable the GnuPG agent functionality, log out of the control node\nand log back in.   You should see something similar to the following.  gpg (GnuPG) 2.0.22\nlibgcrypt 1.5.3\n...\n...\n...  Help generate some random entropy for key generation.     Note  This step is mainly required to generate entropy while running inside a VM.  This shouldn't \nbe necessary when running on a physical computer.   sudo rngd -r /dev/urandom  Then generate a key:  gpg --gen-key  Using the following parameters:   Key type:  1  for the  RSA and RSA (default)  option  Key length:  4096  Expire Date:  0  for the  key does not expire  option  Is this correct?:  y  Real name:  Bilbo Baggins  Email:  bilbo@shire.vil  Comment:  enter  (leave blank)  Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?:  o  for the  (O)kay  option  Passphrase:  There and back again!   After the key generation is complete, view the key:  gpg --list-keys\n# or\ngpg -k  which should display something similar to the following:  /home/vagrant/.gnupg/pubring.gpg\n--------------------------------\npub   4096R/C00B50B8 2017-12-02\nuid                  Bilbo Baggins  bilbo@shire.vil \nsub   4096R/45FB4738 2017-12-02  Configure your subkeys:  gpg --expert --edit-key bilbo@shire.vil  Remove the autogenerated subkey:  list\n# there should on by one subkey\nkey 1\n# to select the key\nlist\n# the key should be marked with a '*'\ndelkey\n# You may need to enter your passphrase at this point  The select  y  to complete. Now add an authentication subkey:  addkey\n# You may need to enter your passphrase at this point   Key type:  8  for the  RSA (set your own capabilities)  option  Configure the following options:   s  to disable the sign capability  e  to disable the encrypt capability  a  to enable the authenticate capability    q  to quit the capabilitiy editor  Key length:  4096  Expire Date:  0  for the  key does not expire  option  Is this correct?:  y  Really create?:  y  quit  and save changes", 
+            "title": "GPG"
+        }, 
+        {
+            "location": "/guide/ansible/", 
+            "text": "Create an \nansible\n user that will be used for the automation of the infrastructure.\n\n\nmake ansible\n\n\n\n\nThis will:\n\n\n\n\nEnsure an ansible user is exist on all nodes\n\n\nConfigure this user with \nsudo\n privileges\n\n\nRegister your SSH public key for the ansible user on all nodes (the keys created during the \n    \nSSH\n steps)\n\n\n\n\n\n\nNote\n\n\nIn a real production environment you should probably remove the default cloud instance account.\n\n\n\n\n\n\nNote\n\n\nThis playbook to perform this uses the \nbootstrap\n inventory group.  This group is configured to use ssh via username/password (in the \ngroup_vars/bootstrap.yml\n configuration file) to configure the ssh passwordless log in.", 
+            "title": "Ansible"
+        }, 
+        {
+            "location": "/guide/all-nodes/", 
+            "text": "Common Configuration for all nodes\n\n\nClock\n\n\nConfigure the clock via the \nNetwork Time Protocol\n.  This will fix \nclock skew errors.\n\n\nmake all-nodes-ntp\n\n\n\n\n\n\nNote\n\n\nTODO: Internal NTP master\n\n\n\n\nCommon utilities\n\n\nInstall a number of helpful utilities\n\n\nmake all-nodes-utilities", 
+            "title": "All nodes"
+        }, 
+        {
+            "location": "/guide/all-nodes/#clock", 
+            "text": "Configure the clock via the  Network Time Protocol .  This will fix \nclock skew errors.  make all-nodes-ntp   Note  TODO: Internal NTP master", 
+            "title": "Clock"
+        }, 
+        {
+            "location": "/guide/all-nodes/#common-utilities", 
+            "text": "Install a number of helpful utilities  make all-nodes-utilities", 
+            "title": "Common utilities"
+        }, 
+        {
+            "location": "/guide/consul/", 
+            "text": "", 
+            "title": "Consul"
+        }, 
+        {
+            "location": "/tools/ansible/", 
+            "text": "Ansible\n a configuration management system.\n\n\n\n\nNote\n\n\nGuide version: \n2.4.1.0\n\n\n\n\nGet the version\n\n\nansible --version\n\n\n\n\nCreate a roles directory\n\n\nansible-galaxy init \nnamespace\n.\nrole name\n\n\n\n\n\nReference\n\n\n\n\nProject page\n\n\nModule Index\n\n\nConfiguration file : role_path\n\n\nAnsilbe Galaxy\n\n\nConfiguration file: role_path\n\n\n\n\n\n\n\n\n\n\nCustom Ansible Module Hello World", 
+            "title": "Ansible"
+        }, 
+        {
+            "location": "/tools/ansible/#get-the-version", 
+            "text": "ansible --version", 
+            "title": "Get the version"
+        }, 
+        {
+            "location": "/tools/ansible/#create-a-roles-directory", 
+            "text": "ansible-galaxy init  namespace . role name", 
+            "title": "Create a roles directory"
+        }, 
+        {
+            "location": "/tools/ansible/#reference", 
+            "text": "Project page  Module Index  Configuration file : role_path  Ansilbe Galaxy  Configuration file: role_path      Custom Ansible Module Hello World", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/atom/", 
+            "text": "", 
+            "title": "Atom"
+        }, 
+        {
+            "location": "/tools/consul/", 
+            "text": "Consul\n\n\n\n\nService checking, inventory, and discovery tool.\n\n\nhttps://www.consul.io", 
+            "title": "Consul"
+        }, 
+        {
+            "location": "/tools/curl/", 
+            "text": "curl\n is a command line utility to interact with URLs.\n\n\n\n\nNote\n\n\nGuide version: \n7.54.0\n\n\n\n\nGet the version\n\n\ncurl --version\n\n\n\n\nReference\n\n\n\n\nProject page", 
+            "title": "curl"
+        }, 
+        {
+            "location": "/tools/curl/#get-the-version", 
+            "text": "curl --version", 
+            "title": "Get the version"
+        }, 
+        {
+            "location": "/tools/curl/#reference", 
+            "text": "Project page", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/docker/", 
+            "text": "Docker\n\n\n\n\nContainer platform and management tool.\n\n\nhttps://www.docker.com", 
+            "title": "Docker"
+        }, 
+        {
+            "location": "/tools/git/", 
+            "text": "Git\n is a source control management tool.\n\n\n\n\nNote\n\n\nGuide version: \n2.15.1\n\n\n\n\nGet the version\n\n\ngit --version\n\n\n\n\nReference\n\n\n\n\nProject page", 
+            "title": "Git"
+        }, 
+        {
+            "location": "/tools/git/#get-the-version", 
+            "text": "git --version", 
+            "title": "Get the version"
+        }, 
+        {
+            "location": "/tools/git/#reference", 
+            "text": "Project page", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/gpg/", 
+            "text": "Gnu Privacy Guard\n (GPG) is a encryption utility.\n\n\n\n\nNote\n\n\nGuide version: \n2.0.22\n\n\n\n\nCheck the version\n\n\ngpg --version\n\n\n\n\nGenerate a key\n\n\ngpg --gen-key\n\n\n\n\nList public keys\n\n\ngpg -k\n# or \ngpg --list-keys\n#\ngpg --list-keys --with-colons\n\n\n\n\nList secret keys\n\n\ngpg -K\n# or \ngpg --list-secret-keys\n\n\n\n\nExport a key in ASCII format\n\n\ngpg --export \nemail address\n | base64\n\n\n\n\nRun the agent\n\n\ngpg-agent --daemon\n\n\n\n\nKill the agent\n\n\npkill gpg-agent\n\n\n\n\nReference\n\n\n\n\nProject Page\n\n\nInvoking GPG-AGENT\n\n\nUnattended key generation\n\n\n\n\n\n\nRng-tools\n\n\nArticles\n\n\nCREATING THE PERFECT GPG KEYPAIR\n\n\nGenerating More Secure GPG Keys: A Step-by-Step Guide\n\n\nHow to use a GPG key for SSH authentication", 
+            "title": "GPG"
+        }, 
+        {
+            "location": "/tools/gpg/#check-the-version", 
+            "text": "gpg --version", 
+            "title": "Check the version"
+        }, 
+        {
+            "location": "/tools/gpg/#generate-a-key", 
+            "text": "gpg --gen-key", 
+            "title": "Generate a key"
+        }, 
+        {
+            "location": "/tools/gpg/#list-public-keys", 
+            "text": "gpg -k\n# or \ngpg --list-keys\n#\ngpg --list-keys --with-colons", 
+            "title": "List public keys"
+        }, 
+        {
+            "location": "/tools/gpg/#list-secret-keys", 
+            "text": "gpg -K\n# or \ngpg --list-secret-keys", 
+            "title": "List secret keys"
+        }, 
+        {
+            "location": "/tools/gpg/#export-a-key-in-ascii-format", 
+            "text": "gpg --export  email address  | base64", 
+            "title": "Export a key in ASCII format"
+        }, 
+        {
+            "location": "/tools/gpg/#run-the-agent", 
+            "text": "gpg-agent --daemon", 
+            "title": "Run the agent"
+        }, 
+        {
+            "location": "/tools/gpg/#kill-the-agent", 
+            "text": "pkill gpg-agent", 
+            "title": "Kill the agent"
+        }, 
+        {
+            "location": "/tools/gpg/#reference", 
+            "text": "Project Page  Invoking GPG-AGENT  Unattended key generation    Rng-tools  Articles  CREATING THE PERFECT GPG KEYPAIR  Generating More Secure GPG Keys: A Step-by-Step Guide  How to use a GPG key for SSH authentication", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/homebrew/", 
+            "text": "Homebrew\n\n\nHomebrew\n is an macOS package management system.\n\n\n\n\nNote\n\n\nGuide version: \n1.3.8\n\n\n\n\nCheck the version\n\n\nbrew --version\n\n\n\n\nFind a package\n\n\nbrew search \npackage name\n\n\n\n\n\nInstall a package\n\n\nbrew install \npackage name\n\n\n\n\n\nReference\n\n\n\n\nProject page\n\n\nHomebrew Cask\n\n\nSearch page", 
+            "title": "Homebrew"
+        }, 
+        {
+            "location": "/tools/homebrew/#homebrew", 
+            "text": "Homebrew  is an macOS package management system.   Note  Guide version:  1.3.8", 
+            "title": "Homebrew"
+        }, 
+        {
+            "location": "/tools/homebrew/#check-the-version", 
+            "text": "brew --version", 
+            "title": "Check the version"
+        }, 
+        {
+            "location": "/tools/homebrew/#find-a-package", 
+            "text": "brew search  package name", 
+            "title": "Find a package"
+        }, 
+        {
+            "location": "/tools/homebrew/#install-a-package", 
+            "text": "brew install  package name", 
+            "title": "Install a package"
+        }, 
+        {
+            "location": "/tools/homebrew/#reference", 
+            "text": "Project page  Homebrew Cask  Search page", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/httpie/", 
+            "text": "HTTPie\n\n\n\n\nCLI HTTP tool.\n\n\nhttps://httpie.org/doc#examples", 
+            "title": "HTTPie"
+        }, 
+        {
+            "location": "/tools/jq/", 
+            "text": "jq\n\n\n\n\nCLI JSON manipulation tool.", 
+            "title": "jq"
+        }, 
+        {
+            "location": "/tools/keychain/", 
+            "text": "Keychain\n is a SSH and GPG agent management system.\n\n\nStopping all agents\n\n\nkeychain -k all\n\n\n\n\nStopping agents started by keychain\n\n\nkeychain -k mine\n\n\n\n\nClearing Keys\n\n\nkeychain --clear\n\n\n\n\nReference\n\n\n\n\nProject Page\n\n\nArticles\n\n\nOpenSSH Key Management, Part 1\n\n\nOpenSSH Key Management, Part 2\n\n\nOpenSSH Key Management, Part 3", 
+            "title": "Keychain"
+        }, 
+        {
+            "location": "/tools/keychain/#stopping-all-agents", 
+            "text": "keychain -k all", 
+            "title": "Stopping all agents"
+        }, 
+        {
+            "location": "/tools/keychain/#stopping-agents-started-by-keychain", 
+            "text": "keychain -k mine", 
+            "title": "Stopping agents started by keychain"
+        }, 
+        {
+            "location": "/tools/keychain/#clearing-keys", 
+            "text": "keychain --clear", 
+            "title": "Clearing Keys"
+        }, 
+        {
+            "location": "/tools/keychain/#reference", 
+            "text": "Project Page  Articles  OpenSSH Key Management, Part 1  OpenSSH Key Management, Part 2  OpenSSH Key Management, Part 3", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/kong/", 
+            "text": "Kong\n\n\n\n\nAPI proxy and management tool.\n\n\nhttps://getkong.org/", 
+            "title": "Kong"
+        }, 
+        {
+            "location": "/tools/make/", 
+            "text": "Make\n is a build utility.\n\n\n\n\nNote\n\n\nGuide version: \n3.81\n\n\n\n\nCheck the version\n\n\nmake --version\n\n\n\n\nReference\n\n\n\n\nProject page", 
+            "title": "Make"
+        }, 
+        {
+            "location": "/tools/make/#check-the-version", 
+            "text": "make --version", 
+            "title": "Check the version"
+        }, 
+        {
+            "location": "/tools/make/#reference", 
+            "text": "Project page", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/mkdocs/", 
+            "text": "http://www.mkdocs.org/\n\n\nhttps://mkdocs.readthedocs.io", 
+            "title": "MkDocs"
+        }, 
+        {
+            "location": "/tools/nexus/", 
+            "text": "Nexus\n\n\n\n\nBinary repository tool.\n\n\nhttps://help.sonatype.com/display/NXRM3/REST+and+Integration+API", 
+            "title": "Nexus"
+        }, 
+        {
+            "location": "/tools/packer/", 
+            "text": "Packer\n is a build automation tool that manages machine images.\n\n\n\n\nNote\n\n\nGuide version: \n1.1.2\n\n\n\n\nGet the version\n\n\npacker version\n\n\n\n\nBuild an image\n\n\npacker build -only=virtualbox-iso -var-file=centos7.json centos.json\n...\n...\n...\n==\n Builds finished. The artifacts of successful builds are:\n--\n virtualbox-iso: 'virtualbox' provider box: box/virtualbox/centos7-0.0.99.box\n\n\n\n\nReference\n\n\n\n\nProject page\n\n\nDocumentation\n\n\nCLI\n\n\n\n\n\n\n\n\n\n\nboxcutter/centos", 
+            "title": "Packer"
+        }, 
+        {
+            "location": "/tools/packer/#get-the-version", 
+            "text": "packer version", 
+            "title": "Get the version"
+        }, 
+        {
+            "location": "/tools/packer/#build-an-image", 
+            "text": "packer build -only=virtualbox-iso -var-file=centos7.json centos.json\n...\n...\n...\n==  Builds finished. The artifacts of successful builds are:\n--  virtualbox-iso: 'virtualbox' provider box: box/virtualbox/centos7-0.0.99.box", 
+            "title": "Build an image"
+        }, 
+        {
+            "location": "/tools/packer/#reference", 
+            "text": "Project page  Documentation  CLI      boxcutter/centos", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/prometheus/", 
+            "text": "Prometheus\n\n\n\n\nMonitoring and visualization tool.\n\n\nhttps://prometheus.io", 
+            "title": "Prometheus"
+        }, 
+        {
+            "location": "/tools/ruby/", 
+            "text": "Ruby\n\n\nhttps://www.ruby-lang.org", 
+            "title": "Ruby"
+        }, 
+        {
+            "location": "/tools/ruby/#ruby", 
+            "text": "https://www.ruby-lang.org", 
+            "title": "Ruby"
+        }, 
+        {
+            "location": "/tools/ssh/", 
+            "text": "OpenSSH\n secure remote connection utility.\n\n\n\n\nNote\n\n\nGuide version: \n7.4\n\n\n\n\nCheck the version\n\n\nssh -V\n\n\n\n\nAdd key pair cache\n\n\nssh-add ~/.ssh/id_rsa\n\n\n\n\nList private keys in cache\n\n\nssh-add -l\n\n\n\n\nList public keys in cache\n\n\nssh-add -L\n\n\n\n\nRun the agent\n\n\nssh-agent -s\n\n\n\n\nKill the agent\n\n\npkill ssh-agent\n\n\n\n\nReference\n\n\n\n\nProject page", 
+            "title": "SSH"
+        }, 
+        {
+            "location": "/tools/ssh/#check-the-version", 
+            "text": "ssh -V", 
+            "title": "Check the version"
+        }, 
+        {
+            "location": "/tools/ssh/#add-key-pair-cache", 
+            "text": "ssh-add ~/.ssh/id_rsa", 
+            "title": "Add key pair cache"
+        }, 
+        {
+            "location": "/tools/ssh/#list-private-keys-in-cache", 
+            "text": "ssh-add -l", 
+            "title": "List private keys in cache"
+        }, 
+        {
+            "location": "/tools/ssh/#list-public-keys-in-cache", 
+            "text": "ssh-add -L", 
+            "title": "List public keys in cache"
+        }, 
+        {
+            "location": "/tools/ssh/#run-the-agent", 
+            "text": "ssh-agent -s", 
+            "title": "Run the agent"
+        }, 
+        {
+            "location": "/tools/ssh/#kill-the-agent", 
+            "text": "pkill ssh-agent", 
+            "title": "Kill the agent"
+        }, 
+        {
+            "location": "/tools/ssh/#reference", 
+            "text": "Project page", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/usershelld/", 
+            "text": "UserShellD", 
+            "title": "UserShellD"
+        }, 
+        {
+            "location": "/tools/vagrant/", 
+            "text": "Vagrant\n is a development automation tool.\n\n\n\n\nNote\n\n\nGuide version: \n2.0.1\n\n\n\n\nCheck the version\n\n\nvagrant version\n# or\nvagrant --version\n\n\n\n\nImport a box\n\n\nvagrant box add --name \nname\n \npath/to/box\n\n\n\n\n\nExample name:\n\n\n\n\nbi/eiab\n\n\n\n\nRemove a box\n\n\nvagrant box remove \nname\n\n\n\n\n\nExample name:\n\n\n\n\nbi/eiab\n\n\n\n\nList locally cached boxes\n\n\nvagrant box list\n\n\n\n\nStart a machine\n\n\nvagrant up\n# or\nvagrant up \nmachine name\n\n\n\n\n\nLog into a machine\n\n\nvagrant ssh\n# or\nvagrant ssh \nmachine name\n\n\n\n\n\nInstall plugin\n\n\nvagrant plugin install \nplugin name\n\n\n\n\n\nList available plugins\n\n\ngem list --remote vagrant-\n\n\n\n\nUpdate the host file\n\n\nvagrant hostmanager\n\n\n\n\nOr browse to the \nVagrant plugins wiki\n.\n\n\nReference\n\n\n\n\nProject Page\n\n\nPlugins\n\n\nvagrant-hostmanager plugin", 
+            "title": "Vagrant"
+        }, 
+        {
+            "location": "/tools/vagrant/#check-the-version", 
+            "text": "vagrant version\n# or\nvagrant --version", 
+            "title": "Check the version"
+        }, 
+        {
+            "location": "/tools/vagrant/#import-a-box", 
+            "text": "vagrant box add --name  name   path/to/box   Example name:   bi/eiab", 
+            "title": "Import a box"
+        }, 
+        {
+            "location": "/tools/vagrant/#remove-a-box", 
+            "text": "vagrant box remove  name   Example name:   bi/eiab", 
+            "title": "Remove a box"
+        }, 
+        {
+            "location": "/tools/vagrant/#list-locally-cached-boxes", 
+            "text": "vagrant box list", 
+            "title": "List locally cached boxes"
+        }, 
+        {
+            "location": "/tools/vagrant/#start-a-machine", 
+            "text": "vagrant up\n# or\nvagrant up  machine name", 
+            "title": "Start a machine"
+        }, 
+        {
+            "location": "/tools/vagrant/#log-into-a-machine", 
+            "text": "vagrant ssh\n# or\nvagrant ssh  machine name", 
+            "title": "Log into a machine"
+        }, 
+        {
+            "location": "/tools/vagrant/#install-plugin", 
+            "text": "vagrant plugin install  plugin name", 
+            "title": "Install plugin"
+        }, 
+        {
+            "location": "/tools/vagrant/#list-available-plugins", 
+            "text": "gem list --remote vagrant-", 
+            "title": "List available plugins"
+        }, 
+        {
+            "location": "/tools/vagrant/#update-the-host-file", 
+            "text": "vagrant hostmanager  Or browse to the  Vagrant plugins wiki .", 
+            "title": "Update the host file"
+        }, 
+        {
+            "location": "/tools/vagrant/#reference", 
+            "text": "Project Page  Plugins  vagrant-hostmanager plugin", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/tools/vault/", 
+            "text": "Vault\n\n\n\n\nAPI credentials, encryption, storage, and management tool.\n\n\nhttps://www.vaultproject.io", 
+            "title": "Vault"
+        }, 
+        {
+            "location": "/tools/yum/", 
+            "text": "Yellowdog Updater Modified\n (YUM) package management system.\n\n\nInstall a package\n\n\nyum install -y \npackage name\n\n\n\n\n\nList installed packages\n\n\nyum list installed\n\n\n\n\nList available packages\n\n\nyum list available\n\n\n\n\nReference\n\n\n\n\nProject Page", 
+            "title": "YUM"
+        }, 
+        {
+            "location": "/tools/yum/#install-a-package", 
+            "text": "yum install -y  package name", 
+            "title": "Install a package"
+        }, 
+        {
+            "location": "/tools/yum/#list-installed-packages", 
+            "text": "yum list installed", 
+            "title": "List installed packages"
+        }, 
+        {
+            "location": "/tools/yum/#list-available-packages", 
+            "text": "yum list available", 
+            "title": "List available packages"
+        }, 
+        {
+            "location": "/tools/yum/#reference", 
+            "text": "Project Page", 
+            "title": "Reference"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "", 
+            "title": "About"
+        }
+    ]
+}

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Control node - Enterprise in a Box</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Control node";
+    var mkdocs_page_input_path = "guide/control-node.md";
+    var mkdocs_page_url = "/guide/control-node/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Enterprise in a Box</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../intro/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../macos/">macOS</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../source/">Project Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../machine-image/">Machine Image</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vagrant/">Virtual Machines</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">Control node</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#clock">Clock</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ansible-roles">Ansible roles</a></li>
+    
+
+    <li class="toctree-l3"><a href="#usershelld">UserShellD</a></li>
+    
+
+    <li class="toctree-l3"><a href="#ssh">SSH</a></li>
+    
+
+    <li class="toctree-l3"><a href="#gpg">GPG</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ansible/">Ansible</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../all-nodes/">All nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../consul/">Consul</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tools</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tools/ansible/">Ansible</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/atom/">Atom</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/consul/">Consul</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/curl/">curl</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/docker/">Docker</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/git/">Git</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/gpg/">GPG</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/homebrew/">Homebrew</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/httpie/">HTTPie</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/jq/">jq</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/keychain/">Keychain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/kong/">Kong</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/make/">Make</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/mkdocs/">MkDocs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/nexus/">Nexus</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/packer/">Packer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/prometheus/">Prometheus</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/ruby/">Ruby</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/ssh/">SSH</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/usershelld/">UserShellD</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/vagrant/">Vagrant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/vault/">Vault</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/yum/">YUM</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Enterprise in a Box</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guide &raquo;</li>
+        
+      
+    
+    <li>Control node</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/boundedinfinity/eiab/edit/master/docs/guide/control-node.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>The following series of command must be ran from the <code>$EIAB_DIR</code>:</p>
+<pre><code class="bash">cd $EIAB_DIR
+</code></pre>
+
+<p>Log into the <strong>control</strong> node.</p>
+<pre><code class="bash">vagrant ssh control
+</code></pre>
+
+<p>Once inside the VM, the following series of command must be ran from the <code>/vagrant</code>:</p>
+<p>Then type:</p>
+<pre><code class="bash">cd /vagrant
+</code></pre>
+
+<p>Once inside the <strong>/vagrant</strong> directory perform a directory listing. You should see something similar 
+to the following:</p>
+<pre><code class="bash">ls -l 
+drwxr-xr-x.  1 vagrant vagrant  544 Dec  2 05:33 .
+dr-xr-xr-x. 18 root    root     239 Dec  2 05:27 ..
+drwxr-xr-x.  1 vagrant vagrant  408 Aug 29 23:02 ansible
+-rw-r--r--.  1 vagrant vagrant  175 Dec  2 05:29 Brewfile
+-rw-r--r--.  1 vagrant vagrant  133 Aug 19 07:25 .editorconfig
+drwxr-xr-x.  1 vagrant vagrant  510 Dec  2 01:07 .git
+-rw-r--r--.  1 vagrant vagrant   29 Aug 25 19:11 .gitignore
+-rw-r--r--.  1 vagrant vagrant 2621 Sep  2 06:29 Makefile
+drwxr-xr-x.  1 vagrant vagrant  238 Nov 25 00:20 mkdocs
+drwxr-xr-x.  1 vagrant vagrant  204 Dec  2 01:12 packer
+-rw-r--r--.  1 vagrant vagrant 2505 Jul 28 23:44 readme.md
+-rw-r--r--.  1 vagrant vagrant  346 Aug 19 05:53 research.md
+-rw-r--r--.  1 vagrant vagrant 2440 Aug 19 05:53 services.md
+-rw-r--r--.  1 vagrant vagrant  352 Aug 20 10:58 temp.md
+drwxr-xr-x.  1 vagrant vagrant  102 Aug 19 06:17 .vagrant
+-rw-r--r--.  1 vagrant vagrant 1323 Dec  2 05:26 Vagrantfile
+</code></pre>
+
+<p>The content may not exactly match the example above, but the important thing is that
+you should see the project files.</p>
+<p>The following series of command must be ran from the <code>/vagrant/ansible</code> directory:</p>
+<pre><code class="bash">cd /vagrant/ansible
+</code></pre>
+
+<h3 id="clock">Clock</h3>
+<p>Configure the clock via the <a href="http://www.ntp.org">Network Time Protocol</a>.  This will fix 
+clock skew errors.</p>
+<pre><code class="bash">make control-node-ntp
+</code></pre>
+
+<h3 id="ansible-roles">Ansible roles</h3>
+<p>Install any required third party roles from <a href="https://galaxy.ansible.com">Ansible Galaxy</a>.</p>
+<pre><code class="bash">make control-node-roles
+</code></pre>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Forgot what this is for.</p>
+</div>
+<h3 id="usershelld">UserShellD</h3>
+<p>Install the <a href="../../tools/usershelld">UserShellD</a> framework.</p>
+<pre><code>make control-node-usershelld
+</code></pre>
+
+<p>This framework provides a linux style <strong>.d</strong> directories that helps with development work
+and automation tasks.</p>
+<h3 id="ssh">SSH</h3>
+<p>Configure the <a href="../../tools/ssh">SSH</a> utilities.</p>
+<pre><code>make control-node-ssh
+</code></pre>
+
+<p>This will:</p>
+<ul>
+<li>Install a <strong>ssh-agent</strong> lifecycle management scripts.</li>
+<li>Generate the ssh keypair with the <code>There and back again!</code> as the passphrase</li>
+<li>Import the remote host finger prints from all the nodes in the architecture</li>
+</ul>
+<p>Then you'll need to add your generated key to the cache:</p>
+<pre><code class="bash">ssh-add ~/.ssh/id_rsa
+# Enter the passphrase from above
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You'll need repeat this step if the agent is restarted</p>
+</div>
+<p>You can check the key by:</p>
+<pre><code class="bash"># for private keys
+ssh-add -l
+# for public keys
+ssh-add -L
+</code></pre>
+
+<h3 id="gpg">GPG</h3>
+<p>Install the <a href="../../tools/gpg">Gnu Privacy Guard</a> (GPG) utilities, and a few other packages 
+required for this guide.</p>
+<pre><code class="bash">make control-node-gpg
+</code></pre>
+
+<p>After installation you can open a terminal and type:</p>
+<pre><code class="bash">gpg --version
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To properly enable the GnuPG agent functionality, log out of the control node
+and log back in.</p>
+</div>
+<p>You should see something similar to the following.</p>
+<pre><code class="bash">gpg (GnuPG) 2.0.22
+libgcrypt 1.5.3
+...
+...
+...
+</code></pre>
+
+<p>Help generate some random entropy for key generation.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step is mainly required to generate entropy while running inside a VM.  This shouldn't 
+be necessary when running on a physical computer.</p>
+</div>
+<pre><code class="bash">sudo rngd -r /dev/urandom
+</code></pre>
+
+<p>Then generate a key:</p>
+<pre><code class="bash">gpg --gen-key
+</code></pre>
+
+<p>Using the following parameters:</p>
+<ul>
+<li>Key type: <code>1</code> for the <strong>RSA and RSA (default)</strong> option</li>
+<li>Key length: <code>4096</code></li>
+<li>Expire Date: <code>0</code> for the <strong>key does not expire</strong> option</li>
+<li>Is this correct?: <code>y</code></li>
+<li>Real name: <code>Bilbo Baggins</code></li>
+<li>Email: <code>bilbo@shire.vil</code></li>
+<li>Comment: <code>&lt;enter&gt;</code> (leave blank)</li>
+<li>Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit?: <code>o</code> for the <strong>(O)kay</strong> option</li>
+<li>Passphrase: <code>There and back again!</code></li>
+</ul>
+<p>After the key generation is complete, view the key:</p>
+<pre><code class="bash">gpg --list-keys
+# or
+gpg -k
+</code></pre>
+
+<p>which should display something similar to the following:</p>
+<pre><code class="bash">/home/vagrant/.gnupg/pubring.gpg
+--------------------------------
+pub   4096R/C00B50B8 2017-12-02
+uid                  Bilbo Baggins &lt;bilbo@shire.vil&gt;
+sub   4096R/45FB4738 2017-12-02
+</code></pre>
+
+<p>Configure your subkeys:</p>
+<pre><code class="bash">gpg --expert --edit-key bilbo@shire.vil
+</code></pre>
+
+<p>Remove the autogenerated subkey:</p>
+<pre><code class="bash">list
+# there should on by one subkey
+key 1
+# to select the key
+list
+# the key should be marked with a '*'
+delkey
+# You may need to enter your passphrase at this point
+</code></pre>
+
+<p>The select <code>y</code> to complete. Now add an authentication subkey:</p>
+<pre><code class="bash">addkey
+# You may need to enter your passphrase at this point
+</code></pre>
+
+<ul>
+<li>Key type: <code>8</code> for the <strong>RSA (set your own capabilities)</strong> option</li>
+<li>Configure the following options: <ul>
+<li><code>s</code> to disable the sign capability</li>
+<li><code>e</code> to disable the encrypt capability</li>
+<li><code>a</code> to enable the authenticate capability</li>
+</ul>
+</li>
+<li><code>q</code> to quit the capabilitiy editor</li>
+<li>Key length: <code>4096</code></li>
+<li>Expire Date: <code>0</code> for the <strong>key does not expire</strong> option</li>
+<li>Is this correct?: <code>y</code></li>
+<li>Really create?: <code>y</code></li>
+<li><code>quit</code> and save changes</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ansible/" class="btn btn-neutral float-right" title="Ansible">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../vagrant/" class="btn btn-neutral" title="Virtual Machines"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/boundedinfinity/eiab/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../vagrant/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ansible/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

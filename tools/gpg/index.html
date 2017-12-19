@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>GPG - Enterprise in a Box</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "GPG";
+    var mkdocs_page_input_path = "tools/gpg.md";
+    var mkdocs_page_url = "/tools/gpg/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Enterprise in a Box</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../guide/intro/">Introduction</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/macos/">macOS</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/source/">Project Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/machine-image/">Machine Image</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/vagrant/">Virtual Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/control-node/">Control node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/ansible/">Ansible</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/all-nodes/">All nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/consul/">Consul</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tools</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../ansible/">Ansible</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../atom/">Atom</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../consul/">Consul</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../curl/">curl</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../docker/">Docker</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../git/">Git</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">GPG</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#check-the-version">Check the version</a></li>
+    
+
+    <li class="toctree-l3"><a href="#generate-a-key">Generate a key</a></li>
+    
+
+    <li class="toctree-l3"><a href="#list-public-keys">List public keys</a></li>
+    
+
+    <li class="toctree-l3"><a href="#list-secret-keys">List secret keys</a></li>
+    
+
+    <li class="toctree-l3"><a href="#export-a-key-in-ascii-format">Export a key in ASCII format</a></li>
+    
+
+    <li class="toctree-l3"><a href="#run-the-agent">Run the agent</a></li>
+    
+
+    <li class="toctree-l3"><a href="#kill-the-agent">Kill the agent</a></li>
+    
+
+    <li class="toctree-l3"><a href="#reference">Reference</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../homebrew/">Homebrew</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../httpie/">HTTPie</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../jq/">jq</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../keychain/">Keychain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../kong/">Kong</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../make/">Make</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../mkdocs/">MkDocs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../nexus/">Nexus</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../packer/">Packer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../prometheus/">Prometheus</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ruby/">Ruby</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ssh/">SSH</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../usershelld/">UserShellD</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vagrant/">Vagrant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vault/">Vault</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../yum/">YUM</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Enterprise in a Box</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Tools &raquo;</li>
+        
+      
+    
+    <li>GPG</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/boundedinfinity/eiab/edit/master/docs/tools/gpg.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><a href="https://www.gnupg.org">Gnu Privacy Guard</a> (GPG) is a encryption utility.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Guide version: <strong>2.0.22</strong></p>
+</div>
+<h3 id="check-the-version">Check the version</h3>
+<pre><code class="bash">gpg --version
+</code></pre>
+
+<h3 id="generate-a-key">Generate a key</h3>
+<pre><code class="bash">gpg --gen-key
+</code></pre>
+
+<h3 id="list-public-keys">List public keys</h3>
+<pre><code class="bash">gpg -k
+# or 
+gpg --list-keys
+#
+gpg --list-keys --with-colons
+</code></pre>
+
+<h3 id="list-secret-keys">List secret keys</h3>
+<pre><code class="bash">gpg -K
+# or 
+gpg --list-secret-keys
+</code></pre>
+
+<h3 id="export-a-key-in-ascii-format">Export a key in ASCII format</h3>
+<pre><code class="bash">gpg --export &lt;email address&gt; | base64
+</code></pre>
+
+<h3 id="run-the-agent">Run the agent</h3>
+<pre><code class="bash">gpg-agent --daemon
+</code></pre>
+
+<h3 id="kill-the-agent">Kill the agent</h3>
+<pre><code class="bash">pkill gpg-agent
+</code></pre>
+
+<h1 id="reference">Reference</h1>
+<ul>
+<li><a href="https://www.gnupg.org">Project Page</a><ul>
+<li><a href="https://gnupg.org/documentation/manuals/gnupg/#toc-Invoking-GPG_002dAGENT-1">Invoking GPG-AGENT</a></li>
+<li><a href="https://www.gnupg.org/documentation/manuals/gnupg/Unattended-GPG-key-generation.html">Unattended key generation</a></li>
+</ul>
+</li>
+<li><a href="https://wiki.archlinux.org/index.php/Rng-tools">Rng-tools</a></li>
+<li>Articles<ul>
+<li><a href="https://alexcabal.com/creating-the-perfect-gpg-keypair">CREATING THE PERFECT GPG KEYPAIR</a></li>
+<li><a href="https://spin.atomicobject.com/2013/11/24/secure-gpg-keys-guide">Generating More Secure GPG Keys: A Step-by-Step Guide</a></li>
+<li><a href="https://www.linode.com/docs/security/gpg-key-for-ssh-authentication">How to use a GPG key for SSH authentication</a></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../homebrew/" class="btn btn-neutral float-right" title="Homebrew">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../git/" class="btn btn-neutral" title="Git"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/boundedinfinity/eiab/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../git/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../homebrew/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>

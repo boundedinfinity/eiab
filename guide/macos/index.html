@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>macOS - Enterprise in a Box</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "macOS";
+    var mkdocs_page_input_path = "guide/macos.md";
+    var mkdocs_page_url = "/guide/macos/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Enterprise in a Box</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Guide</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../intro/">Introduction</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">macOS</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#homebrew">Homebrew</a></li>
+    
+
+    <li class="toctree-l3"><a href="#homebrew-cask">Homebrew Cask</a></li>
+    
+
+    <li class="toctree-l3"><a href="#packer">Packer</a></li>
+    
+
+    <li class="toctree-l3"><a href="#virtualbox">VirtualBox</a></li>
+    
+
+    <li class="toctree-l3"><a href="#vagrant">Vagrant</a></li>
+    
+
+    <li class="toctree-l3"><a href="#git">Git</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../source/">Project Source</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../machine-image/">Machine Image</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../vagrant/">Virtual Machines</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../control-node/">Control node</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../ansible/">Ansible</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../all-nodes/">All nodes</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../consul/">Consul</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Tools</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../tools/ansible/">Ansible</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/atom/">Atom</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/consul/">Consul</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/curl/">curl</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/docker/">Docker</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/git/">Git</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/gpg/">GPG</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/homebrew/">Homebrew</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/httpie/">HTTPie</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/jq/">jq</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/keychain/">Keychain</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/kong/">Kong</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/make/">Make</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/mkdocs/">MkDocs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/nexus/">Nexus</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/packer/">Packer</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/prometheus/">Prometheus</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/ruby/">Ruby</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/ssh/">SSH</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/usershelld/">UserShellD</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/vagrant/">Vagrant</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/vault/">Vault</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../tools/yum/">YUM</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Enterprise in a Box</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Guide &raquo;</li>
+        
+      
+    
+    <li>macOS</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/boundedinfinity/eiab/edit/master/docs/guide/macos.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Currently this guide will be focused on a macOS worksation with the following minimum requirements:</p>
+<ul>
+<li>macOS High Sierra</li>
+<li>&gt;= 16 GB of memory</li>
+</ul>
+<p>The following utilities need to be installed on the <strong>Host</strong>.</p>
+<h2 id="homebrew">Homebrew</h2>
+<p>This first step is to install the <a href="../../tools/homebrew">Homebrew</a> package 
+management system.</p>
+<pre><code class="bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This command assume that <a href="../../tools/ruby">Ruby</a> programming language, the <a href="../../tool/curl">curl</a> 
+URL command line client, and the <a href="../../tools/make">Make</a> build utilty are installed.</p>
+<p>These tools should be installed on the default macOS operating system.</p>
+</div>
+<p>Once the installation is complete, check the installation.</p>
+<pre><code class="bash">brew --version
+</code></pre>
+
+<p>which should return something similar to:</p>
+<pre><code>Homebrew 1.3.8
+Homebrew/homebrew-core (git revision eef61; last commit 2017-12-01)
+</code></pre>
+
+<h2 id="homebrew-cask">Homebrew Cask</h2>
+<p>Install the <a href="../../tools/homebrew">Homebrew Cask</a> extention. This enables additional package needed for this guide.</p>
+<pre><code class="bash">brew tap caskroom/cask
+</code></pre>
+
+<p>Now that that package management utility is installed, it's time to install the tools necessary to build the rest of the sytem.</p>
+<h2 id="packer">Packer</h2>
+<p>Install the <a href="../../tools/packer">Packer</a> utility. </p>
+<pre><code class="bash">brew install packer
+</code></pre>
+
+<p>Once the installation is complete, check the installation.</p>
+<pre><code class="bash">packer version
+</code></pre>
+
+<p>which should return something similar to:</p>
+<pre><code>Packer v1.1.2
+</code></pre>
+
+<h2 id="virtualbox">VirtualBox</h2>
+<p>Install the <a href="../../tools/virtualbox">VirtualBox</a> virtualization
+system.  This will allow you to provision virtualized guest operating system.</p>
+<p>After installation you can open a terminal and type:</p>
+<pre><code class="bash">brew cask install virtualbox
+</code></pre>
+
+<p>Once the installation is complete, check the installation.</p>
+<pre><code class="bash">vboxmanage --version
+</code></pre>
+
+<p>which should return something similar to:</p>
+<pre><code>5.2.0r118431
+</code></pre>
+
+<h2 id="vagrant">Vagrant</h2>
+<p>Install the <a href="../../tools/vagrant">Vagrant</a> virtualization managment
+and workflow tools.  This is manage the provisioning of the virtualized guest
+systems used in this tutorial.</p>
+<p>After installation you can open a terminal and type:</p>
+<pre><code class="bash">brew cask install vagrant
+</code></pre>
+
+<p>Once the installation is complete, check the installation.</p>
+<pre><code class="bash">vagrant version
+</code></pre>
+
+<p>which should return something similar to:</p>
+<pre><code>Installed Version: 2.0.1
+Latest Version: 2.0.1
+</code></pre>
+
+<h2 id="git">Git</h2>
+<p>Install the <a href="../../tools/git">Git</a> source control utility. </p>
+<pre><code class="bash">brew install git
+</code></pre>
+
+<p>Once the installation is complete, check the installation.</p>
+<pre><code class="bash">git --version
+</code></pre>
+
+<p>which should return something similar to:</p>
+<pre><code>git version 2.15.1
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../source/" class="btn btn-neutral float-right" title="Project Source">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../intro/" class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/boundedinfinity/eiab/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../intro/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../source/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/require.js"></script>
+      <script src="../../search/search.js"></script>
+
+</body>
+</html>
