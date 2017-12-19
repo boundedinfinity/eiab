@@ -103,6 +103,18 @@ ssh-add ~/.ssh/id_rsa
 # Enter the passphrase from above
 ```
 
+!!! note
+    You'll need repeat this step if the agent is restarted
+
+You can check the key by:
+
+```bash
+# for private keys
+ssh-add -l
+# for public keys
+ssh-add -L
+```
+
 ### GPG
 
 Install the [Gnu Privacy Guard](../tools/gpg) (GPG) utilities, and a few other packages 

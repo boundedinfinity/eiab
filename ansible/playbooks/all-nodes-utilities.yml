@@ -1,0 +1,9 @@
+-   name: Install common utilities on all nodes
+    hosts: all
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: misc
+                tasks_from: common

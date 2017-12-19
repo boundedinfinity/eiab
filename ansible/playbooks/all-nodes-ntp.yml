@@ -1,0 +1,8 @@
+-   name: Set clock on all node
+    hosts: all
+    become: yes
+
+    tasks:
+    
+        -   include_role:
+                name: ntp

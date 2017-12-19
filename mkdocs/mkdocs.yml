@@ -12,6 +12,8 @@ pages:
         -   'Machine Image': 'guide/machine-image.md'
         -   'Virtual Machines': 'guide/vagrant.md'
         -   'Control node': 'guide/control-node.md'
+        -   'Ansible': 'guide/ansible.md'
+        -   'All nodes': 'guide/all-nodes.md'
     - Tools:
         -   'Ansible': 'tools/ansible.md'
         -   'Atom': 'tools/atom.md'

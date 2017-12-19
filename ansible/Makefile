@@ -17,11 +17,9 @@ everything:
 	make control-node-roles
 	make control-node-usershelld
 	make control-node-ssh
-	make control-node-ansible
 	make control-node-gpg
-
-control-node-ansible:
-	$(playbook_exec)/control-node-ansible.yml
+	make ansible
+	make all-nodes-ntp
 
 control-node-gpg:
 	$(playbook_exec)/control-node-gpg.yml
@@ -39,6 +37,15 @@ control-node-usershelld:
 control-node-ssh:
 	$(playbook_exec)/control-node-ssh.yml
 
+ansible:
+	$(playbook_exec)/ansible.yml
+
+all-nodes-ntp:
+	$(playbook_exec)/all-nodes-ntp.yml
+
+all-nodes-utilities:
+	$(playbook_exec)/all-nodes-utilities.yml
+
 002-nexus-server:
 	$(playbook_exec)/002-nexus-server.yml
 		
@@ -51,12 +58,6 @@ control-node-ssh:
 
 002-pip:
 	$(playbook_exec)/002-pip.yml
-			
-003-clock:
-	$(playbook_exec)/003-clock.yml
-
-003-utilities:
-	$(playbook_exec)/003-utilities.yml
 
 004-consul-server:
 	$(playbook_exec)/004-consul-server.yml

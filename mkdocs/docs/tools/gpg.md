@@ -33,10 +33,22 @@ gpg -K
 gpg --list-secret-keys
 ```
 
-Export a key in ASCII format:
+### Export a key in ASCII format
 
 ```bash
 gpg --export <email address> | base64
+```
+
+### Run the agent
+
+```bash
+gpg-agent --daemon
+```
+
+### Kill the agent
+
+```bash
+pkill gpg-agent
 ```
 
 # Reference
