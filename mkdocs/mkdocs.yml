@@ -14,6 +14,7 @@ pages:
         -   'Control node': 'guide/control-node.md'
         -   'Ansible': 'guide/ansible.md'
         -   'All nodes': 'guide/all-nodes.md'
+        -   'Consul': 'guide/consul.md'
     - Tools:
         -   'Ansible': 'tools/ansible.md'
         -   'Atom': 'tools/atom.md'

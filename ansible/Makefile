@@ -20,6 +20,7 @@ everything:
 	make control-node-gpg
 	make ansible
 	make all-nodes-ntp
+	make all-nodes-utilities
 
 control-node-gpg:
 	$(playbook_exec)/control-node-gpg.yml
@@ -46,6 +47,15 @@ all-nodes-ntp:
 all-nodes-utilities:
 	$(playbook_exec)/all-nodes-utilities.yml
 
+consul-server:
+	$(playbook_exec)/consul-server.yml
+
+consul-client:
+	$(playbook_exec)/consul-client.yml
+
+consul-dns:
+	$(playbook_exec)/consul-dns.yml
+
 002-nexus-server:
 	$(playbook_exec)/002-nexus-server.yml
 		
@@ -58,15 +68,6 @@ all-nodes-utilities:
 
 002-pip:
 	$(playbook_exec)/002-pip.yml
-
-004-consul-server:
-	$(playbook_exec)/004-consul-server.yml
-
-004-consul-client:
-	$(playbook_exec)/004-consul-client.yml
-
-004-consul-dns:
-	$(playbook_exec)/004-consul-dns.yml
 
 005-nexus-consul:
 	$(playbook_exec)/005-nexus-consul.yml
