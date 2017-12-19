@@ -32,7 +32,6 @@ if [ -n $SSH_AGENT_PID ] ; then
             killagent "running agent PID doesn't match config PID"
         fi
     fi
-    unset running_pid
 fi
 
 # start agent if not running

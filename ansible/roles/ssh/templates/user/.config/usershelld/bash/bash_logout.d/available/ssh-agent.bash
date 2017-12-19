@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# set -x
+
 env_dir=$HOME/.config/ssh
 agent_config=$env_dir/ssh-agent.env
 
@@ -30,11 +32,13 @@ if [ -n $SSH_AGENT_PID ] ; then
             killagent "running agent PID doesn't match config PID"
         fi
     fi
-    unset running_pid
 fi
 
 # kill the agent if this is the last login session
+running_pid=$(pgrep ssh-agent)
 session_count=$(who | grep $USER | wc -l)
-if [ $session_count -eq 1 ] ; then
-    killagent "last login session"
+if [[ $running_pid && ${running_pid-x} ]] ; then
+    if [ $session_count -eq 1 ] ; then
+        killagent "last login session"
+    fi
 fi
