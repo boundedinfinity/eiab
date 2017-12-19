@@ -19,4 +19,7 @@ ansible-galaxy init <namespace>.<role name>
 
 - [Project page](https://www.ansible.com)
     - [Module Index](http://docs.ansible.com/ansible/latest/modules_by_category.html)
+    - [Configuration file : role_path](http://docs.ansible.com/ansible/latest/intro_configuration.html#roles-path)
+    - [Ansilbe Galaxy](http://docs.ansible.com/ansible/latest/galaxy.html)
+        - [Configuration file: role_path](http://docs.ansible.com/ansible/latest/galaxy.html#roles-path)
 - [Custom Ansible Module Hello World](http://blog.toast38coza.me/custom-ansible-module-hello-world)

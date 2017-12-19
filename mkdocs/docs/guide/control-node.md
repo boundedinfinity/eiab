@@ -96,6 +96,13 @@ This will:
 - Generate the ssh keypair with the `There and back again!` as the passphrase
 - Import the remote host finger prints from all the nodes in the architecture
 
+Then you'll need to add your generated key to the cache:
+
+```bash
+ssh-add ~/.ssh/id_rsa
+# Enter the passphrase from above
+```
+
 ### GPG
 
 Install the [Gnu Privacy Guard](../tools/gpg) (GPG) utilities, and a few other packages 

@@ -5,7 +5,7 @@
         - vault_restart
 
 -   capabilities:
-        path: "/usr/bin/{{vault_filename}}"
+        path: "/usr/bin/{{ vault_filename }}"
         capability: CAP_IPC_LOCK+ep
         state: present
     notify:
@@ -24,12 +24,12 @@
                     path: vault
             listener:
                 tcp:
-                    address: "0.0.0.0:{{vault_port}}"
+                    address: "0.0.0.0:{{ vault_port }}"
                     tls_disable: 1
 
 -   copy:
-        content: "{{vault_config | to_nice_json}}"
-        dest: "/etc/{{vault_service}}.d/vault.json"
+        content: "{{ vault_config | to_nice_json }}"
+        dest: "/etc/{{ vault_service }}.d/vault.json"
         owner: root
         group: root
         mode: 0755
@@ -37,6 +37,6 @@
         - vault_restart
 
 -   systemd:
-        name: "{{vault_service}}"
+        name: "{{ vault_service }}"
         state: started
         enabled: yes

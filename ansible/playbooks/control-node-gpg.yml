@@ -7,9 +7,6 @@
         -   include_role:
                 name: gpg
 
-        -   include_role:
-                name: keychain
-
 # -   name: Generate ssh keypair
 #     hosts: localhost
 #     connection: local

@@ -5,7 +5,7 @@
 # -   debug: var=nexus_host
 
 -   set_fact:
-        nexus_root: "http://{{nexus_host}}/repository/releases.hashicorp.com"
+        nexus_root: "http://{{ nexus_host }}/repository/releases.hashicorp.com"
 # -   debug: var=nexus_root
 
 -   name: "Download vault dependencies"
@@ -19,6 +19,6 @@
         src: "{{nexus_root}}/vault/0.8.1/vault_0.8.1_linux_amd64.zip"
         dest: /usr/bin
         remote_src: True
-        creates: "/usr/bin/{{consul_filename}}"
+        creates: "/usr/bin/{{ consul_filename }}"
     notify:
         - vault_restart

@@ -3,18 +3,11 @@
     connection: local
     become: yes
 
+    vars:
+        username: vagrant
+        ssh_hosts: "{{ groups['all'] }}"
+
     tasks:
         -   include_role:
                 name: ssh
-                tasks_from: usershelld
-
-        -   include_role:
-                name: ssh
-                tasks_from: genkey
-        
-        -   include_role:
-                name: ssh
-                tasks_from: import_known_hosts
-            vars:
-                ssh_hosts: "{{ groups['all'] }}"
 

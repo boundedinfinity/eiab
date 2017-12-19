@@ -1,1 +1,7 @@
 ---
+
+-   include: usershelld.yml
+
+-   include: genkey.yml
+
+-   include: import_known_hosts.yml
