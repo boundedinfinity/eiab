@@ -96,6 +96,10 @@ This will:
 - Generate the ssh keypair with the `There and back again!` as the passphrase
 - Import the remote host finger prints from all the nodes in the architecture
 
+!!! note
+    To properly enable the SSH agent functionality, log out of the control node
+    and log back in.
+
 Then you'll need to add your generated key to the cache:
 
 ```bash

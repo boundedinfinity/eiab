@@ -11,7 +11,7 @@
 
 -   template:
         src: templates/etc/dnsmasq.d/consul
-        dest: "/etc/dnsmasq.d/{{consul_service}}"
+        dest: "/etc/dnsmasq.d/{{ consul_service }}"
         owner: root
         group: root
         mode: 0644

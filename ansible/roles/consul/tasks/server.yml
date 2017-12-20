@@ -1,53 +1,55 @@
 ---
 
--   include: download.yml
-
--   include: systemd.yml
-
--   name: Construct advertise_addr
+-   name: Set ethernet adapter
     set_fact:
-        advertise_addr: "{{ansible_eth1.ipv4.address}}"
-# -   debug: var=advertise_addr
+        adapter: ansible_eth1
 
--   name: Construct retry_join
-    set_fact:
-        retry_join: "{{groups['consul_servers']|map('extract', hostvars, ['ansible_eth1', 'ipv4', 'address'])|list|difference(advertise_addr)}}"
-# -   debug: var=retry_join
+# -   debug: var=server_group
 
--   name: Construct bootstrap_expect
+-   name: Cache server group information
+    setup:
+    delegate_to: "{{ item }}"
+    delegate_facts: True
+    with_items: "{{ groups[server_group] }}"
+    when: hostvars[item]['ansible_default_ipv4'] is not defined
+# -   debug: var=groups[server_group]
+
+-   name: Cache server IP addresses
     set_fact:
-        bootstrap_expect: "{{groups['consul_servers']|length|int}}"
+        server_ip: "{{ hostvars[inventory_hostname][adapter].ipv4.address }}"
+        server_ips: "{{ groups[server_group] | map('extract', hostvars, [adapter, 'ipv4', 'address']) | list }}"
+# -   debug: var=server_ip
+# -   debug: var=server_ips
+
+-   name: Construct consul data
+    set_fact:
+        other_server_ips: "{{ server_ips | difference(server_ip) }}"
+        server_count: "{{ groups[server_group] | length | int }}"
+# -   debug: var=other_server_ips
 # -   debug: var=bootstrap_expect
 
 -   name: Server Configuration
     set_fact:
         consul_config:
-            advertise_addr: "{{advertise_addr}}"
-            bind_addr: "{{advertise_addr}}"
-            data_dir: "/var/{{consul_service}}"
+            advertise_addr: "{{ server_ip }}"
+            bind_addr: "{{ server_ip }}"
+            data_dir: "/var/{{ consul_service }}"
             server: True
-            bootstrap_expect: "{{bootstrap_expect}}"
-            # bootstrap_expect: 3
-            retry_join: "{{retry_join}}"
+            bootstrap_expect: "{{ server_count }}"
+            retry_join: "{{ other_server_ips }}"
             disable_update_check: True
 # -   debug: var=consul_config
 
--   copy:
-        content: "{{consul_config|to_nice_json|regex_replace('\"([0-9]+)\"','\\1')}}"
-        dest: "/etc/{{consul_service}}.d/consul.json"
-        owner: root
-        group: root
-        mode: 0755
-    notify:
-        - consul_restart
+-   include: download.yml
 
--   set_fact:
-        nexus_host: "10.0.0.12:8081"
-                
--   name: Install Python packages
-    pip:
-        name: "{{ item }}"
-        state: present
-        extra_args: "--trusted-host {{nexus_host}}"
-    with_items:
-        - python-consul
+-   include: systemd.yml
+
+-   include: dns.yml
+
+# -   name: Install Python packages
+#     pip:
+#         name: "{{ item }}"
+#         state: present
+#         extra_args: "--trusted-host {{nexus_host}}"
+#     with_items:
+#         - python-consul

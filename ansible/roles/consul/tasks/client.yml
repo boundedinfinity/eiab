@@ -1,52 +1,46 @@
 ---
 
--   include: download.yml
+-   name: Set ethernet adapter
+    set_fact:
+        adapter: ansible_eth1
 
--   include: systemd.yml
+# -   debug: var=server_group
 
--   name: Construct consul_servers IP info
+-   name: Cache server group information
     setup:
-    delegate_to: "{{item}}"
-    with_items: "{{groups['consul_servers']}}"
+    delegate_to: "{{ item }}"
     delegate_facts: True
+    with_items: "{{ groups[server_group] }}"
     when: hostvars[item]['ansible_default_ipv4'] is not defined
+# -   debug: var=groups[server_group]
 
--   name: Construct advertise_addr
+-   name: Cache client IP addresses
     set_fact:
-        advertise_addr: "{{ansible_eth1.ipv4.address}}"
-# -   debug: var=advertise_addr
-
--   name: Construct retry_join
-    set_fact:
-        retry_join: "{{groups['consul_servers']|map('extract', hostvars, ['ansible_eth1', 'ipv4', 'address'])|list}}"
-# -   debug: var=retry_join
+        client_ip: "{{ hostvars[inventory_hostname][adapter].ipv4.address }}"
+        server_ips: "{{ groups[server_group] | map('extract', hostvars, [adapter, 'ipv4', 'address']) | list }}"
+# -   debug: var=client_ip
+# -   debug: var=server_ips
 
 -   name: Client Configuration
     set_fact:
         consul_config:
-            advertise_addr: "{{advertise_addr}}"
-            bind_addr: "{{advertise_addr}}"
-            data_dir: "/var/{{consul_service}}"
-            retry_join: "{{retry_join}}"
+            advertise_addr: "{{ client_ip }}"
+            bind_addr: "{{ client_ip }}"
+            data_dir: "/var/{{ consul_service }}"
+            retry_join: "{{ server_ips }}"
             disable_update_check: True
 # -   debug: var=consul_config
 
--   copy:
-        content: "{{consul_config|to_nice_json}}"
-        dest: "/etc/{{consul_service}}.d/consul.json"
-        owner: root
-        group: root
-        mode: 0755
-    notify:
-        - consul_restart
+-   include: download.yml
 
--   set_fact:
-        nexus_host: "10.0.0.12:8081"
-                
--   name: Install Python packages
-    pip:
-        name: "{{ item }}"
-        state: present
-        extra_args: "--trusted-host {{nexus_host}}"
-    with_items:
-        - python-consul
+-   include: systemd.yml
+
+-   include: dns.yml
+
+# -   name: Install Python packages
+#     pip:
+#         name: "{{ item }}"
+#         state: present
+#         extra_args: "--trusted-host {{nexus_host}}"
+#     with_items:
+#         - python-consul

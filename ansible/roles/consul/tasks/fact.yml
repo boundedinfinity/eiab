@@ -17,7 +17,7 @@
 
 -   template:
         src: "templates/etc/ansible/facts.d/service.fact"
-        dest: "/etc/ansible/facts.d/{{service_name}}.fact"
+        dest: "/etc/ansible/facts.d/{{ service_name }}.fact"
         owner: root
         group: root
         mode: 0755

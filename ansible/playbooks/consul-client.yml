@@ -1,20 +1,24 @@
--   name: Configure Consul client
+---
+
+-   name: Configure Consul client on control node
     hosts: localhost
     connection: local
     become: yes
 
     tasks:
-    
         -   include_role:
                 name: consul
                 tasks_from: client
+            vars:
+                server_group: consul_servers
 
--   name: Configure Consul client
+-   name: Configure Consul client on non-ops nodes
     hosts: consul_clients
     become: yes
 
     tasks:
-    
         -   include_role:
                 name: consul
                 tasks_from: client
+            vars:
+                server_group: consul_servers

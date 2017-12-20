@@ -35,6 +35,7 @@ pages:
         -   'Prometheus': 'tools/prometheus.md'
         -   'Ruby': 'tools/ruby.md'
         -   'SSH': 'tools/ssh.md'
+        -   'systemd': 'tools/systemd.md'
         -   'UserShellD': 'tools/usershelld.md'
         -   'Vagrant': 'tools/vagrant.md'
         -   'Vault': 'tools/vault.md'

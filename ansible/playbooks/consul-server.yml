@@ -1,8 +1,13 @@
+---
+
 -   name: Configure Consul server
     hosts: consul_servers
     become: yes
+    serial: 1
     
     tasks:
         -   include_role:
                 name: consul
                 tasks_from: server
+            vars:
+                server_group: consul_servers
