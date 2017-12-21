@@ -92,6 +92,10 @@
                     
     <a class="" href="../../guide/consul/">Consul</a>
                 </li>
+                <li class="">
+                    
+    <a class="" href="../../guide/vault/">Vault</a>
+                </li>
     </ul>
 	    </li>
           
@@ -112,6 +116,30 @@
     <a class="current" href="./">Consul</a>
     <ul class="subnav">
             
+    <li class="toctree-l3"><a href="#check-system-service-status">Check system service status</a></li>
+    
+
+    <li class="toctree-l3"><a href="#restart-system-service">Restart system service</a></li>
+    
+
+    <li class="toctree-l3"><a href="#list-services">List services</a></li>
+    
+
+    <li class="toctree-l3"><a href="#details-of-a-service">Details of a service</a></li>
+    
+
+    <li class="toctree-l3"><a href="#deregister-a-service">Deregister a service</a></li>
+    
+
+    <li class="toctree-l3"><a href="#dns-service-query-a-record">DNS service query (A record)</a></li>
+    
+
+    <li class="toctree-l3"><a href="#dns-service-query-srv-record">DNS service query (SRV record)</a></li>
+    
+
+    <li class="toctree-l3"><a href="#dns-service-query-with-tag-a-record">DNS service query with tag (A record)</a></li>
+    
+
     </ul>
                 </li>
                 <li class="">
@@ -168,6 +196,10 @@
                 </li>
                 <li class="">
                     
+    <a class="" href="../pass/">pass</a>
+                </li>
+                <li class="">
+                    
     <a class="" href="../prometheus/">Prometheus</a>
                 </li>
                 <li class="">
@@ -177,6 +209,10 @@
                 <li class="">
                     
     <a class="" href="../ssh/">SSH</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../systemd/">systemd</a>
                 </li>
                 <li class="">
                     
@@ -241,10 +277,44 @@
           <div role="main">
             <div class="section">
               
-                <p>Consul</p>
-<h6 id="_1"></h6>
-<p>Service checking, inventory, and discovery tool.</p>
-<p>https://www.consul.io</p>
+                <p><a href="https://www.consul.io">Consul</a> a service discovery and monitoring system.</p>
+<h3 id="check-system-service-status">Check system service status</h3>
+<pre><code class="bash">systemctl status consul
+</code></pre>
+
+<h3 id="restart-system-service">Restart system service</h3>
+<pre><code class="bash">systemctl restart consul
+</code></pre>
+
+<h3 id="list-services">List services</h3>
+<pre><code class="bash">http $CONSUL_ADDR/v1/catalog/services
+</code></pre>
+
+<h3 id="details-of-a-service">Details of a service</h3>
+<pre><code class="bash">http $CONSUL_ADDR/v1/catalog/service/&lt;service name&gt;
+</code></pre>
+
+<h3 id="deregister-a-service">Deregister a service</h3>
+<pre><code class="bash">http PUT $CONSUL_ADDR/v1/agent/service/deregister/&lt;service ID&gt;
+</code></pre>
+
+<p>and if that doesn't work:</p>
+<pre><code class="bash">http $CONSUL_ADDR/v1/catalog/service/&lt;service name | jq --compact-output '.[] | {Datacenter:.Datacenter, Node:.Node,ServiceID:.ServiceID}'
+
+echo '{&quot;Datacenter&quot;:&quot;dc1&quot;,&quot;Node&quot;:&quot;service.node.address&quot;,&quot;ServiceID&quot;:&quot;4e266b3b-b201-49f9-9bd5-e0e7262324d8:10005&quot;}' | http PUT $CONSUL_ADDR/v1/catalog/deregister
+</code></pre>
+
+<h3 id="dns-service-query-a-record">DNS service query (A record)</h3>
+<pre><code class="bash">dig &lt;service name&gt;.service.consul
+</code></pre>
+
+<h3 id="dns-service-query-srv-record">DNS service query (SRV record)</h3>
+<pre><code class="bash">dig &lt;service name&gt;.service.consul SRV
+</code></pre>
+
+<h3 id="dns-service-query-with-tag-a-record">DNS service query with tag (A record)</h3>
+<pre><code class="bash">dig dev.cassandra.service.consul
+</code></pre>
               
             </div>
           </div>

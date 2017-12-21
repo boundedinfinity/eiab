@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,55 +13,61 @@
         
     <url>
      <loc>/guide/intro/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/macos/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/source/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/machine-image/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/vagrant/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/control-node/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/ansible/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/all-nodes/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/guide/consul/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/guide/vault/</loc>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -71,139 +77,151 @@
         
     <url>
      <loc>/tools/ansible/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/atom/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/consul/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/curl/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/docker/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/git/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/gpg/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/homebrew/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/httpie/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/jq/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/keychain/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/kong/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/make/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/mkdocs/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/nexus/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/packer/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/tools/pass/</loc>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/prometheus/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/ruby/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/ssh/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/tools/systemd/</loc>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/usershelld/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/vagrant/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/vault/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/tools/yum/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -212,7 +230,7 @@
     
     <url>
      <loc>/about/</loc>
-     <lastmod>2017-12-18</lastmod>
+     <lastmod>2017-12-20</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
