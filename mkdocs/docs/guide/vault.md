@@ -36,6 +36,7 @@ In a separate terminal log into the vault server and check the status.
 
 ```bash
 vagrant ssh ops00
+export VAULT_ADDR=http://localhost:8200
 vault status
 ```
 
@@ -76,7 +77,7 @@ pass init bilbo@shire.vil
 which is the name of the GPG key, then you save these in a secure fashion:
 
 ```
-pass vault/root-token
+pass insert vault/root-token
 # enter the Initial Root Token value
 pass insert vault/unseal-1
 # enter the Unseal Key 1 value

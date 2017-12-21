@@ -17,10 +17,16 @@ everything:
 	make control-node-roles
 	make control-node-usershelld
 	make control-node-ssh
+	# add keys to agent
 	make control-node-gpg
+	# create key
 	make ansible
 	make all-nodes-ntp
 	make all-nodes-utilities
+	make consul-server
+	make consul-client
+	make vault-server
+	make vault-client
 
 control-node-gpg:
 	$(playbook_exec)/control-node-gpg.yml
@@ -53,9 +59,6 @@ consul-server:
 consul-client:
 	$(playbook_exec)/consul-client.yml
 
-consul-dns:
-	$(playbook_exec)/consul-dns.yml
-
 vault-server:
 	$(playbook_exec)/vault-server.yml
 
@@ -80,34 +83,6 @@ vault-client:
 
 00X-prometheus-cache:
 	$(playbook_exec)/00X-prometheus-cache.yml
-
-999-everything:
-	make 001-usershelld
-	make 001-gpg
-	make 001-keychain
-	
-	make 001-ansible
-	make 001-configure-ssh
-	make 001-ansible-account
-	
-	make 002-nexus-server
-	make 002-nexus-repo
-	make 002-yum
-	make 002-pip
-	
-	make 003-clock
-	make 003-utilities
-		
-	make 004-consul-server
-	make 004-consul-client
-	make 004-consul-dns
-	
-	make 005-nexus-consul
-	
-	make 006-vault-server
-	make 006-vault-client
-	
-	make 00X-prometheus-cache
 
 999-doc:
 	$(playbook_exec)/999-doc.yml
