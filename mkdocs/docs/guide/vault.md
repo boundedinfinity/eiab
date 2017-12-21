@@ -205,3 +205,36 @@ Key             	Value
 refresh_interval	768h0m0s
 value           	world
 ```
+
+Now you need to configure the rest of the vault servers:
+
+```bash
+make vault-client
+```
+
+Configure authentication:
+
+
+```bash
+vault auth-enable userpass
+#vault write sys/auth/userpass type=userpass
+
+# check
+vault auth -methods
+
+pass generate vault/vagrant 15 --no-symbols
+# copy the password
+vault write auth/userpass/users/vagrant password=qYgee4TyjONBxX9 policies=admins
+
+# log in with the user/pass
+vault auth -method=userpass username=vagrant password=qYgee4TyjONBxX9
+# copy the token for the vagrant user
+
+# now logged in as vagrant
+vault read secret/hello
+# should get permission denied
+
+
+vault write secret/vagrant value=it-worked
+
+```
