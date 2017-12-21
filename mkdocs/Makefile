@@ -12,5 +12,8 @@ build:
 build-clean:
 	mkdocs build --clean
 
+publish:
+	mkdocs gh-deploy
+
 purge:
 	rm -rf site
