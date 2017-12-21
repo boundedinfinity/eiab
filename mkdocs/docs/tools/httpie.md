@@ -1,6 +1,6 @@
-HTTPie
-############################################################
+[HTTPie](https://httpie.org) CLI HTTP tool.
 
-CLI HTTP tool.
 
-https://httpie.org/doc#examples
+# Reference
+
+- [Project page](https://httpie.org)

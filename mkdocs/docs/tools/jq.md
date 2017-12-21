@@ -1,4 +1,7 @@
-jq
-############################################################
+[jq](https://stedolan.github.io/jq) is a JSON processing CLI utility
 
-CLI JSON manipulation tool.
+
+# Reference
+
+- [jq](https://stedolan.github.io/jq) is a JSON processing CLI utility.
+- [jq play](https://jqplay.org) online jq query testing service

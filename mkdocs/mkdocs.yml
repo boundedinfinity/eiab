@@ -17,10 +17,13 @@ pages:
         -   'Consul': 'guide/consul.md'
         -   'Vault': 'guide/vault.md'
     - Tools:
+        -   'ab': 'tools/ab.md'
         -   'Ansible': 'tools/ansible.md'
         -   'Atom': 'tools/atom.md'
+        -   'Cassandra': 'tools/cassandra.md'
         -   'Consul': 'tools/consul.md'
         -   'curl': 'tools/curl.md'
+        -   'dig': 'tools/dig.md'
         -   'Docker': 'tools/docker.md'
         -   'Git': 'tools/git.md'
         -   'GPG': 'tools/gpg.md'

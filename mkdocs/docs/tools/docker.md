@@ -1,6 +1,12 @@
-Docker
-############################################################
+[Docker](https://www.docker.com) container platform and management tool.
 
-Container platform and management tool.
+### List running containers
 
-https://www.docker.com
+```
+docker ps
+```
+
+
+# Reference
+
+- [Project page](https://www.docker.com)

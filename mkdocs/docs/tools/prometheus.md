@@ -1,6 +1,7 @@
-Prometheus
-############################################################
+[Prometheus](https://prometheus.io) monitoring and visualization tool.
 
-Monitoring and visualization tool.
 
-https://prometheus.io
+
+# Reference
+
+- [Project page](https://prometheus.io)
