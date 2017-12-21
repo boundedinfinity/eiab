@@ -1,1 +1,1 @@
-export VAULT_ADDR=http://{{vault_host}}:{{vault_port}}
+export VAULT_ADDR=http://{{ vault_host }}:{{ vault_port }}

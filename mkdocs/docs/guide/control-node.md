@@ -195,7 +195,7 @@ uid                  Bilbo Baggins <bilbo@shire.vil>
 sub   4096R/45FB4738 2017-12-02
 ```
 
-Configure your subkeys:
+<!-- Configure your subkeys:
 
 ```bash
 gpg --expert --edit-key bilbo@shire.vil
@@ -231,6 +231,6 @@ addkey
 - Expire Date: `0` for the **key does not expire** option
 - Is this correct?: `y`
 - Really create?: `y`
-- `quit` and save changes
+- `quit` and save changes -->
 
 

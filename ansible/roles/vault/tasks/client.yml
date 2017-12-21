@@ -1,5 +1,20 @@
 ---
 
+-   name: Server Configuration
+    set_fact:
+        vault_host: vault.service.consul
+        vault_config:
+            storage:
+                consul:
+                    address: 127.0.0.1:8500
+                    path: vault
+            listener:
+                tcp:
+                    address: "0.0.0.0:{{ vault_port }}"
+                    tls_disable: 1
+
 -   include: download.yml
 
--   include: profiled.yml vault_host=vault.service.consul
+-   include: systemd.yml
+
+-   include: profiled.yml

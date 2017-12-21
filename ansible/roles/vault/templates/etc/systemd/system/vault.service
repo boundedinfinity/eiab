@@ -5,7 +5,7 @@ After=network-online.target
 [Service]
 User={{vault_user}}
 Group={{vault_group}}
-ExecStart=/bin/{{vault_filename}} server -config=/etc/vault.d
+ExecStart=/bin/{{ vault_filename }} server -config=/etc/vault.d
 KillSignal=SIGINT
 Restart=on-failure
 

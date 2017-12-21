@@ -1,34 +1,24 @@
 # Consul provisioning
 
-Configure a [Consul](https://www.consul.io) cluster.
+Configure a [Consul](https://www.consul.io) cluster.  The cluster is broken down to the **server**
+nodes and the **client** or **agent** nodes.
 
 !!! TODO
         - Configure web UI
         - Configure SSL
 
-## Step 1
+### Server
 
-Log into the control machine and change to the directory with the
-Makefile and ansible configuration
+Create the 3 node `consul` server ring.  This provisions 3 `consul` agents in server mode 
+on the 3 `ops` nodes.
 
+```bash
+make consul-server
 ```
-vagrant ssh control
-cd /vagrant
-```
-
-## Step 2
-
-Create the 3 node `consul` server ring.  This provisions 3 `consul` agents in server mode on the 3 `ops` nodes.
-
-```
-make 003-consul-server
-```
-
-## Step 3
 
 To verify the cluster log into one of the ops nodes and list the `consul` cluster members.
 
-```
+```bash
 vagrant ssh ops00
 consul members
 ```
@@ -42,20 +32,17 @@ ops01  10.0.0.11:8301  alive   server  0.9.2  2         dc1
 ops02  10.0.0.12:8301  alive   server  0.9.2  2         dc1
 ```
 
-## Step 4
+### Client
 
-Provision `consul` clients on all other nodes.
+Provision `consul` clients on all other nodes (including the control node).
 
+```bash
+make consul-client
 ```
-make 003-consul-client
-```
-
-## Step 5
 
 To verify the cluster log into one of the ops nodes and list the `consul` cluster members.
 
-```
-vagrant ssh ops00
+```bash
 consul members
 ```
 
@@ -74,26 +61,32 @@ ops01  10.0.0.11:8301  alive   server  0.9.2  2         dc1
 ops02  10.0.0.12:8301  alive   server  0.9.2  2         dc1
 ```
 
-## Step 6
-
 Verify DNS queries are working.
 
-```
-vagrant ssh ops00
+```bash
 dig @127.0.0.1 -p 8600 ops00.node.consul. ANY
 ```
 
 The output should contain an `ANSWER SECTION` with output similar to the following:
 
-```
+```bash
 ;; ANSWER SECTION:
 ops00.node.consul.	0	IN	A	10.0.0.10
 ```
 
-## Step 7
+This also configures a local DNS resolver to query consul first in the DNS query 
+chain. 
 
-Configure the local DNS resolver to query consul first in the DNS query chain.
+```bash
+dig ops00.node.consul
+```
 
+The output should contain an `ANSWER SECTION` with output similar to the following:
+
+```bash
+;; ANSWER SECTION:
+ops00.node.consul.	0	IN	A	10.0.0.10
 ```
-make 003-dns
-```
+
+!!! note
+    To properly enable the Consul global variables.

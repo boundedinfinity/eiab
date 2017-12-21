@@ -1,18 +1,5 @@
 ---
 
--   user:
-        name: "{{ vault_user }}"
-        comment: "Vault Account"
-        state: present
-    notify:
-        - vault_restart
-
--   group:
-        name: "{{ vault_group }}"
-        state: present
-    notify:
-        - vault_restart
-
 -   template:
         src: templates/etc/systemd/system/vault.service
         dest: "/etc/systemd/system/{{ vault_service }}.service"
@@ -23,11 +10,16 @@
         - vault_systemctl_daemon_reload
         - vault_restart
 
--   file:
-        path: "/etc/{{ vault_service }}.d"
+-   copy:
+        content: "{{ vault_config | to_nice_json }}"
+        dest: "/etc/{{ vault_service }}.d/vault.json"
         owner: root
         group: root
         mode: 0755
-        state: directory
     notify:
         - vault_restart
+
+-   systemd:
+        name: "{{ vault_service }}"
+        state: started
+        enabled: yes

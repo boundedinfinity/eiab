@@ -21,7 +21,7 @@ gpg --gen-key
 gpg -k
 # or 
 gpg --list-keys
-#
+# or
 gpg --list-keys --with-colons
 ```
 
@@ -36,7 +36,9 @@ gpg --list-secret-keys
 ### Export a key in ASCII format
 
 ```bash
-gpg --export <email address> | base64
+gpg --export <key ID> | base64
+# e.g.:
+gpg --export bilbo@shire.vil | base64
 ```
 
 ### Run the agent
@@ -49,6 +51,22 @@ gpg-agent --daemon
 
 ```bash
 pkill gpg-agent
+```
+
+### Encrypt a file
+
+```bash
+gpg --recipient <key ID> --output <output file> --encrypt <input file>
+# e.g.:
+gpg --recipient bilbo@shire.vil --output output.txt.gpg --encrypt input.txt 
+```
+
+### Decrypt a file
+
+```bash
+gpg --output <output file> --decrypt <input file>
+# e.g.:
+gpg --output output.txt --decrypt input.txt.gpg
 ```
 
 # Reference

@@ -19,6 +19,9 @@
     with_items:
         -   unzip
         -   jq
+        -   bind-utils
+        -   curl
+        -   python2-httpie
 
 -   unarchive:
         src: "{{ consul_archive_url }}"

@@ -15,6 +15,7 @@ pages:
         -   'Ansible': 'guide/ansible.md'
         -   'All nodes': 'guide/all-nodes.md'
         -   'Consul': 'guide/consul.md'
+        -   'Vault': 'guide/vault.md'
     - Tools:
         -   'Ansible': 'tools/ansible.md'
         -   'Atom': 'tools/atom.md'
@@ -32,6 +33,7 @@ pages:
         -   'MkDocs': 'tools/mkdocs.md'
         -   'Nexus': 'tools/nexus.md'
         -   'Packer': 'tools/packer.md'
+        -   'pass': 'tools/pass.md'
         -   'Prometheus': 'tools/prometheus.md'
         -   'Ruby': 'tools/ruby.md'
         -   'SSH': 'tools/ssh.md'

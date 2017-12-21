@@ -1,9 +1,17 @@
 -   name: Configure Vaut server
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+        -   include_role:
+                name: pass
+
+-   name: Configure Vaut server
     hosts: vault_servers
     become: yes
 
     tasks:
-    
         -   include_role:
                 name: vault
                 tasks_from: server

@@ -56,6 +56,12 @@ consul-client:
 consul-dns:
 	$(playbook_exec)/consul-dns.yml
 
+vault-server:
+	$(playbook_exec)/vault-server.yml
+
+vault-client:
+	$(playbook_exec)/vault-client.yml
+
 002-nexus-server:
 	$(playbook_exec)/002-nexus-server.yml
 		
@@ -71,12 +77,6 @@ consul-dns:
 
 005-nexus-consul:
 	$(playbook_exec)/005-nexus-consul.yml
-
-006-vault-server:
-	$(playbook_exec)/006-vault-server.yml
-
-006-vault-client:
-	$(playbook_exec)/006-vault-client.yml
 
 00X-prometheus-cache:
 	$(playbook_exec)/00X-prometheus-cache.yml

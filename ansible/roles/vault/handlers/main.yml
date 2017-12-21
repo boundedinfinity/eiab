@@ -3,5 +3,5 @@
 
 -   name: vault_restart
     systemd:
-        name: "{{vault_service}}"
+        name: "{{ vault_service }}"
         state: restarted

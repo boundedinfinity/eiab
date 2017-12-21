@@ -1,5 +1,5 @@
 ---
-vault_zip: files/vault/vault_0.8.1_linux_amd64.zip
+vault_archive_url: https://releases.hashicorp.com/vault/0.9.0/vault_0.9.0_linux_amd64.zip
 vault_user: vault
 vault_group: vault
 vault_service: vault

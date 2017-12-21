@@ -1,24 +1,49 @@
 ---
 
--   set_fact:
-        nexus_host: "10.0.0.12:8081"
-# -   debug: var=nexus_host
+-   user:
+        name: "{{ vault_user }}"
+        comment: "Vault Account"
+        state: present
+    notify:
+        - vault_restart
 
--   set_fact:
-        nexus_root: "http://{{ nexus_host }}/repository/releases.hashicorp.com"
-# -   debug: var=nexus_root
+-   group:
+        name: "{{ vault_group }}"
+        state: present
+    notify:
+        - vault_restart
 
 -   name: "Download vault dependencies"
     yum:
         name: "{{ item }}"
         state: present
     with_items:
-        - unzip
+        -   unzip
+        -   jq
+        -   bind-utils
+        -   curl
+        -   python2-httpie
 
 -   unarchive:
-        src: "{{nexus_root}}/vault/0.8.1/vault_0.8.1_linux_amd64.zip"
+        src: "{{ vault_archive_url }}"
         dest: /usr/bin
         remote_src: True
-        creates: "/usr/bin/{{ consul_filename }}"
+        creates: "/usr/bin/{{ vault_filename }}"
+    notify:
+        - vault_restart
+
+-   capabilities:
+        path: "/usr/bin/{{ vault_filename }}"
+        capability: CAP_IPC_LOCK+ep
+        state: present
+    notify:
+        - vault_restart
+
+-   file:
+        path: "/etc/{{ vault_service }}.d"
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
     notify:
         - vault_restart
