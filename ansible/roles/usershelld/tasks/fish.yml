@@ -1,14 +1,40 @@
 ---
 
+-   include_role:
+        name: fish
+
 -   name: "Ensure fish .d directories"
     file:
-        path: "{{ usershell_home }}/{{ item }}"
+        path: "{{ usershelld_home }}/{{ item }}"
         owner: "{{ username }}"
         group: "{{ username }}"
         mode: 0755
         state: directory
     with_items:
-        - fish/login.d/available
-        - fish/login.d/enabled
-        - fish/logout.d/available
-        - fish/logout.d/enabled
+        -   fish/login.d/available
+        -   fish/login.d/enabled
+        -   fish/logout.d/available
+        -   fish/logout.d/enabled
+
+-   name: "Ensure fish config directories"
+    file:
+        path: "{{ fish_config_home }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+        state: directory
+
+-   name: "Ensure fish configuration files"
+    template:
+        src: "templates/home/user/.config/fish/{{ item }}"
+        dest: "{{ fish_config_home }}/{{ item }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0644
+        backup: yes
+    with_items:
+        -   config.fish
+
+-   include: fish_login.yml
+    vars:
+        script_src: templates/home/user/.config/usershelld/fish/login.d/available/home-bin.fish

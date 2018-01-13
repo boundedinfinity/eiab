@@ -1,0 +1,26 @@
+---
+
+-   include: user_home.yml
+
+-   name: "Construct script dest from: '{{ script_src }}'"
+    set_fact:
+        script_available: "{{ usershelld_home }}/fish/login.d/available/{{ script_src | basename }}"
+        script_enabled: "{{ usershelld_home }}/fish/login.d/enabled/{{ script_src | basename }}"
+# -   debug: var=script_available
+# -   debug: var=script_enabled
+
+-   name: "Ensure available script '{{ script_available }}'"
+    template:
+        src: "{{ script_src }}"
+        dest: "{{ script_available }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+
+-   name: "Ensure enabled script '{{ script_enabled }}'"
+    file:
+        src: "{{ script_available }}"
+        dest: "{{ script_enabled }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        state: link

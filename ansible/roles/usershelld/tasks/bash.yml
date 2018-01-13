@@ -14,41 +14,50 @@
         mode: 0755
         state: directory
     with_items:
-        - bash/bash_profile.d/available
-        - bash/bash_profile.d/enabled
-        - bash/bashrc.d/available
-        - bash/bashrc.d/enabled
-        - bash/bash_logout.d/available
-        - bash/bash_logout.d/enabled
-        - bash/profile.d/available
-        - bash/profile.d/enabled
+        -   bash/bash_profile.d/available
+        -   bash/bash_profile.d/enabled
+        -   bash/bashrc.d/available
+        -   bash/bashrc.d/enabled
+        -   bash/bash_logout.d/available
+        -   bash/bash_logout.d/enabled
+        -   bash/profile.d/available
+        -   bash/profile.d/enabled
 
--   name: "Creating {{ user_home }}/.bashrc"
+-   name: "Ensure bash config directories"
+    file:
+        path: "{{ bash_config_home }}"
+        owner: "{{ username }}"
+        group: "{{ username }}"
+        mode: 0755
+        state: directory
+
+-   name: "Ensure bash configuration files"
     template:
-        src: templates/home/user/.config/bash/.bashrc
-        dest: "{{ user_home }}/.bashrc"
+        src: "templates/home/user/.config/bash/{{ item }}"
+        dest: "{{ bash_config_home }}/{{ item }}"
         owner: "{{ username }}"
         group: "{{ username }}"
         mode: 0644
         backup: yes
+    with_items:
+        -   bashrc
+        -   bash_profile
+        -   bash_logout
 
--   name: "Creating {{ user_home }}/.bash_profile"
-    template:
-        src: templates/home/user/.config/bash/.bash_profile
-        dest: "{{ user_home }}/.bash_profile"
+-   name: "Ensure bash configuration symlinks"
+    file:
+        src: "{{ bash_config_home }}/{{ item }}"
+        dest: "{{ user_home }}/.{{ item }}"
         owner: "{{ username }}"
         group: "{{ username }}"
-        mode: 0644
+        mode: 0755
+        state: link
         backup: yes
-
--   name: "Creating {{ user_home }}/.bash_logout"
-    template:
-        src: templates/home/user/.config/bash/.bash_logout
-        dest: "{{ user_home }}/.bash_logout"
-        owner: "{{ username }}"
-        group: "{{ username }}"
-        mode: 0644
-        backup: yes
+        force: yes
+    with_items:
+            -   bashrc
+            -   bash_profile
+            -   bash_logout
 
 -   include: bash_profile.yml
     vars:

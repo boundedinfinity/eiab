@@ -1,5 +1,3 @@
-# .bash_profile
-
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
@@ -10,9 +8,9 @@ fi
 for i in {{ usershelld_home }}/bash/bash_profile.d/enabled/*.bash ; do
     if [ -r "$i" ]; then
         if [ "${-#*i}" != "$-" ]; then
-            . "$i"
+            source "$i"
         else
-            . "$i" >/dev/null
+            source "$i" >/dev/null
         fi
     fi
 done

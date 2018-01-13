@@ -1,2 +1,23 @@
 ---
-# tasks file for fish
+
+-   name: Install EPEL repository
+    yum:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+        state: present
+
+-   yum:
+        name: "{{ item }}"
+        state: present
+    with_items:
+        - fish
+
+-   name: "Ensure global fish configuration files"
+    template:
+        src: "templates/etc/fish/conf.d/{{ item }}"
+        dest: "/etc/fish/conf.d/{{ item }}"
+        owner: root
+        group: root
+        mode: 0755
+    with_items:
+        -   welcome-disable.fish
+

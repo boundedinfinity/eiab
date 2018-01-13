@@ -4,4 +4,4 @@
 
 -   include: bash.yml
 
-# -   include: fish.yml
+-   include: fish.yml

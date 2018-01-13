@@ -94,7 +94,7 @@ This will:
 
 - Install a **ssh-agent** lifecycle management scripts.
 - Generate the ssh keypair with the `There and back again!` as the passphrase
-- Import the remote host finger prints from all the nodes in the architecture
+- Import the remote host fingerprints from all the nodes in the architecture
 
 !!! note
     To properly enable the SSH agent functionality, log out of the control node

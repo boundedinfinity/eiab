@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 env_dir=$HOME/.config/ssh
-agent_config=$env_dir/ssh-agent.env
+agent_config=$env_dir/ssh-agent.bash
 
 [ ! -d $env_dir ] && mkdir -p $env_dir
 

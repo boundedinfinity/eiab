@@ -10,6 +10,7 @@ ops_mem = 1536
 $script = <<SCRIPT
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum install -y ansible fish
+sudo chsh -s /usr/bin/fish vagrant
 SCRIPT
 
 Vagrant.configure("2") do |config|

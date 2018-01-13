@@ -22,3 +22,17 @@
     vars:
         username: vagrant
         script_src: "{{ role_dir }}/templates/user/.config/usershelld/bash/bash_logout.d/available/ssh-agent.bash"
+
+-   include_role:
+        name: usershelld
+        tasks_from: fish_login
+    vars:
+        username: vagrant
+        script_src: "{{ role_dir }}/templates/user/.config/usershelld/fish/login.d/available/ssh-agent.fish"
+
+-   include_role:
+        name: usershelld
+        tasks_from: fish_logout
+    vars:
+        username: vagrant
+        script_src: "{{ role_dir }}/templates/user/.config/usershelld/fish/logout.d/available/ssh-agent.fish"
