@@ -6,7 +6,7 @@ for i in {{ usershelld_home }}/fish/login.d/enabled/*.fish
     end
 end
 
-function on_exit --on-process-exit %self
+function --on-process-exit %self usershelld_exit 
     for i in {{ usershelld_home }}/fish/logout.d/enabled/*.fish
         if test -r $i
             source $i
