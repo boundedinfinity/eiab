@@ -38,9 +38,6 @@ control-node-roles:
 	mkdir -p galaxy_roles
 	ansible-galaxy install --role-file=ansible-galaxy.yml
 
-control-node-usershelld:
-	$(playbook_exec)/control-node-usershelld.yml
-
 control-node-ssh:
 	$(playbook_exec)/control-node-ssh.yml
 
