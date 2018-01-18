@@ -69,6 +69,12 @@ gpg --output <output file> --decrypt <input file>
 gpg --output output.txt --decrypt input.txt.gpg
 ```
 
+### Generate a unattended key pair
+
+```
+gpg2 --batch --passphrase '<pass phrase>'  --quick-generate-key '<user ID>' <algorithm> <usage> <expire>
+```
+
 # Reference
 
 - [Project Page](https://www.gnupg.org)
