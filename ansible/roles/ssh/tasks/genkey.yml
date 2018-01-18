@@ -1,10 +1,11 @@
 ---
 
--   yum:
+-   package:
         name: "{{ item }}"
         state: present
     with_items:
-        - openssh
+        -   openssh
+        -   procps-ng
 
 -   name: "Lookup ssh dir"
     become_user: "{{ username }}"
@@ -13,6 +14,6 @@
         
 -   name: "Generate SSH keys"
     become_user: "{{ username }}"
-    shell: 'ssh-keygen -b 2048 -t rsa -f {{ssh_dir}}/id_rsa -q -N "There and back again!"'
+    shell: 'ssh-keygen -b 2048 -t rsa -f {{ ssh_dir }}/id_rsa -q -N "{{ ssh_passphrase }}"'
     args:
-        creates: "{{ssh_dir}}/id_rsa"
+        creates: "{{ ssh_dir }}/id_rsa"

@@ -1,10 +1,10 @@
 ---
 
--   yum:
+-   package:
         name: "{{ item }}"
         state: present
     with_items:
-        - procps-ng
+        -   procps-ng
 
 -   set_fact:
         role_dir: "{{ role_path }}"

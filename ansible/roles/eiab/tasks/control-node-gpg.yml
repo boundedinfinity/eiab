@@ -1,0 +1,11 @@
+---
+
+-   include_role:
+        name: gpg
+    vars:
+        username: '{{ eiab_ansible_user }}'
+        gpg_userid: '{{ eiab_gpg_userid }}'
+        gpg_algo: '{{ eiab_gpg_algo }}'
+        gpg_usage: '{{ eiab_gpg_usage }}'
+        gpg_expire: '{{ eiab_gpg_expire }}'
+        gpg_passphrase: '{{ eiab_gpg_passphrase }}'

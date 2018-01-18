@@ -1,0 +1,7 @@
+---
+
+-   include_role:
+        name: ssh
+    vars:
+        username: '{{ eiab_ansible_user }}'
+        ssh_passphrase: '{{ eiab_ssh_passphrase }}'

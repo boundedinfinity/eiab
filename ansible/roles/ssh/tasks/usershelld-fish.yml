@@ -1,0 +1,15 @@
+---
+
+-   name: "Configure fish login script"
+    include_role:
+        name: usershelld
+        tasks_from: fish_login
+    vars:
+        script_src: "{{ role_dir }}/templates/user/.config/usershelld/fish/login.d/available/ssh-agent.fish"
+
+-   name: "Configure fish logout script"
+    include_role:
+        name: usershelld
+        tasks_from: fish_logout
+    vars:
+        script_src: "{{ role_dir }}/templates/user/.config/usershelld/fish/logout.d/available/ssh-agent.fish"

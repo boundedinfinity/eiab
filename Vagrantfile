@@ -8,13 +8,12 @@ node_mem = 768
 ops_mem = 1536
 
 $script = <<SCRIPT
-sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo yum install -y ansible fish
+sudo yum install -y ansible fish util-linux-user
 sudo chsh -s /usr/bin/fish vagrant
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "bi/eiab"
+  config.vm.box = "bi/eiab-fedora"
   config.hostmanager.enabled = false
 
   (0..node_count).each do |i|

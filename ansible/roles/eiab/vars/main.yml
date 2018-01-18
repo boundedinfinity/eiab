@@ -1,0 +1,12 @@
+---
+
+eiab_ansible_user: vagrant
+
+eiab_ssh_passphrase: There and back again! 
+
+eiab_gpg_userid: bilbo@shire.vil
+eiab_gpg_algo: default
+eiab_gpg_usage: default
+eiab_gpg_expire: none
+eiab_gpg_passphrase: There and back again!
+

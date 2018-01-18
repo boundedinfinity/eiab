@@ -4,10 +4,10 @@
     become: yes
 
     vars:
-        username: vagrant
         ssh_hosts: "{{ groups['all'] }}"
 
     tasks:
         -   include_role:
-                name: ssh
+                name: eiab
+                tasks_from: control-node-ssh
 

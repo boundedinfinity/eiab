@@ -1,38 +1,13 @@
 ---
 
--   yum:
-        name: "{{ item }}"
-        state: present
-    with_items:
-        - procps-ng
+-   name: "Ensure usershelld"
+    include_role:
+        name: usershelld
 
--   set_fact:
+-   name: "Set SSH module role path"
+    set_fact:
         role_dir: "{{ role_path }}"
 
--   include_role:
-        name: usershelld
-        tasks_from: bash_profile
-    vars:
-        username: vagrant
-        script_src: "{{ role_dir }}/templates/user/.config/usershelld/bash/bash_profile.d/available/ssh-agent.bash"
+-   include: usershelld-bash.yml
 
--   include_role:
-        name: usershelld
-        tasks_from: bash_logout
-    vars:
-        username: vagrant
-        script_src: "{{ role_dir }}/templates/user/.config/usershelld/bash/bash_logout.d/available/ssh-agent.bash"
-
--   include_role:
-        name: usershelld
-        tasks_from: fish_login
-    vars:
-        username: vagrant
-        script_src: "{{ role_dir }}/templates/user/.config/usershelld/fish/login.d/available/ssh-agent.fish"
-
--   include_role:
-        name: usershelld
-        tasks_from: fish_logout
-    vars:
-        username: vagrant
-        script_src: "{{ role_dir }}/templates/user/.config/usershelld/fish/logout.d/available/ssh-agent.fish"
+-   include: usershelld-fish.yml

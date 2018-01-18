@@ -1,6 +1,6 @@
 ---
 
--   name: "Lookup ssh dir for username: '{{ username }}'"
+-   name: "Lookup home directory for '{{ username }}'"
     become_user: "{{ username }}"
     set_fact:
         user_home: "{{ lookup('env','HOME') }}"

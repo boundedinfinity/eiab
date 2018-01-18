@@ -1,0 +1,12 @@
+---
+
+-   name: "Lookup gpg dir"
+    become_user: "{{ username }}"
+    set_fact:
+        gpg_dir: "{{ lookup('env','HOME') }}/.gnupg"
+
+-   name: "Generate GPG keys"
+    become_user: "{{ username }}"
+    shell: "gpg2 --batch --passphrase '{{ gpg_passphrase }}' --quick-generate-key '{{ eiab_gpg_userid }}' {{ gpg_algo }} {{ gpg_usage }} {{ gpg_expire }}"
+    args:
+        creates: "{{ gpg_dir }}"

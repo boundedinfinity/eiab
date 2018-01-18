@@ -5,42 +5,5 @@
 
     tasks:
         -   include_role:
-                name: gpg
-
-# -   name: Generate ssh keypair
-#     hosts: localhost
-#     connection: local
-#     become: yes
-
-#     vars:
-#         -   gpg_username: vagrant
-#         -   gpg_real_name: "Vagrant Baggins"
-#         -   gpg_email: vagrant@eiab.net
-#         -   gpg_passphrase: aaaa1234
-
-#     tasks:
-#         -   include_role:
-#                 name: gpg
-        
-#         -   include_role:
-#                 name: gpg
-#                 tasks_from: gen_key_master
-#             vars:
-#                 username: "{{ gpg_username }}"
-#                 real_name: "{{ gpg_real_name }}"
-#                 email: "{{ gpg_email }}"
-#                 passphrase: "{{ gpg_passphrase }}"
-
-#         -   include_role:
-#                 name: gpg
-#                 tasks_from: gen_key_sub
-#             vars:
-#                 username: "{{ gpg_username }}"
-#                 email: "{{ gpg_email }}"
-#                 passphrase: "{{ gpg_passphrase }}"
-        
-#         -   include_role:
-#                 name: gpg
-#                 tasks_from: gpg_agent_conf
-#             vars:
-#                 username: vagrant
+                name: eiab
+                tasks_from: control-node-gpg
