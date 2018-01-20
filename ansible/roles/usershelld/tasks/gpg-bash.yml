@@ -1,18 +1,11 @@
 ---
 
--   set_fact:
-        role_dir: "{{ role_path }}"
-
--   include_role:
-        name: usershelld
-        tasks_from: bash_profile
+-   name: 'Configure bash login script'
+    include:  bash-profile.yml
     vars:
-        username: vagrant
-        script_src: "{{ role_dir }}/templates/user/.config/usershelld/bash/bash_profile.d/available/gpg-agent.bash"
+        script_name: 'gpg-agent.bash'
 
--   include_role:
-        name: usershelld
-        tasks_from: bash_logout
+-   name: 'Configure bash logout script'
+    include: bash-logout.yml
     vars:
-        username: vagrant
-        script_src: "{{ role_dir }}/templates/user/.config/usershelld/bash/bash_logout.d/available/gpg-agent.bash"
+        script_name: 'gpg-agent.bash'

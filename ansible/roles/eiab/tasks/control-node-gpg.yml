@@ -2,6 +2,11 @@
 
 -   include_role:
         name: gpg
+    
+-   name: Generate user key pair
+    include_role:
+        name: gpg
+        tasks_from: genkey
     vars:
         username: '{{ eiab_ansible_user }}'
         gpg_userid: '{{ eiab_gpg_userid }}'
@@ -9,3 +14,23 @@
         gpg_usage: '{{ eiab_gpg_usage }}'
         gpg_expire: '{{ eiab_gpg_expire }}'
         gpg_passphrase: '{{ eiab_gpg_passphrase }}'
+
+-   name: 'Ensure usershelld'
+    include_role:
+        name: usershelld
+    vars:
+        username: '{{ eiab_ansible_user }}'
+
+-   name: 'Ensure usershelld gpg hooks (for bash)'
+    include_role:
+        name: usershelld
+        tasks_from: gpg-bash
+    vars:
+        username: '{{ eiab_ansible_user }}'
+
+-   name: Ensure usershelld gpg hooks (for fish)
+    include_role:
+        name: usershelld
+        tasks_from: gpg-fish
+    vars:
+        username: '{{ eiab_ansible_user }}'

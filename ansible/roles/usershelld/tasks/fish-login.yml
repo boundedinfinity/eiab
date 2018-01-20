@@ -4,16 +4,16 @@
 
 -   name: "Ensure available script '{{ script_name }}'"
     template:
-        src: 'templates/home/user/.config/usershelld/bash/bashrc.d/available/{{ script_name }}'
-        dest: '{{ usershelld_home }}/bash/bashrc.d/available/{{ script_name }}'
+        src: 'templates/home/user/.config/usershelld/fish/login.d/available/{{ script_name }}'
+        dest: '{{ usershelld_home }}/fish/login.d/available/{{ script_name }}'
         owner: '{{ username }}'
         group: '{{ username }}'
         mode: 0755
 
 -   name: "Ensure enabled script '{{ script_name }}'"
     file:
-        src: '{{ usershelld_home }}/bash/bashrc.d/available/{{ script_name }}'
-        dest: '{{ usershelld_home }}/bash/bashrc.d/enabled/{{ script_name }}'
+        src: '{{ usershelld_home }}/fish/login.d/available/{{ script_name }}'
+        dest: '{{ usershelld_home }}/fish/login.d/enabled/{{ script_name }}'
         owner: '{{ username }}'
         group: '{{ username }}'
         state: link

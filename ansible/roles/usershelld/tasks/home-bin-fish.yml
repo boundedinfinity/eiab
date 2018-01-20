@@ -1,0 +1,5 @@
+---
+
+-   include: fish-login.yml
+    vars:
+        script_name: home-bin.fish

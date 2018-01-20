@@ -1,7 +1,7 @@
 ---
 
 -   name: "Lookup home directory for '{{ username }}'"
-    become_user: "{{ username }}"
+    become_user: '{{ username }}'
     set_fact:
         user_home: "{{ lookup('env','HOME') }}"
 # -   debug: var=user_home
@@ -9,6 +9,4 @@
 -   name: "Set usershelld dir for username: '{{ username }}'"
     set_fact:
         usershelld_home: "{{ user_home }}/{{ usershelld_config_path }}"
-        bash_config_home: "{{ user_home }}/.config/bash"
-        fish_config_home: "{{ user_home }}/.config/fish"
 # -   debug: var=usershelld_home

@@ -1,7 +1,94 @@
 ---
 
--   include: user_home.yml
+-   include_role:
+        name: bash
 
--   include: bash.yml
+-   include: variables.yml
 
--   include: fish.yml
+-   name: 'Ensure bash .d directories'
+    file:
+        path: '{{ usershelld_home }}/{{ item }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0755
+        state: directory
+    with_items:
+        -   bash/bash_profile.d/available
+        -   bash/bash_profile.d/enabled
+        -   bash/bashrc.d/available
+        -   bash/bashrc.d/enabled
+        -   bash/bash_logout.d/available
+        -   bash/bash_logout.d/enabled
+        -   bash/profile.d/available
+        -   bash/profile.d/enabled
+
+-   name: 'Ensure bash config directories'
+    file:
+        path: '{{ user_home }}/.config/bash'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0755
+        state: directory
+
+-   name: 'Ensure bash configuration files'
+    template:
+        src: 'templates/home/user/.config/bash/{{ item }}'
+        dest: '{{ user_home }}/.config/bash/{{ item }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0644
+        backup: yes
+    with_items:
+        -   bashrc
+        -   bash_profile
+        -   bash_logout
+
+-   name: 'Ensure bash configuration symlinks'
+    file:
+        src: '{{ user_home }}/.config/bash/{{ item }}'
+        dest: '{{ user_home }}/.{{ item }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0755
+        state: link
+        backup: yes
+        force: yes
+    with_items:
+            -   bashrc
+            -   bash_profile
+            -   bash_logout
+
+-   include_role:
+        name: fish
+
+-   name: 'Ensure fish .d directories'
+    file:
+        path: '{{ usershelld_home }}/{{ item }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0755
+        state: directory
+    with_items:
+        -   fish/login.d/available
+        -   fish/login.d/enabled
+        -   fish/logout.d/available
+        -   fish/logout.d/enabled
+
+-   name: 'Ensure fish config directories'
+    file:
+        path: '{{ user_home }}/.config/fish'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0755
+        state: directory
+
+-   name: 'Ensure fish configuration files'
+    template:
+        src: 'templates/home/user/.config/fish/{{ item }}'
+        dest: '{{ user_home }}/.config/fish/{{ item }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0644
+        backup: yes
+    with_items:
+        -   config.fish

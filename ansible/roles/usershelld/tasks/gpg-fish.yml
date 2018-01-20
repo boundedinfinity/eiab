@@ -1,0 +1,11 @@
+---
+
+-   name: 'Configure bash login script'
+    include:  fish-login.yml
+    vars:
+        script_name: 'gpg-agent.fish'
+
+-   name: 'Configure bash logout script'
+    include: fish-logout.yml
+    vars:
+        script_name: 'gpg-agent.fish'

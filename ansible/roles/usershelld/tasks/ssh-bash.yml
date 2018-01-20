@@ -1,11 +1,11 @@
 ---
 
 -   name: 'Configure bash login script'
-    include: bash_profile.yml
+    include:  bash-profile.yml
     vars:
-        script_src: 'templates/home/user/.config/usershelld/bash/bash_profile.d/available/ssh-agent.bash'
+        script_name: 'ssh-agent.bash'
 
 -   name: 'Configure bash logout script'
-    include: bash_logout.yml
+    include: bash-logout.yml
     vars:
-        script_src: 'templates/user/.config/usershelld/bash/bash_logout.d/available/ssh-agent.bash'
+        script_name: 'ssh-agent.bash'

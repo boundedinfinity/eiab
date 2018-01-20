@@ -1,0 +1,19 @@
+---
+
+-   include: variables.yml
+
+-   name: "Ensure available script '{{ script_name }}'"
+    template:
+        src: 'templates/home/user/.config/usershelld/bash/bash_logout.d/available/{{ script_name }}'
+        dest: '{{ usershelld_home }}/bash/bash_logout.d/available/{{ script_name }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        mode: 0755
+
+-   name: "Ensure enabled script '{{ script_name }}'"
+    file:
+        src: '{{ usershelld_home }}/bash/bash_logout.d/available/{{ script_name }}'
+        dest: '{{ usershelld_home }}/bash/bash_logout.d/enabled/{{ script_name }}'
+        owner: '{{ username }}'
+        group: '{{ username }}'
+        state: link
