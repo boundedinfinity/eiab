@@ -1,14 +1,19 @@
 ---
 
--   name: Install Network Time Daemon
+-   name: Gather os specific variables
+    include_vars: '{{ item }}'
+    with_first_found:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+        - '{{ ansible_distribution }}.yml'
+
+-   name: Ensure Network Time Daemon distribution
     package:
-        name: "{{ item }}"
+        name: '{{ item }}'
         state: present
-    with_items:
-        -   ntp
+    with_items: '{{ ntp_packages }}'
 
-
--   systemd:
+-   name: Ensure Network Time Daemon service
+    systemd:
         name: ntpd
         state: started
         enabled: yes

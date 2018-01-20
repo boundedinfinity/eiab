@@ -12,6 +12,13 @@
         username: '{{ eiab_ansible_user }}'
         ssh_passphrase: '{{ eiab_ssh_passphrase }}'
 
+-   name: Import remote host keys
+    include_role:
+        name: ssh
+        tasks_from: import-remote-host-key
+    vars:
+        username: '{{ eiab_ansible_user }}'
+
 -   name: 'Ensure usershelld'
     include_role:
         name: usershelld

@@ -92,7 +92,7 @@ This will:
 After installation you can open a terminal and type:
 
 ```bash
-gpg --version
+ssh -V
 ```
 
 You should see something similar to the following.
