@@ -1,0 +1,14 @@
+---
+sudo hostnamectl set-hostname control.eiab
+sudo dnf -y install postgresql-server
+sudo dnf -y install https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
+
+sudo dnf -y install https://yum.theforeman.org/releases/1.15/f24/x86_64/foreman-release-1.15.6-1.fc24.noarch.rpm
+sudo dnf -y install https://yum.theforeman.org/releases/1.16/el7/x86_64/foreman-release.rpm
+
+sudo dnf -y install foreman-installer
+sudo foreman-installer
+
+sudo yum remove foreman-release
+sudo yum remove foreman-installer
+

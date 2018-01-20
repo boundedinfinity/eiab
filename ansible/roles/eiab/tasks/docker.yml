@@ -1,0 +1,11 @@
+---
+
+-   include_role:
+        name: docker
+
+-   name: Add user to docker group
+    include_role:
+        name: docker
+        tasks_from: group
+    vars:
+        username: '{{ eiab_ansible_user }}'

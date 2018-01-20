@@ -8,7 +8,7 @@
 
 -   name: "Set usershelld dir for username: '{{ username }}'"
     set_fact:
-        usershelld_home: "{{ user_home }}/{{ usershelld_rel_path }}"
+        usershelld_home: "{{ user_home }}/{{ usershelld_config_path }}"
         bash_config_home: "{{ user_home }}/.config/bash"
         fish_config_home: "{{ user_home }}/.config/fish"
 # -   debug: var=usershelld_home

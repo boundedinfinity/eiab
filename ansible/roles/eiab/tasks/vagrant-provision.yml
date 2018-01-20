@@ -1,0 +1,19 @@
+---
+
+-   name: Gather os specific variables
+    include_vars: '{{ item }}'
+    with_first_found:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+        - '{{ ansible_distribution }}.yml'
+
+-   package:
+        name: '{{ item }}'
+        state: present
+    with_items: '{{ eiab_packages }}'
+
+-   name: Set fish as default shell
+    include_role:
+        name: fish
+        tasks_from: set-shell
+    vars:
+        username: '{{ eiab_ansible_user }}'

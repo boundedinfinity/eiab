@@ -1,0 +1,10 @@
+---
+
+-   name: Ensure fish
+    include: main.yml
+
+-   name: Set default shell to fish
+    user:
+        name: '{{ username }}'
+        state: present
+        shell: '{{ fish_exe }}'

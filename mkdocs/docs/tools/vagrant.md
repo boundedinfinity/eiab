@@ -76,5 +76,6 @@ Or browse to the [Vagrant plugins wiki](https://github.com/hashicorp/vagrant/wik
 # Reference
 
 - [Project Page](https://www.vagrantup.com)
+    - [Private Networks](https://www.vagrantup.com/docs/networking/private_network.html)
 - Plugins
     - [vagrant-hostmanager plugin](https://github.com/devopsgroup-io/vagrant-hostmanager)

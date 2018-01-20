@@ -1,0 +1,11 @@
+---
+
+-   name: 'Configure fish login script'
+    include: fish_login.yml
+    vars:
+        script_src: 'templates/user/.config/usershelld/fish/login.d/available/ssh-agent.fish'
+
+-   name: 'Configure fish logout script'
+    include: fish_logout.yml
+    vars:
+        script_src: 'templates/user/.config/usershelld/fish/logout.d/available/ssh-agent.fish'

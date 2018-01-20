@@ -28,6 +28,12 @@ everything:
 	make vault-server
 	make vault-client
 
+scratch:
+	$(playbook_exec)/scratch.yml
+
+vagrant-provision:
+	$(playbook_exec)/vagrant-provision.yml
+
 control-node-gpg:
 	$(playbook_exec)/control-node-gpg.yml
 

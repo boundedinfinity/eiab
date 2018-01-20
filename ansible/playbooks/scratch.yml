@@ -1,0 +1,10 @@
+-   name: Scratch
+    hosts: localhost
+    connection: local
+    become: yes
+
+    tasks:
+
+        -   include_role:
+                name: eiab
+                tasks_from: docker

@@ -1,16 +1,22 @@
 ---
 
+-   name: Gather os specific variables
+    include_vars: '{{ item }}'
+    with_first_found:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+        - '{{ ansible_distribution }}.yml'
+
 -   name: Install EPEL repository
     yum:
         name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         state: present
     when: ansible_distribution == "CentOS"
 
--   package:
+-   name: Ensure fish distribution
+    package:
         name: "{{ item }}"
         state: present
-    with_items:
-        - fish
+    with_items: '{{ fish_packages }}'
 
 -   name: "Ensure global fish configuration files"
     template:

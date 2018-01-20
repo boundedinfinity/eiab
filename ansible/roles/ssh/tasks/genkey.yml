@@ -1,12 +1,5 @@
 ---
 
--   package:
-        name: "{{ item }}"
-        state: present
-    with_items:
-        -   openssh
-        -   procps-ng
-
 -   name: "Lookup ssh dir"
     become_user: "{{ username }}"
     set_fact:

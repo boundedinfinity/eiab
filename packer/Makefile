@@ -5,9 +5,24 @@ list:
 
 bootstrap:
 	git clone https://github.com/boxcutter/fedora.git boxcutter-fedora
+	git clone https://github.com/boxcutter/centos.git boxcutter-centos
 
 build:
-	(cd boxcutter-fedora && packer build -only=virtualbox-iso -var-file=fedora27-server.json fedora.json)
+	@make build-centos
+	@make build-fedora
+	
+build-centos:
+	(cd boxcutter-centos && packer build -only=virtualbox-iso -var-file=../eiab-var.json centos.json)
+
+build-fedora:
+	(cd boxcutter-fedora && packer build -only=virtualbox-iso -var-file=fedora27-server.json fedora.json)	
 	
 add:
+	@make add-centos
+	@make add-fedora
+
+add-centos:
+	vagrant box add --name bi/eiab-centos boxcutter-centos/box/virtualbox/centos-7.4.box
+
+add-fedora:
 	vagrant box add --name bi/eiab-fedora boxcutter-fedora/box/virtualbox/fedora27-server-0.1.0.box

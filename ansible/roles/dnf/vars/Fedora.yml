@@ -1,0 +1,5 @@
+dnf_packages:
+    -   dnf-yum
+    -   dnf-plugins-core
+    -   python
+    -   python-dnf

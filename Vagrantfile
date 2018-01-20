@@ -8,13 +8,14 @@ node_mem = 768
 ops_mem = 1536
 
 $script = <<SCRIPT
-sudo yum install -y ansible fish util-linux-user
-sudo chsh -s /usr/bin/fish vagrant
+sudo yum install -y ansible
+cd /vagrant/ansible && make vagrant-provision
 SCRIPT
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "bi/eiab-fedora"
-  config.hostmanager.enabled = false
+    config.vm.box = "bi/eiab-fedora"
+    #config.vm.box = "bi/eiab-centos"
+    config.hostmanager.enabled = false
 
   (0..node_count).each do |i|
       config.vm.define "ops0#{i}" do |m|

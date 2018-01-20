@@ -1,0 +1,6 @@
+---
+
+gpg_packages:
+    -   gnupg2
+
+gpg_exe: /usr/bin/gpg2

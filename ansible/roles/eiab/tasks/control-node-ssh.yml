@@ -1,7 +1,29 @@
 ---
 
--   include_role:
-        name: ssh
+# -   name: Ensure SSH
+#     include_role:
+#         name: ssh
+#     vars:
+#         username: '{{ eiab_ansible_user }}'
+
+# -   name: Generate user key pair
+#     include_role:
+#         name: ssh
+#         tasks_from: genkey
+#     vars:
+#         username: '{{ eiab_ansible_user }}'
+#         ssh_passphrase: '{{ eiab_ssh_passphrase }}'
+
+-   name: 'Ensure usershelld ssh hooks (for bash)'
+    include_role:
+        name: usershelld
+        tasks_from: ssh-bash
     vars:
         username: '{{ eiab_ansible_user }}'
-        ssh_passphrase: '{{ eiab_ssh_passphrase }}'
+
+# -   name: Ensure usershelld ssh hooks (for fish)
+#     include_role:
+#         name: usershelld
+#         tasks_from: ssh-bash
+#     vars:
+#         username: '{{ eiab_ansible_user }}'

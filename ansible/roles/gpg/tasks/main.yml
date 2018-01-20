@@ -6,8 +6,6 @@
         state: present
     with_items:
         - gnupg2
-        - rng-tools
-        - pass
 
 -   include: usershelld.yml
 

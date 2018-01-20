@@ -1,0 +1,41 @@
+---
+
+-   name: Ensure dnf
+    include_role:
+        name: dnf
+    when: ansible_distribution == "Fedora"
+
+-   name: Ensure dnf
+    include_role:
+        name: yum
+    when: ansible_distribution == "CentOS"
+
+-   name: Gather os specific variables
+    include_vars: '{{ item }}'
+    with_first_found:
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version}}.yml'
+        - '{{ ansible_distribution }}.yml'
+
+-   name: Ensure docker distribution
+    yum_repository:
+        name: '{{ item.title }}'
+        description: '{{ item.name }}'
+        file: '{{ item.filename }}'
+        baseurl: '{{ item.baseurl }}'
+        enabled: '{{ item.enabled }}'
+        gpgcheck: '{{ item.gpgcheck }}'
+        gpgkey: '{{ item.gpgkey }}'
+        state: present
+    with_items: '{{ docker_repos }}'
+
+-   name: Ensure docker distribution
+    package:
+        name: '{{ item }}'
+        state: present
+    with_items: '{{ docker_packages }}'
+
+-   name: Ensure docker service
+    service:
+        name: docker
+        state: started
+        enabled: yes

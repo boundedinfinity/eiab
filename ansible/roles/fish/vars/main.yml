@@ -1,2 +1,3 @@
 ---
-# vars file for fish
+
+fish_exe: /usr/bin/fish

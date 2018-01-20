@@ -1,0 +1,13 @@
+---
+
+docker_repos:
+    -   filename: docker-ce
+        title: docker-ce-stable
+        name: Docker CE Stable - $basearch
+        baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
+        enabled: 1
+        gpgcheck: 1
+        gpgkey: https://download.docker.com/linux/fedora/gpg
+
+docker_packages:
+    -   docker-ce
