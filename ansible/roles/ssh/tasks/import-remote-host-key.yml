@@ -3,7 +3,9 @@
 -   name: "Lookup ssh dir"
     become_user: "{{ username }}"
     set_fact:
-        ssh_dir: "{{ lookup('env','HOME') }}/.ssh"
+        home_dir: "{{ lookup('env','HOME') }}"
+
+# -   debug: var=ssh_hosts
 
 -   name: Import nodes keys
     become_user: "{{ username }}"
@@ -13,10 +15,10 @@
     register: known_host_results
     ignore_errors: yes
 
--   name: "Update the {{ ssh_dir }}/known_hosts file with nodes"
+-   name: "Update the {{ home_dir }}/.ssh/known_hosts file with nodes"
     become_user: "{{ username }}"
     known_hosts:
         name: "{{ item.item }}"
         key: "{{ item.stdout }}"
-        path: "{{ ssh_dir }}/known_hosts"
+        path: "{{ home_dir }}/.ssh/known_hosts"
     with_items: "{{ known_host_results.results }}"

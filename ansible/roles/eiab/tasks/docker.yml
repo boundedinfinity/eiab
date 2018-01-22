@@ -8,4 +8,4 @@
         name: docker
         tasks_from: group
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'

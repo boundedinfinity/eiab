@@ -1,25 +1,24 @@
+---
+
+# -   name: Import ssh host information
+#     hosts: localhost
+#     connection: local
+#     become: yes
+
+#     tasks:
+
+#         -   include_role:
+#                 name: eiab
+#                 tasks_from: ansible-hosts
+
 -   name: Configure ansible account
     hosts: bootstrap
     become: yes
-
-    vars:
-        -   ansible_account: ansible
-        -   ssh_dir: "{{ lookup('env','HOME') }}/.ssh"
-        -   ssh_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+    gather_facts: false
 
     tasks:
 
-        -   user:
-                name: "{{ ansible_account }}"
-                comment: "Ansible Account"
-                state: present
-        
         -   include_role:
-                name: sudoer
-            vars:
-                account: "{{ ansible_account }}"
+                name: eiab
+                tasks_from: ansible-ensure-account
 
-        -   authorized_key:
-                user: "{{ ansible_account }}"
-                state: present
-                key: "{{ ssh_key }}"

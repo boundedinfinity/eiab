@@ -9,32 +9,25 @@
         name: ssh
         tasks_from: genkey
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'
         ssh_passphrase: '{{ eiab_ssh_passphrase }}'
-
--   name: Import remote host keys
-    include_role:
-        name: ssh
-        tasks_from: import-remote-host-key
-    vars:
-        username: '{{ eiab_ansible_user }}'
 
 -   name: 'Ensure usershelld'
     include_role:
         name: usershelld
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'
 
 -   name: 'Ensure usershelld ssh hooks (for bash)'
     include_role:
         name: usershelld
         tasks_from: ssh-bash
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'
 
 -   name: Ensure usershelld ssh hooks (for fish)
     include_role:
         name: usershelld
         tasks_from: ssh-fish
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'

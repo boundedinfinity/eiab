@@ -1,6 +1,7 @@
 ---
 
-eiab_ansible_user: vagrant
+eiab_vagrant_user: vagrant
+eiab_ansible_user: ansible
 
 eiab_ssh_passphrase: There and back again! 
 

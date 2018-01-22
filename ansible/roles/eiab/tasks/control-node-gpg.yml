@@ -8,7 +8,7 @@
         name: gpg
         tasks_from: genkey
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'
         gpg_userid: '{{ eiab_gpg_userid }}'
         gpg_algo: '{{ eiab_gpg_algo }}'
         gpg_usage: '{{ eiab_gpg_usage }}'
@@ -19,18 +19,18 @@
     include_role:
         name: usershelld
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'
 
 -   name: 'Ensure usershelld gpg hooks (for bash)'
     include_role:
         name: usershelld
         tasks_from: gpg-bash
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'
 
 -   name: Ensure usershelld gpg hooks (for fish)
     include_role:
         name: usershelld
         tasks_from: gpg-fish
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'

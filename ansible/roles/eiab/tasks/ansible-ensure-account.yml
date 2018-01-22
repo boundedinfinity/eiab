@@ -1,0 +1,35 @@
+---
+
+-   name: "Set username facts"
+    set_fact:
+        local_username: "{{ eiab_vagrant_user }}"
+        remote_username: "{{ eiab_ansible_user }}"
+
+-   name: "Lookup {{ local_username }} home dir"
+    become_user: "{{ local_username }}"
+    set_fact:
+        home_dir: "{{ lookup('env','HOME') }}"
+
+-   name: "Ensure {{ remote_username }} user"
+    user:
+        name: "{{ remote_username }}"
+        comment: "Ansible Account"
+        state: present
+
+-   include_role:
+        name: sudoer
+    vars:
+        username: "{{ remote_username }}"
+
+-   authorized_key:
+        user: "{{ remote_username }}"
+        state: present
+        # key: "{{ home_dir }}/.ssh/id_rsa.pub"
+        key: "{{ lookup('file', '/home/vagrant/.ssh/id_rsa.pub') }}"
+
+-   name: Set fish as default shell
+    include_role:
+        name: fish
+        tasks_from: set-shell
+    vars:
+        username: '{{ remote_username }}'

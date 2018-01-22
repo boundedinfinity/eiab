@@ -16,4 +16,4 @@
         name: fish
         tasks_from: set-shell
     vars:
-        username: '{{ eiab_ansible_user }}'
+        username: '{{ eiab_vagrant_user }}'

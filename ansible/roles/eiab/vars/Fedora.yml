@@ -2,3 +2,4 @@ eiab_packages:
     -   make
     -   util-linux-user
     -   tree
+    -   python2

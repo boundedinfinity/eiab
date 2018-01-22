@@ -1,0 +1,9 @@
+---
+
+-   name: Import remote host keys
+    include_role:
+        name: ssh
+        tasks_from: import-remote-host-key
+    vars:
+        username: '{{ eiab_vagrant_user }}'
+        ssh_hosts: "{{ groups['all'] }}"
