@@ -1,15 +1,15 @@
 ---
 
-# -   name: Import ssh host information
-#     hosts: localhost
-#     connection: local
-#     become: yes
+-   name: Import ssh host information
+    hosts: localhost
+    connection: local
+    become: yes
 
-#     tasks:
+    tasks:
 
-#         -   include_role:
-#                 name: eiab
-#                 tasks_from: ansible-hosts
+        -   include_role:
+                name: eiab
+                tasks_from: ansible-hosts
 
 -   name: Configure ansible account
     hosts: bootstrap
