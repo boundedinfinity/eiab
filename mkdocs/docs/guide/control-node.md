@@ -82,7 +82,7 @@ make control-node-ssh
 This will:
 
 - Install a **ssh-agent** lifecycle management scripts using the [UserShellD](../tools/usershelld) framework.
-- Generate the ssh keypair with the `There and back again!` as the passphrase
+- Generate the ssh keypair with `There and back again!` as the passphrase
 - Import the remote host fingerprints from all the nodes in the architecture
 
 !!! note

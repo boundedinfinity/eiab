@@ -1,0 +1,11 @@
+---
+
+-   name: raspberrypi flash
+    hosts: localhost
+    connection: local
+    gather_facts: none
+
+    tasks:
+        -   include_role:
+                name: raspberrypi
+                tasks_from: raspbian-flash

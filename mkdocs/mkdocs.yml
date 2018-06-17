@@ -6,6 +6,7 @@ markdown_extensions:
 pages:
     - Home: index.md
     - Guide:
+        -   'Raspberry PI': 'guide/rpi.md'
         -   'Introduction': 'guide/intro.md'
         -   'macOS': 'guide/macos.md'
         -   'Project Source': 'guide/source.md'

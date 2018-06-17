@@ -1,0 +1,41 @@
+---
+
+-   name: Setting variables
+    set_fact:
+        download_dir: /tmp/rpi
+        archive_url: https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2018-04-19
+        zipfile: 2018-04-18-raspbian-stretch-lite.zip
+        imgfile: 2018-04-18-raspbian-stretch-lite.img
+        shafile: 2018-04-18-raspbian-stretch-lite.zip.sha256
+        mount_path:
+
+-   name: Create /tmp/rpi
+    file:
+        path: '{{ download_dir }}'
+        state: directory
+        mode: 0755
+
+-   name: Download sha file
+    get_url:
+        url: '{{ archive_url }}/{{ shafile }}'
+        dest: '{{ download_dir }}/{{ shafile }}'
+        mode: 0700
+
+-   name: Extract sha
+    shell: "cat {{ download_dir }}/{{ shafile }} | awk '{print $1}'"
+    register: checksum
+# -   debug: var=checksum.stdout
+
+-   name: Download
+    get_url:
+        url: '{{ archive_url }}/{{ zipfile }}'
+        dest: '{{ download_dir }}/{{ zipfile }}'
+        mode: 0700
+        checksum: 'sha256:{{ checksum.stdout }}'
+
+-   name: Unarchive
+    unarchive:
+        src: '{{ download_dir }}/{{ zipfile }}'
+        dest: '{{ download_dir }}'
+        mode: 0700
+        

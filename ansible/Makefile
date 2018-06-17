@@ -4,7 +4,8 @@ ansible_account		:= ansible
 
 ansible_exec		:= ansible --user=$(ansible_account)
 playbook_exec		:= ansible-playbook --user=$(ansible_account) playbooks
-playbook_v_exec		:= ansible-playbook -vvv --user=$(ansible_account) playbooks
+playbook_pass_exec	:= ansible-playbook --user=$(ansible_account) --ask-sudo-pass playbooks
+playbook_v_exec		:= ansible-playbook -vvv --user=$(ansible_account) --ask-sudo-pass playbooks
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
@@ -27,6 +28,12 @@ everything:
 	make consul-client
 	make vault-server
 	make vault-client
+
+raspbian-download:
+	$(playbook_exec)/raspbian-download.yml
+
+raspbian-flash:
+	$(playbook_pass_exec)/raspbian-flash.yml
 
 scratch:
 	$(playbook_exec)/scratch.yml
