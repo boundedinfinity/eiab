@@ -13,5 +13,5 @@
     shell: 'dd bs=1m if={{ download_dir }}/{{ imgfile }} of={{ device_path }} conv=sync'
     become: yes
 
--   name: Unmount SD card
+-   name: Mount SD card
     shell: 'diskutil mountDisk {{ device_path }}'
