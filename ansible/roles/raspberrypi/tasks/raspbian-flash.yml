@@ -5,6 +5,7 @@
         download_dir: /tmp/rpi2
         imgfile: 2018-04-18-raspbian-stretch-lite.img
         device_path: /dev/disk1
+        boot_volume: /Volumes/boot
 
 -   name: Unmount SD card
     shell: 'diskutil unmountDisk {{ device_path }}'
@@ -15,3 +16,9 @@
 
 -   name: Mount SD card
     shell: 'diskutil mountDisk {{ device_path }}'
+
+-   name: Enable SSH
+    file: 
+        path: '{{ boot_volume }}/ssh'
+        state: touch
+        mode: 0777

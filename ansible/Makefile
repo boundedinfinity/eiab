@@ -35,6 +35,9 @@ raspbian-download:
 raspbian-flash:
 	$(playbook_pass_exec)/raspbian-flash.yml
 
+raspberrypi-config:
+	$(playbook_exec)/raspberrypi-config.yml
+
 scratch:
 	$(playbook_exec)/scratch.yml
 
