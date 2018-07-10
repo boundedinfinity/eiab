@@ -6,8 +6,6 @@ ansible_exec		:= cd ansible && ansible --user=$(ansible_account)
 playbook_exec		:= cd ansible && ansible-playbook --user=$(ansible_account) playbooks
 playbook_v_exec		:= cd ansible && ansible-playbook -vvv --user=$(ansible_account) playbooks
 
-.PHONY: list bootstrap clean startover ansible
-
 list:
 	@grep '^[^#[:space:]].*:' Makefile | grep -v ':=' | grep -v '^\.' | sed 's/:.*//g' | sed 's/://g' | sort
 
@@ -24,6 +22,8 @@ startover:
 	make clean
 	vagrant up
 
-ansible:
-	pip install --requirement Pipfile
-	ansible-galaxy install --role-file=Ansiblefile.yml --roles-path=ansible/galaxy_roles
+compile-watch:
+	livereload -p 9000 .
+
+ts-watch:
+	tsc --watch

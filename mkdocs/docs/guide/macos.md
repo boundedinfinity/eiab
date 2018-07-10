@@ -1,12 +1,44 @@
 Currently this guide will be focused on a macOS worksation with the following minimum requirements:
 
-- macOS High Sierra
-- &gt;= 16 GB of memory
+- macOS High Sierra - version 10.13.5
 
-The following utilities need to be installed on the **Host**.
+```bash
+system_profiler SPSoftwareDataType
+Software:
 
-Homebrew
--------------
+    System Software Overview:
+
+      System Version: macOS 10.13.5 (17F77)
+...
+```
+
+### Xcode
+
+
+```
+xcode-select --print-path
+```
+
+the return value will be 2 if they do NOT exist, and 0 if they do (as well as the directory).
+
+```
+xcode-select --install
+```
+
+### Make
+
+```
+make --version
+```
+
+### Ansible
+
+```
+make ansible
+```
+
+### Homebrew
+
 
 This first step is to install the [Homebrew](../tools/homebrew) package 
 management system.

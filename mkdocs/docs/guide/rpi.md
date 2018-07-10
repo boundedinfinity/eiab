@@ -26,9 +26,22 @@ sudo usermod -aG docker pi
 - DIY [USB Male Port Connector, Conwork 10-Pack Straight Jack Solder USB Repair Replacement Adapter](https://www.amazon.com/USB-Connector-Conwork-Straight-Replacement/dp/B071JK5614/ref=sr_1_1?ie=UTF8&qid=1529258340&sr=8-1&keywords=usb+a+connector) - $6.99
 - DIY [uxcell 10PCS 5-Pin Micro USB Type B Male Connector w Plastic Cover for DIY](https://www.amazon.com/uxcell-10PCS-5-Pin-Connector-Plastic/dp/B014GMP4E4/ref=sr_1_10?s=electronics&ie=UTF8&qid=1529258396&sr=1-10&keywords=usb+b+micro+connector) - $6.89
 - [DIY uxcell parts](https://www.amazon.com/uxcell/b/ref=w_bl_hsx_s_pc_web_3049510011?ie=UTF8&node=3049510011&field-lbr_brands_browse-bin=uxcell)
+- [SanDisk SDCZ880-128G-G46 Extreme PRO 128GB USB 3.1 Solid State Flash Drive](https://www.amazon.com/SanDisk-SDCZ880-128G-G46-Extreme-128GB-Solid/dp/B01MU8TZRV/ref=sr_1_3?ie=UTF8&qid=1529417141&sr=8-3&keywords=ssd+thumb+drive) - $71.88
 
 - [DOCKER COMES TO RASPBERRY PI](https://www.raspberrypi.org/blog/docker-comes-to-raspberry-pi)
 - [Install using the repository](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-using-the-repository)
 - [raspberrypi NETWORK BOOTING](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net.md)
 - [raspberrypi NETWORK BOOT YOUR RASPBERRY PI](https://www.raspberrypi.org/documentation/hardware/raspberrypi/bootmodes/net_tutorial.md)
 - [MAAS Install](https://maas.io/install)
+- [EBL 4 Bay 9V Lithium ion Battery Charger with 4 Packs 600mAh 9V Li-ion Rechargeable Batteries](https://www.amazon.com/EBL-Lithium-Battery-Rechargeable-Batteries/dp/B078HP76PG/ref=sr_1_3?s=electronics&ie=UTF8&qid=1530649196&sr=1-3&keywords=rechargeable+batteries+9v)
+
+
+### USB to ethernet
+
+- macOS High Sierra 10.13.5 (17F77)
+[AmazonBasics USB 3.0 to 10/100/1000 Gigabit Ethernet Adapter](https://www.amazon.com/gp/product/B00M77HMU0/ref=oh_aui_detailpage_o00_s00?ie=UTF8&psc=1)
+
+It looks like this hardware is produced by [ASIX](http://www.asix.com.tw/products.php?op=pItemdetail&PItemID=131;71;112)
+- http://www.asix.com.tw/FrootAttach/driver/AX88179_178A_Macintosh_Driver_Installer_v2.11.0.zip
+
+- https://medium.com/@bossjones/how-i-setup-a-raspberry-pi-3-cluster-using-the-new-docker-swarm-mode-in-29-minutes-aa0e4f3b1768

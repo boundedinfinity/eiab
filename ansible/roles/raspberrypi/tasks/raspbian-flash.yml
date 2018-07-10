@@ -2,7 +2,7 @@
 
 -   name: Setting variables
     set_fact:
-        download_dir: /tmp/rpi2
+        download_dir: /tmp/rpi
         imgfile: 2018-04-18-raspbian-stretch-lite.img
         device_path: /dev/disk1
         boot_volume: /Volumes/boot
