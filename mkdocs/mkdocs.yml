@@ -7,8 +7,10 @@ pages:
     - Home: index.md
     - Guide:
         -   'Introduction': 'guide/intro.md'
-        -   'Raspberry PI': 'guide/rpi.md'
         -   'macOS': 'guide/macos.md'
+        -   'eiab': 'guide/eiab.md'
+        -   'Credentials': 'guide/credentials.md'
+        -   'Raspberry PI': 'guide/rpi.md'
         -   'Project Source': 'guide/source.md'
         -   'Machine Image': 'guide/machine-image.md'
         -   'Virtual Machines': 'guide/vagrant.md'

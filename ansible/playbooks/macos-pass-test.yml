@@ -1,0 +1,7 @@
+-   name: macOS GPG
+    hosts: localhost
+    connection: local
+
+    tasks:
+        -   name: Lookup the Raspberry PI default password
+            debug: msg="{{ lookup('passwordstore', 'eiab/rpi/pi')}}"

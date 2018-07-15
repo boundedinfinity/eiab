@@ -1,8 +1,9 @@
 makefile_dir		:= $(abspath $(shell pwd))
 
 ansible_account		:= ansible
-
 ansible_exec		:= ansible --user=$(ansible_account)
+
+playbook_macos		:= ansible-playbook playbooks
 playbook_exec		:= ansible-playbook --user=$(ansible_account) playbooks
 playbook_pass_exec	:= ansible-playbook --user=$(ansible_account) --ask-sudo-pass playbooks
 playbook_v_exec		:= ansible-playbook -vvv --user=$(ansible_account) --ask-sudo-pass playbooks
@@ -28,6 +29,12 @@ everything:
 	make consul-client
 	make vault-server
 	make vault-client
+
+macos-gpg:
+	$(playbook_macos)/macos-gpg.yml
+
+macos-pass-test:
+	$(playbook_macos)/macos-pass-test.yml
 
 raspbian-download:
 	$(playbook_exec)/raspbian-download.yml

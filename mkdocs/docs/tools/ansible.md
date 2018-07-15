@@ -19,6 +19,8 @@ ansible-galaxy init <namespace>.<role name>
 
 - [Project page](https://www.ansible.com)
     - [Module Index](http://docs.ansible.com/ansible/latest/modules_by_category.html)
+        - [passwordstore](https://docs.ansible.com/ansible/2.6/plugins/lookup/passwordstore.html)
+        - [homebrew](https://docs.ansible.com/ansible/latest/modules/homebrew_module.html)
     - [Configuration file : role_path](http://docs.ansible.com/ansible/latest/intro_configuration.html#roles-path)
     - [Ansilbe Galaxy](http://docs.ansible.com/ansible/latest/galaxy.html)
         - [Configuration file: role_path](http://docs.ansible.com/ansible/latest/galaxy.html#roles-path)

@@ -1,0 +1,12 @@
+-   name: macOS GPG
+    hosts: localhost
+    connection: local
+
+    tasks:
+        -   homebrew:
+                name: gpg2
+                state: present
+
+        -   homebrew:
+                name: pass
+                state: present
